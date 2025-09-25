@@ -1,0 +1,2794 @@
+{
+  "601138_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:03.883743",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601138.csv"
+  },
+  "688981_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:03.931857",
+    "records": 1084,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688981.csv"
+  },
+  "000333_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.075227",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000333.csv"
+  },
+  "601601_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.118425",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601601.csv"
+  },
+  "002415_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.236786",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002415.csv"
+  },
+  "601766_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.355290",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601766.csv"
+  },
+  "000651_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.355354",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000651.csv"
+  },
+  "302132_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.489507",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/302132.csv"
+  },
+  "300033_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.645238",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300033.csv"
+  },
+  "601881_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.703469",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601881.csv"
+  },
+  "600031_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.734408",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600031.csv"
+  },
+  "605499_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.842692",
+    "records": 875,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/605499.csv"
+  },
+  "300014_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:04.892859",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300014.csv"
+  },
+  "601888_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:05.052851",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601888.csv"
+  },
+  "601800_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:05.071648",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601800.csv"
+  },
+  "000617_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:05.186621",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000617.csv"
+  },
+  "601390_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:05.237383",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601390.csv"
+  },
+  "688775_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688775&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:03:47.588715"
+  },
+  "000166_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:05.318964",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000166.csv"
+  },
+  "600989_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:05.533072",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600989.csv"
+  },
+  "600905_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:07.750150",
+    "records": 865,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600905.csv"
+  },
+  "002230_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:07.810648",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002230.csv"
+  },
+  "600886_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:07.882133",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600886.csv"
+  },
+  "600415_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:07.950191",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600415.csv"
+  },
+  "688521_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:08.035377",
+    "records": 1061,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688521.csv"
+  },
+  "000895_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:08.135367",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000895.csv"
+  },
+  "001979_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:08.206900",
+    "records": 1196,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/001979.csv"
+  },
+  "688729_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688729&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:03:49.695589"
+  },
+  "000002_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:08.373695",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000002.csv"
+  },
+  "600703_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T15:51:08.475098",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600703.csv"
+  },
+  "600673_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:16.704425",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600673.csv"
+  },
+  "000807_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:16.713576",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000807.csv"
+  },
+  "002466_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:16.713838",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002466.csv"
+  },
+  "601872_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:16.788568",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601872.csv"
+  },
+  "601607_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:16.884736",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601607.csv"
+  },
+  "002648_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:17.057442",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002648.csv"
+  },
+  "688303_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:17.166156",
+    "records": 836,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688303.csv"
+  },
+  "300251_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:17.207855",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300251.csv"
+  },
+  "688126_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:17.211972",
+    "records": 1142,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688126.csv"
+  },
+  "600426_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:17.308464",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600426.csv"
+  },
+  "002202_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:19.486559",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002202.csv"
+  },
+  "300207_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:19.567562",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300207.csv"
+  },
+  "000564_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:19.712246",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000564.csv"
+  },
+  "601058_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:19.787544",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601058.csv"
+  },
+  "000999_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:19.836305",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000999.csv"
+  },
+  "600733_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:19.904295",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600733.csv"
+  },
+  "002414_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:19.981038",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002414.csv"
+  },
+  "688180_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:20.079024",
+    "records": 1085,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688180.csv"
+  },
+  "002555_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:20.157001",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002555.csv"
+  },
+  "300316_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:20.241570",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300316.csv"
+  },
+  "002252_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:20.344610",
+    "records": 1205,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002252.csv"
+  },
+  "601598_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:20.418240",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601598.csv"
+  },
+  "002601_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:20.518837",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002601.csv"
+  },
+  "603087_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:20.957060",
+    "records": 1097,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603087.csv"
+  },
+  "002078_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:21.064231",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002078.csv"
+  },
+  "000786_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:21.070000",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000786.csv"
+  },
+  "603129_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:21.091493",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603129.csv"
+  },
+  "601865_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:21.091537",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601865.csv"
+  },
+  "002032_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:21.453684",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002032.csv"
+  },
+  "600392_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:21.783863",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600392.csv"
+  },
+  "600208_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.018710",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600208.csv"
+  },
+  "002008_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.047800",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002008.csv"
+  },
+  "600871_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.118334",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600871.csv"
+  },
+  "000983_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.199283",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000983.csv"
+  },
+  "835185_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.289726",
+    "records": 1155,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/835185.csv"
+  },
+  "002155_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.428656",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002155.csv"
+  },
+  "688585_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.523949",
+    "records": 1032,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688585.csv"
+  },
+  "300373_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.555664",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300373.csv"
+  },
+  "002773_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.645882",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002773.csv"
+  },
+  "002402_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.716491",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002402.csv"
+  },
+  "601233_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.797409",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601233.csv"
+  },
+  "688568_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:24.967947",
+    "records": 1090,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688568.csv"
+  },
+  "002465_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:25.045757",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002465.csv"
+  },
+  "601799_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:25.075752",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601799.csv"
+  },
+  "002152_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:25.115916",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002152.csv"
+  },
+  "601155_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:25.206544",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601155.csv"
+  },
+  "688313_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:25.282699",
+    "records": 1065,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688313.csv"
+  },
+  "688002_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:25.446462",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688002.csv"
+  },
+  "688336_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:25.564087",
+    "records": 1080,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688336.csv"
+  },
+  "000878_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:25.580851",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000878.csv"
+  },
+  "000021_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:27.783944",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000021.csv"
+  },
+  "601179_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:27.842461",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601179.csv"
+  },
+  "600862_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.160404",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600862.csv"
+  },
+  "601519_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.199428",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601519.csv"
+  },
+  "688411_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688411&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:03:55.869949"
+  },
+  "688498_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.239410",
+    "records": 492,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688498.csv"
+  },
+  "688343_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.239534",
+    "records": 424,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688343.csv"
+  },
+  "600884_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.361530",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600884.csv"
+  },
+  "600486_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.425802",
+    "records": 1207,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600486.csv"
+  },
+  "002608_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.624951",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002608.csv"
+  },
+  "600038_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.793125",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600038.csv"
+  },
+  "600602_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.793527",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600602.csv"
+  },
+  "601615_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.793838",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601615.csv"
+  },
+  "001696_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:28.869805",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/001696.csv"
+  },
+  "603596_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:29.228976",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603596.csv"
+  },
+  "301526_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:29.373119",
+    "records": 246,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301526.csv"
+  },
+  "688363_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:29.378247",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688363.csv"
+  },
+  "000629_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:29.435305",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000629.csv"
+  },
+  "002409_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:29.677626",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002409.csv"
+  },
+  "000733_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:29.779526",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000733.csv"
+  },
+  "000519_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.007909",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000519.csv"
+  },
+  "300682_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.081746",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300682.csv"
+  },
+  "000898_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.155652",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000898.csv"
+  },
+  "688676_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.312467",
+    "records": 928,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688676.csv"
+  },
+  "600348_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.394977",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600348.csv"
+  },
+  "600754_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.461591",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600754.csv"
+  },
+  "603816_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.509594",
+    "records": 1208,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603816.csv"
+  },
+  "301316_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.544011",
+    "records": 541,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301316.csv"
+  },
+  "601333_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.635768",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601333.csv"
+  },
+  "601156_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.792304",
+    "records": 866,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601156.csv"
+  },
+  "688563_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.875968",
+    "records": 354,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688563.csv"
+  },
+  "600970_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.941759",
+    "records": 1190,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600970.csv"
+  },
+  "600380_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:32.974487",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600380.csv"
+  },
+  "600619_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:33.058014",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600619.csv"
+  },
+  "301275_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301275&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:03:58.002752"
+  },
+  "603337_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:33.239192",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603337.csv"
+  },
+  "002249_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:33.402467",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002249.csv"
+  },
+  "002318_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:33.451653",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002318.csv"
+  },
+  "002747_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:33.501334",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002747.csv"
+  },
+  "301678_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301678&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:03:58.070067"
+  },
+  "600410_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:35.700514",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600410.csv"
+  },
+  "002518_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:36.183714",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002518.csv"
+  },
+  "603341_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:36.216476",
+    "records": 205,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603341.csv"
+  },
+  "600007_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:36.233580",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600007.csv"
+  },
+  "301061_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:36.526098",
+    "records": 799,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301061.csv"
+  },
+  "600131_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:36.593113",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600131.csv"
+  },
+  "000723_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:36.640575",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000723.csv"
+  },
+  "603171_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:36.659979",
+    "records": 852,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603171.csv"
+  },
+  "603688_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:36.724929",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603688.csv"
+  },
+  "002044_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:36.724956",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002044.csv"
+  },
+  "002984_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:36.790560",
+    "records": 1043,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002984.csv"
+  },
+  "603589_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:37.064651",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603589.csv"
+  },
+  "688484_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:37.183815",
+    "records": 422,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688484.csv"
+  },
+  "300409_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:37.185787",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300409.csv"
+  },
+  "002015_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:37.190377",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002015.csv"
+  },
+  "002407_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:37.212572",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002407.csv"
+  },
+  "002815_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:37.510069",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002815.csv"
+  },
+  "600933_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:37.585856",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600933.csv"
+  },
+  "002439_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:37.687266",
+    "records": 1207,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002439.csv"
+  },
+  "600546_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:37.687334",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600546.csv"
+  },
+  "600675_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:39.876870",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600675.csv"
+  },
+  "000537_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:39.950616",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000537.csv"
+  },
+  "688409_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.031939",
+    "records": 544,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688409.csv"
+  },
+  "600072_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.190318",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600072.csv"
+  },
+  "600383_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.283855",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600383.csv"
+  },
+  "001203_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.289162",
+    "records": 888,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/001203.csv"
+  },
+  "002432_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.391205",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002432.csv"
+  },
+  "601965_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.459067",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601965.csv"
+  },
+  "002896_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.648762",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002896.csv"
+  },
+  "002607_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.680660",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002607.csv"
+  },
+  "000099_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.798578",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000099.csv"
+  },
+  "301267_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.800848",
+    "records": 524,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301267.csv"
+  },
+  "603678_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.893692",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603678.csv"
+  },
+  "301039_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:40.955173",
+    "records": 844,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301039.csv"
+  },
+  "002019_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:41.041650",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002019.csv"
+  },
+  "300083_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:41.214167",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300083.csv"
+  },
+  "603077_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:41.301337",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603077.csv"
+  },
+  "002237_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:41.336776",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002237.csv"
+  },
+  "603927_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:41.380273",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603927.csv"
+  },
+  "000880_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:41.523047",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000880.csv"
+  },
+  "600361_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:43.753672",
+    "records": 1201,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600361.csv"
+  },
+  "300133_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:43.902349",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300133.csv"
+  },
+  "002698_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:43.945822",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002698.csv"
+  },
+  "300010_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:43.958389",
+    "records": 1209,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300010.csv"
+  },
+  "688612_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:44.009538",
+    "records": 349,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688612.csv"
+  },
+  "002020_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:44.112748",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002020.csv"
+  },
+  "688668_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:44.198747",
+    "records": 978,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688668.csv"
+  },
+  "002151_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:44.477867",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002151.csv"
+  },
+  "300657_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:44.757484",
+    "records": 1205,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300657.csv"
+  },
+  "600056_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:44.757910",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600056.csv"
+  },
+  "300070_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:44.758973",
+    "records": 1203,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300070.csv"
+  },
+  "002326_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:44.855790",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002326.csv"
+  },
+  "300762_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:44.856384",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300762.csv"
+  },
+  "603583_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:45.014803",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603583.csv"
+  },
+  "603983_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:45.033581",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603983.csv"
+  },
+  "603667_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:45.109360",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603667.csv"
+  },
+  "603194_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:45.141476",
+    "records": 6,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603194.csv"
+  },
+  "000061_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:45.276799",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000061.csv"
+  },
+  "603185_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:45.485258",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603185.csv"
+  },
+  "001339_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:45.486000",
+    "records": 578,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/001339.csv"
+  },
+  "300428_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:47.673809",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300428.csv"
+  },
+  "600475_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:47.737591",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600475.csv"
+  },
+  "688205_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:47.824696",
+    "records": 582,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688205.csv"
+  },
+  "300353_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:47.995022",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300353.csv"
+  },
+  "301171_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:48.066678",
+    "records": 574,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301171.csv"
+  },
+  "300182_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:48.137188",
+    "records": 1207,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300182.csv"
+  },
+  "002536_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:48.177812",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002536.csv"
+  },
+  "688432_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:48.328602",
+    "records": 521,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688432.csv"
+  },
+  "603305_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:48.329619",
+    "records": 1207,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603305.csv"
+  },
+  "000837_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:48.563623",
+    "records": 1210,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000837.csv"
+  },
+  "301658_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301658&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:06.282516"
+  },
+  "605198_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:48.668106",
+    "records": 1038,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/605198.csv"
+  },
+  "688631_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:48.694129",
+    "records": 369,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688631.csv"
+  },
+  "300101_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:49.045870",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300101.csv"
+  },
+  "000536_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:49.071189",
+    "records": 1210,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000536.csv"
+  },
+  "600064_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:49.170435",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600064.csv"
+  },
+  "605099_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:49.261277",
+    "records": 1030,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/605099.csv"
+  },
+  "301600_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:50.319064",
+    "records": 73,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301600.csv"
+  },
+  "600717_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:50.364626",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600717.csv"
+  },
+  "000758_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:50.383599",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000758.csv"
+  },
+  "002060_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:52.562678",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002060.csv"
+  },
+  "000811_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:52.712777",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000811.csv"
+  },
+  "605020_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:52.826527",
+    "records": 845,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/605020.csv"
+  },
+  "301665_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301665&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:08.410283"
+  },
+  "688001_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:52.873280",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688001.csv"
+  },
+  "002913_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:52.999741",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002913.csv"
+  },
+  "688332_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.049257",
+    "records": 599,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688332.csv"
+  },
+  "688362_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.124813",
+    "records": 517,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688362.csv"
+  },
+  "002345_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.319692",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002345.csv"
+  },
+  "688055_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.412497",
+    "records": 1062,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688055.csv"
+  },
+  "300990_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.413033",
+    "records": 886,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300990.csv"
+  },
+  "688016_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.489605",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688016.csv"
+  },
+  "000552_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.601621",
+    "records": 1201,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000552.csv"
+  },
+  "001914_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.650112",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/001914.csv"
+  },
+  "603218_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.796796",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603218.csv"
+  },
+  "301000_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.877620",
+    "records": 874,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301000.csv"
+  },
+  "301486_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.901133",
+    "records": 362,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301486.csv"
+  },
+  "300348_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:53.989589",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300348.csv"
+  },
+  "300294_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:54.057361",
+    "records": 1208,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300294.csv"
+  },
+  "600635_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:54.326576",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600635.csv"
+  },
+  "000567_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:56.514583",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000567.csv"
+  },
+  "603262_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603262&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:10.519757"
+  },
+  "002488_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:56.656622",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002488.csv"
+  },
+  "601222_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:56.941744",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/601222.csv"
+  },
+  "000795_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:56.974421",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000795.csv"
+  },
+  "600267_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.065782",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600267.csv"
+  },
+  "000547_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.097898",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000547.csv"
+  },
+  "600662_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.126718",
+    "records": 1201,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600662.csv"
+  },
+  "300328_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.242436",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300328.csv"
+  },
+  "600409_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.441316",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600409.csv"
+  },
+  "300693_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.456839",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300693.csv"
+  },
+  "301487_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.555645",
+    "records": 339,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301487.csv"
+  },
+  "002928_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.566457",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002928.csv"
+  },
+  "000065_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.599703",
+    "records": 1206,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000065.csv"
+  },
+  "002338_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.713648",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002338.csv"
+  },
+  "002204_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.751206",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002204.csv"
+  },
+  "300131_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:57.849097",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300131.csv"
+  },
+  "002036_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:58.000141",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002036.csv"
+  },
+  "002626_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:58.123208",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002626.csv"
+  },
+  "300872_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:21:58.123240",
+    "records": 1057,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300872.csv"
+  },
+  "301109_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:00.308165",
+    "records": 652,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301109.csv"
+  },
+  "300613_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:00.395770",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300613.csv"
+  },
+  "600269_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:00.574880",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600269.csv"
+  },
+  "002654_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:00.751675",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002654.csv"
+  },
+  "600797_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:00.806799",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600797.csv"
+  },
+  "600821_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:00.943234",
+    "records": 1209,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600821.csv"
+  },
+  "600375_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:00.960482",
+    "records": 1198,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600375.csv"
+  },
+  "002827_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:00.984390",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002827.csv"
+  },
+  "600592_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.103420",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600592.csv"
+  },
+  "603800_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.133247",
+    "records": 1210,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603800.csv"
+  },
+  "000756_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.221739",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000756.csv"
+  },
+  "688252_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.258239",
+    "records": 548,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688252.csv"
+  },
+  "603277_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.327184",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603277.csv"
+  },
+  "301207_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.395156",
+    "records": 698,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/301207.csv"
+  },
+  "300486_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.481421",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300486.csv"
+  },
+  "600117_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.621185",
+    "records": 1209,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600117.csv"
+  },
+  "002102_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.736157",
+    "records": 1211,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002102.csv"
+  },
+  "300319_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.783979",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300319.csv"
+  },
+  "300171_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.824497",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300171.csv"
+  },
+  "300925_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:01.889134",
+    "records": 971,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300925.csv"
+  },
+  "603297_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.089228",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603297.csv"
+  },
+  "300855_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.134665",
+    "records": 1079,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300855.csv"
+  },
+  "688690_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.406586",
+    "records": 857,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688690.csv"
+  },
+  "300382_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.410561",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300382.csv"
+  },
+  "300678_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.411061",
+    "records": 1202,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300678.csv"
+  },
+  "688603_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.483807",
+    "records": 361,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688603.csv"
+  },
+  "600184_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.585193",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600184.csv"
+  },
+  "300482_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.731049",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300482.csv"
+  },
+  "002051_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.779227",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002051.csv"
+  },
+  "603690_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.842502",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603690.csv"
+  },
+  "688750_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.940990",
+    "records": 30,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688750.csv"
+  },
+  "002332_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:04.947403",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002332.csv"
+  },
+  "300222_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:05.081042",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300222.csv"
+  },
+  "600501_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:05.555613",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600501.csv"
+  },
+  "300119_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:06.056510",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300119.csv"
+  },
+  "688202_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:06.057136",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688202.csv"
+  },
+  "300303_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:06.097534",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300303.csv"
+  },
+  "300841_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:06.097643",
+    "records": 1104,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300841.csv"
+  },
+  "300403_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:06.131087",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300403.csv"
+  },
+  "001212_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:06.391994",
+    "records": 814,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/001212.csv"
+  },
+  "688392_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:08.591226",
+    "records": 548,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688392.csv"
+  },
+  "688513_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:08.634042",
+    "records": 1050,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688513.csv"
+  },
+  "600759_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.010559",
+    "records": 1208,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600759.csv"
+  },
+  "600783_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.076434",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600783.csv"
+  },
+  "000700_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.195288",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/000700.csv"
+  },
+  "605008_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.196089",
+    "records": 1058,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/605008.csv"
+  },
+  "002042_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.199231",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002042.csv"
+  },
+  "603053_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.240567",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603053.csv"
+  },
+  "002192_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.352401",
+    "records": 1210,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002192.csv"
+  },
+  "002006_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.390530",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002006.csv"
+  },
+  "603395_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.473758",
+    "records": 26,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603395.csv"
+  },
+  "688232_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.595611",
+    "records": 759,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688232.csv"
+  },
+  "300725_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.643990",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300725.csv"
+  },
+  "600874_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.732302",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600874.csv"
+  },
+  "603281_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:09.807319",
+    "records": 469,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/603281.csv"
+  },
+  "301535_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301535&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:16.703409"
+  },
+  "600664_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:10.095702",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/600664.csv"
+  },
+  "603370_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603370&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:16.793548"
+  },
+  "688788_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:10.150144",
+    "records": 1020,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/688788.csv"
+  },
+  "300145_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T16:22:10.253165",
+    "records": 1203,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300145.csv"
+  },
+  "600343_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600343&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:18.947798"
+  },
+  "300352_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300352&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.026058"
+  },
+  "002267_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002267&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.058113"
+  },
+  "600305_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600305&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.159527"
+  },
+  "002023_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002023&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.231702"
+  },
+  "688556_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688556&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.311037"
+  },
+  "600650_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600650&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.399654"
+  },
+  "002727_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002727&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.483890"
+  },
+  "605123_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.605123&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.565310"
+  },
+  "002543_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002543&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.654373"
+  },
+  "603040_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603040&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.730931"
+  },
+  "603533_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603533&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.804438"
+  },
+  "301556_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301556&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.892714"
+  },
+  "002846_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002846&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:19.983439"
+  },
+  "688526_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688526&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:20.069600"
+  },
+  "300079_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300079&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:20.140910"
+  },
+  "600094_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600094&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:20.225335"
+  },
+  "002163_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002163&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:20.323245"
+  },
+  "600571_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600571&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:20.397497"
+  },
+  "300080_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300080&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:20.482272"
+  },
+  "002801_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T17:04:22.650862",
+    "records": 1212,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/002801.csv"
+  },
+  "301479_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301479&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:22.685383"
+  },
+  "300708_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300708&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:22.742093"
+  },
+  "601226_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.601226&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:22.840657"
+  },
+  "002533_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002533&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:22.923841"
+  },
+  "002079_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002079&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.024688"
+  },
+  "002707_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002707&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.088305"
+  },
+  "300036_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300036&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.164794"
+  },
+  "002639_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002639&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.240427"
+  },
+  "300671_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300671&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.327996"
+  },
+  "002489_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002489&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.460621"
+  },
+  "002612_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002612&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.547632"
+  },
+  "688160_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688160&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.573964"
+  },
+  "603773_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603773&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.716708"
+  },
+  "300976_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300976&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.757205"
+  },
+  "002997_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002997&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:23.907228"
+  },
+  "001330_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.001330&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:24.043958"
+  },
+  "300596_20200101_20241231": {
+    "status": "success",
+    "download_time": "2025-09-25T17:04:24.097650",
+    "records": 1203,
+    "file_path": "/Users/xujia/claude-projects/回归分析 a股分析/data/300596.csv"
+  },
+  "605088_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.605088&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:24.159279"
+  },
+  "300470_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300470&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:24.174710"
+  },
+  "600370_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600370&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:26.274877"
+  },
+  "600502_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600502&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:26.370049"
+  },
+  "605365_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.605365&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:26.458158"
+  },
+  "603936_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603936&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:26.531302"
+  },
+  "300368_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300368&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:26.625944"
+  },
+  "300451_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300451&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:26.697978"
+  },
+  "300139_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300139&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:26.784810"
+  },
+  "300342_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300342&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:26.889740"
+  },
+  "300401_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300401&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:26.954876"
+  },
+  "300386_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300386&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.038753"
+  },
+  "300267_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300267&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.128506"
+  },
+  "300842_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300842&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.207518"
+  },
+  "301326_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301326&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.306850"
+  },
+  "603153_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603153&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.374188"
+  },
+  "688210_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688210&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.463057"
+  },
+  "301052_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301052&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.554172"
+  },
+  "002676_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002676&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.708790"
+  },
+  "688787_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688787&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.761989"
+  },
+  "000888_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000888&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.815361"
+  },
+  "301501_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301501&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:27.876681"
+  },
+  "688588_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688588&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:29.993720"
+  },
+  "301508_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301508&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.075970"
+  },
+  "301529_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301529&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.147902"
+  },
+  "001311_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.001311&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.241524"
+  },
+  "605286_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.605286&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.317296"
+  },
+  "000560_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000560&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.409407"
+  },
+  "002206_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002206&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.493732"
+  },
+  "688376_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688376&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.574254"
+  },
+  "601500_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.601500&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.656952"
+  },
+  "605339_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.605339&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.741333"
+  },
+  "000949_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000949&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.824033"
+  },
+  "600217_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600217&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.908899"
+  },
+  "300380_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300380&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:30.996409"
+  },
+  "300129_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300129&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:31.082157"
+  },
+  "300151_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300151&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:31.160766"
+  },
+  "605288_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.605288&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:31.249465"
+  },
+  "002175_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002175&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:31.328766"
+  },
+  "603222_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603222&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:31.426415"
+  },
+  "301259_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301259&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:31.498459"
+  },
+  "600658_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600658&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:31.592297"
+  },
+  "603069_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603069&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:33.701873"
+  },
+  "600605_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600605&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:33.786087"
+  },
+  "000678_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000678&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:33.863307"
+  },
+  "600691_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600691&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:33.964174"
+  },
+  "002785_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002785&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.042512"
+  },
+  "603312_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603312&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.146292"
+  },
+  "001328_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.001328&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.212652"
+  },
+  "000026_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000026&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.283055"
+  },
+  "002642_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002642&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.377599"
+  },
+  "603303_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603303&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.442138"
+  },
+  "603135_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603135&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.541868"
+  },
+  "300781_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300781&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.608483"
+  },
+  "300669_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300669&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.695275"
+  },
+  "688315_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688315&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.777162"
+  },
+  "300951_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300951&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.873732"
+  },
+  "002401_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002401&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:34.948325"
+  },
+  "300444_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300444&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:35.026003"
+  },
+  "688429_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688429&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:35.122155"
+  },
+  "002552_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002552&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:35.191043"
+  },
+  "603758_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603758&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:35.295590"
+  },
+  "300271_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300271&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:37.406038"
+  },
+  "000905_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000905&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:37.504181"
+  },
+  "001258_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.001258&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:37.592642"
+  },
+  "300905_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300905&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:37.656773"
+  },
+  "603400_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603400&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:37.745944"
+  },
+  "688176_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688176&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:37.818892"
+  },
+  "300530_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300530&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:37.907521"
+  },
+  "603061_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603061&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.001385"
+  },
+  "300111_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300111&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.072226"
+  },
+  "688028_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688028&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.157282"
+  },
+  "300369_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300369&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.240191"
+  },
+  "300698_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300698&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.334495"
+  },
+  "000751_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000751&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.453497"
+  },
+  "600178_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600178&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.485616"
+  },
+  "605598_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.605598&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.571315"
+  },
+  "300488_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300488&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.655961"
+  },
+  "301448_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301448&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.738633"
+  },
+  "688311_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688311&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.836580"
+  },
+  "600513_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600513&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.924084"
+  },
+  "002274_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002274&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:38.995815"
+  },
+  "300940_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300940&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.097430"
+  },
+  "300004_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300004&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.182350"
+  },
+  "600897_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600897&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.272701"
+  },
+  "002361_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002361&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.367075"
+  },
+  "001288_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.001288&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.442904"
+  },
+  "301190_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301190&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.544979"
+  },
+  "600400_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600400&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.633708"
+  },
+  "000722_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000722&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.699363"
+  },
+  "688389_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688389&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.777559"
+  },
+  "002279_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002279&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.862504"
+  },
+  "600207_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600207&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:41.956422"
+  },
+  "301021_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301021&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:42.034102"
+  },
+  "300788_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300788&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:42.151366"
+  },
+  "603861_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603861&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:42.200550"
+  },
+  "603035_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603035&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:42.273919"
+  },
+  "300981_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300981&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:42.369410"
+  },
+  "601789_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.601789&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:42.451178"
+  },
+  "603890_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603890&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:42.553027"
+  },
+  "002889_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002889&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:42.626238"
+  },
+  "002264_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002264&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:42.705811"
+  },
+  "300617_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300617&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:44.830899"
+  },
+  "600626_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600626&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:44.896523"
+  },
+  "301099_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301099&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:44.976536"
+  },
+  "301398_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301398&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.062321"
+  },
+  "920060_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.920060&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.152131"
+  },
+  "603062_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603062&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.240749"
+  },
+  "002148_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002148&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.326613"
+  },
+  "605018_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.605018&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.401046"
+  },
+  "002449_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002449&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.490022"
+  },
+  "002577_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002577&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.581211"
+  },
+  "000726_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000726&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.663179"
+  },
+  "600288_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600288&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.741822"
+  },
+  "688293_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688293&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.825565"
+  },
+  "002367_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002367&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.904911"
+  },
+  "688023_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688023&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:45.989925"
+  },
+  "601700_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.601700&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:46.086702"
+  },
+  "601121_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.601121&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:46.164765"
+  },
+  "300057_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300057&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:46.250756"
+  },
+  "300237_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300237&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:46.328150"
+  },
+  "600617_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.600617&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:46.414256"
+  },
+  "300894_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300894&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:48.527499"
+  },
+  "688286_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688286&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:48.620065"
+  },
+  "688302_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688302&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:48.695184"
+  },
+  "002672_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002672&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:48.773490"
+  },
+  "000926_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000926&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:48.875456"
+  },
+  "301618_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301618&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:48.948206"
+  },
+  "000862_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000862&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.037503"
+  },
+  "300752_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300752&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.114361"
+  },
+  "603032_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603032&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.192363"
+  },
+  "002365_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002365&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.283570"
+  },
+  "002688_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002688&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.364585"
+  },
+  "603018_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603018&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.447394"
+  },
+  "688663_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688663&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.543518"
+  },
+  "833509_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.833509&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.615415"
+  },
+  "300993_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300993&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.704669"
+  },
+  "000925_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000925&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.788817"
+  },
+  "688152_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688152&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.864933"
+  },
+  "835174_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.835174&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:49.949903"
+  },
+  "002132_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002132&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:50.032791"
+  },
+  "002095_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002095&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:50.272652"
+  },
+  "300611_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300611&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:52.377763"
+  },
+  "603901_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603901&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:52.472523"
+  },
+  "605208_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.605208&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:52.543629"
+  },
+  "603155_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603155&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:52.634925"
+  },
+  "300683_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300683&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:52.717554"
+  },
+  "000532_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000532&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:52.793840"
+  },
+  "300484_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300484&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:52.877658"
+  },
+  "002178_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002178&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:52.961381"
+  },
+  "430418_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.430418&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.045606"
+  },
+  "002786_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002786&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.136194"
+  },
+  "830946_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.830946&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.230146"
+  },
+  "603386_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.603386&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.310696"
+  },
+  "002658_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002658&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.391249"
+  },
+  "301220_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.301220&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.472855"
+  },
+  "002627_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002627&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.542967"
+  },
+  "688181_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688181&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.632251"
+  },
+  "000710_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.000710&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.756826"
+  },
+  "688075_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=1.688075&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.797018"
+  },
+  "300700_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.300700&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.906717"
+  },
+  "002956_20200101_20241231": {
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='push2his.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/stock/kline/get?fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58%2Cf59%2Cf60%2Cf61%2Cf116&ut=7eea3edcaed734bea9cbfc24409ed989&klt=101&fqt=0&secid=0.002956&beg=20200101&end=20241231 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))",
+    "download_time": "2025-09-25T17:04:53.968443"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod:*)",
+      "Bash(python3:*)",
+      "Bash(echo $PATH)",
+      "Bash(grep:*)",
+      "Bash(export PATH=\"$HOME/.local/bin:$PATH\")",
+      "Bash(claude-notify list)",
+      "Bash(~/.local/bin/claude-notify:*)",
+      "WebFetch(domain:zhuanlan.zhihu.com)",
+      "Read(//Users/xujia/**)",
+      "Bash(~/.claude/hooks/completion_notify.sh:*)",
+      "Bash(claude-notify)",
+      "Bash(cat:*)",
+      "Bash(~/.claude/setup_project_prompt.sh:*)",
+      "Bash(claude mcp add:*)",
+      "Bash(claude mcp:*)",
+      "WebSearch",
+      "Bash(find:*)",
+      "Bash(claude doctor)",
+      "mcp__filesystem__read_text_file",
+      "Bash(brew install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(pandoc:*)",
+      "mcp__filesystem__list_directory",
+      "mcp__filesystem__edit_file",
+      "Bash(source .venv-3.12/bin/activate)",
+      "Bash(pip install:*)",
+      "Bash(streamlit run:*)",
+      "mcp__filesystem__directory_tree",
+      "Bash(python scripts/archive_old_outputs.py --dry-run)",
+      "Bash(pytest:*)",
+      "Bash(python -m pytest tests/ -v --tb=short)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
