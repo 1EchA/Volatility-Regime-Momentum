@@ -1,0 +1,20 @@
+{
+  "standardisation": "zscore",
+  "start_oos": "2022-01-01",
+  "train_window": 756,
+  "alpha": 1.0,
+  "top_n": 40,
+  "bottom_n": 40,
+  "cost_bps_ui": 5.0,
+  "neutral_shrink": 0.0,
+  "neutral_industries": "",
+  "exec_strategy": "hysteresis",
+  "delta": 15,
+  "ema_span": 4,
+  "k": 5,
+  "swap_cap": 0.2,
+  "run_cost_grid": false,
+  "run_turnover_grid": false,
+  "recompute_factors": false,
+  "recompute_regime": false
+}
