@@ -63,16 +63,25 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# 数据文件 & 产物 (不提交)
-data/*.csv
-data/*.json
-data/*.png
-data/*.pdf
-data/*.parquet
-data/pipeline_*/
-data/archive/
-data/cache/
-data/temp/
+# 数据文件 & 产物 - 智能数据管理策略
+# 📦 小文件(<50MB): 允许提交作为示例和演示
+# 🚫 大文件(>50MB): 排除，用户通过"运行流水线"重新生成
+
+# 排除超大数据文件 (>50MB，避免GitHub限制)
+data/*factor_data_zscore_*.csv    # 因子数据文件(可重新生成)
+data/*regime_data_*.csv           # 波动率制度数据(可重新生成)
+data/*market_volatility_data_*.csv  # 市场波动率数据(可重新生成)
+
+# ✅ 保留核心示例和结果文件
+# data/*.json                     # JSON结果文件 (<1MB)
+# data/*.png                      # 图表文件 (<5MB)
+# data/*.pdf                      # PDF报告 (<10MB)
+# data/predictions_*.csv          # 预测结果 (通常<10MB)
+# data/pipeline_execution_*       # 执行指标 (<1MB)
+# data/*summary*.csv              # 汇总文件 (<5MB)
+# data/0*.csv                     # 股票价格数据 (<100KB each)
+
+data/temp/          # 临时文件夹
 *.pkl
 *.h5
 
@@ -105,3 +114,17 @@ config/*.ini
 # 系统文件
 *.pid
 *.sock
+
+# Claude Code 相关文件
+.claude/
+.claude_*
+*.claude_*
+
+# Streamlit 本地运行文件
+.streamlit_pid
+.streamlit_port
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# 其他本地缓存
+.local_cache/

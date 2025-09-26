@@ -20,6 +20,7 @@ import sys
 
 import pandas as pd
 import subprocess
+import io
 
 # 配置日志系统
 logging.basicConfig(
@@ -35,6 +36,10 @@ try:
     from plotly import graph_objects as go
 except Exception:
     go = None
+try:
+    from plotly.subplots import make_subplots
+except Exception:
+    make_subplots = None
 try:
     from streamlit_plotly_events import plotly_events
     HAS_PLOTLY_EVENTS = True
@@ -107,13 +112,44 @@ def list_predictions(include_archive: bool = False) -> list[Path]:
     return preds
 
 
+def validate_predictions_file(path: str) -> tuple[bool, str]:
+    """校验预测文件格式和必需列"""
+    try:
+        df = pd.read_csv(path, nrows=5)  # 只读前5行进行快速校验
+        required_columns = ['date', 'stock_code', 'y_pred']
+        missing_columns = [col for col in required_columns if col not in df.columns]
+
+        if missing_columns:
+            return False, f"缺少必需列: {missing_columns}"
+
+        # 检查数据类型
+        try:
+            pd.to_datetime(df['date'])
+            pd.to_numeric(df['y_pred'], errors='raise')
+        except Exception as e:
+            return False, f"数据格式错误: {str(e)}"
+
+        return True, "文件格式正确"
+    except Exception as e:
+        return False, f"文件读取失败: {str(e)}"
+
 @st.cache_data
 def load_predictions_df(path: str) -> pd.DataFrame:
+    # 先校验文件格式
+    is_valid, error_msg = validate_predictions_file(path)
+    if not is_valid:
+        st.error(f"预测文件格式错误: {error_msg}")
+        return pd.DataFrame()
+
     try:
         logger.info(f"Loading predictions file: {path}")
         df = pd.read_csv(path)
         df['date'] = pd.to_datetime(df['date'])
         df['stock_code'] = df['stock_code'].astype(str).str.zfill(6)
+        # 强制为数值，防止被当作字符串导致显示异常
+        for col in ['y_pred', 'y_true']:
+            if col in df.columns:
+                df[col] = pd.to_numeric(df[col], errors='coerce')
         logger.info(f"Successfully loaded {len(df)} prediction records")
         return df
     except Exception as e:
@@ -151,6 +187,178 @@ def _glob_exclude_archive(pattern: str, exclude_dirs: list = None) -> list:
 def _latest(path_glob: str) -> Path | None:
     cands = sorted(_glob_exclude_archive(path_glob), key=lambda p: p.stat().st_mtime)
     return cands[-1] if cands else None
+
+
+def render_price_signal_chart_new(one: pd.DataFrame,
+                                  price_df: pd.DataFrame | None,
+                                  regime_df: pd.DataFrame | None,
+                                  show_regime: bool = True,
+                                  show_score: bool = True,
+                                  show_buy: bool = True,
+                                  show_short: bool = True,
+                                  show_close: bool = True) -> 'go.Figure':
+    """Robust Plotly figure (price + score + events + regime background)."""
+    use_secondary = (make_subplots is not None and go is not None)
+    fig = make_subplots(specs=[[{"secondary_y": True}]]) if use_secondary else go.Figure()
+    # Price trace
+    merged = None
+    if price_df is not None and not price_df.empty:
+        if set(['open','high','low','close']).issubset(price_df.columns):
+            merged = one.merge(price_df[['date','open','high','low','close']], on='date', how='left').dropna(subset=['close'])
+            if not merged.empty:
+                fig.add_candlestick(x=merged['date'], open=merged['open'], high=merged['high'], low=merged['low'], close=merged['close'], name='Price')
+        elif 'close' in price_df.columns:
+            merged = one.merge(price_df[['date','close']], on='date', how='left').dropna(subset=['close'])
+            if not merged.empty:
+                fig.add_scatter(x=merged['date'], y=merged['close'], mode='lines', name='Close', line=dict(color='#1f77b4'))
+    # score line
+    if show_score and 'y_pred' in one.columns and not one['y_pred'].isna().all():
+        if use_secondary:
+            fig.add_scatter(x=one['date'], y=one['y_pred'], mode='lines', name='Score', line=dict(color='#ff7f0e', width=2), secondary_y=True)
+        else:
+            fig.add_scatter(x=one['date'], y=one['y_pred'], mode='lines', name='Score', line=dict(color='#ff7f0e', width=2))
+
+    # Events
+    evt = one[['date','in_long','in_short']].copy()
+    evt[['in_long','in_short']] = evt[['in_long','in_short']].fillna(False).astype(bool)
+    prev = evt[['in_long','in_short']].shift(1).fillna(False)
+    evt['long_open']   = (~prev['in_long'])  & (evt['in_long'])
+    evt['short_open']  = (~prev['in_short']) & (evt['in_short'])
+    evt['long_close']  = (prev['in_long'])   & (~evt['in_long'])
+    evt['short_close'] = (prev['in_short'])  & (~evt['in_short'])
+    hover_p = '<b>%{x|%Y-%m-%d}</b><br>价格: %{y:.2f}<br>事件: %{customdata}'
+    hover_s = '<b>%{x|%Y-%m-%d}</b><br>分数: %{y:.3f}<br>事件: %{customdata}'
+    if merged is not None and not merged.empty:
+        marks_full = evt.merge(merged[['date','close']], on='date', how='left')
+        price_pts = marks_full.dropna(subset=['close'])
+        # 在价格轴标注有 close 的事件
+        if show_buy:
+            d = price_pts[price_pts['long_open']]
+            if not d.empty:
+                fig.add_scatter(x=d['date'], y=d['close'], mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=9), customdata=['买入']*len(d), hovertemplate=hover_p)
+        if show_short:
+            d = price_pts[price_pts['short_open']]
+            if not d.empty:
+                fig.add_scatter(x=d['date'], y=d['close'], mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=9), customdata=['做空']*len(d), hovertemplate=hover_p)
+        if show_close:
+            d = price_pts[price_pts['long_close']]
+            if not d.empty:
+                fig.add_scatter(x=d['date'], y=d['close'], mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_p)
+            d = price_pts[price_pts['short_close']]
+            if not d.empty:
+                fig.add_scatter(x=d['date'], y=d['close'], mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_p)
+
+        # 对于没有 close 的事件，尽量在分数轴标注（若开启了分数线）；否则用前值插值到价格轴
+        miss = marks_full[marks_full['close'].isna()]
+        if not miss.empty:
+            if show_score and 'y_pred' in one.columns:
+                s = one.set_index('date')['y_pred']
+                if show_buy:
+                    d = miss[miss['long_open']]
+                    if not d.empty:
+                        y = s.reindex(d['date']).values
+                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=9), customdata=['买入']*len(d), hovertemplate=hover_s, secondary_y=bool(make_subplots))
+                if show_short:
+                    d = miss[miss['short_open']]
+                    if not d.empty:
+                        y = s.reindex(d['date']).values
+                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=9), customdata=['做空']*len(d), hovertemplate=hover_s, secondary_y=bool(make_subplots))
+                if show_close:
+                    d = miss[miss['long_close']]
+                    if not d.empty:
+                        y = s.reindex(d['date']).values
+                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_s, secondary_y=bool(make_subplots))
+                    d = miss[miss['short_close']]
+                    if not d.empty:
+                        y = s.reindex(d['date']).values
+                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_s, secondary_y=bool(make_subplots))
+            else:
+                # 前值填充近似到价格轴
+                close_map = merged.set_index('date')['close'].sort_index().ffill()
+                if show_buy:
+                    d = miss[miss['long_open']]
+                    if not d.empty:
+                        y = close_map.reindex(d['date']).values
+                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=9), customdata=['买入']*len(d), hovertemplate=hover_p)
+                if show_short:
+                    d = miss[miss['short_open']]
+                    if not d.empty:
+                        y = close_map.reindex(d['date']).values
+                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=9), customdata=['做空']*len(d), hovertemplate=hover_p)
+                if show_close:
+                    d = miss[miss['long_close']]
+                    if not d.empty:
+                        y = close_map.reindex(d['date']).values
+                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_p)
+                    d = miss[miss['short_close']]
+                    if not d.empty:
+                        y = close_map.reindex(d['date']).values
+                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_p)
+    else:
+        # fallback on score axis
+        if show_buy:
+            d = evt[evt['long_open']]
+            if not d.empty:
+                if use_secondary:
+                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=9), customdata=['买入']*len(d), hovertemplate=hover_s, secondary_y=True)
+                else:
+                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=9), customdata=['买入']*len(d), hovertemplate=hover_s)
+        if show_short:
+            d = evt[evt['short_open']]
+            if not d.empty:
+                if use_secondary:
+                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=9), customdata=['做空']*len(d), hovertemplate=hover_s, secondary_y=True)
+                else:
+                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=9), customdata=['做空']*len(d), hovertemplate=hover_s)
+        if show_close:
+            d = evt[evt['long_close']]
+            if not d.empty:
+                if use_secondary:
+                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_s, secondary_y=True)
+                else:
+                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_s)
+            d = evt[evt['short_close']]
+            if not d.empty:
+                if use_secondary:
+                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_s, secondary_y=True)
+                else:
+                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_s)
+
+    # Regime background
+    if show_regime:
+        try:
+            reg_series = one[['date','regime']].dropna() if 'regime' in one.columns else pd.DataFrame()
+            if reg_series.empty and regime_df is not None:
+                # use daily market regime sliced to price range
+                if merged is not None and not merged.empty:
+                    dmin, dmax = merged['date'].min(), merged['date'].max()
+                else:
+                    dmin, dmax = one['date'].min(), one['date'].max()
+                reg_series = regime_df[(regime_df['date'] >= dmin) & (regime_df['date'] <= dmax)][['date','regime']].dropna().drop_duplicates('date')
+            if not reg_series.empty:
+                regimes = reg_series['regime'].astype(str).tolist()
+                dates = reg_series['date'].tolist()
+                starts = [dates[0]]; labels = []
+                for i in range(1, len(regimes)):
+                    if regimes[i] != regimes[i-1]:
+                        starts.append(dates[i]); labels.append(regimes[i-1])
+                labels.append(regimes[-1])
+                ends = dates[1:] + [dates[-1]]
+                # 更柔和的背景色，避免遮挡主图
+                cmap = {'正常':'rgba(46,204,113,0.08)','高波动':'rgba(241,196,15,0.06)','极高波动':'rgba(231,76,60,0.07)'}
+                for s,e,lab in zip(starts, ends, labels):
+                    fig.add_vrect(x0=pd.to_datetime(s), x1=pd.to_datetime(e), y0=0, y1=1, yref='paper', fillcolor=cmap.get(lab,'rgba(127,127,127,0.12)'), opacity=1.0, layer='below', line_width=0)
+        except Exception:
+            pass
+
+    fig.update_layout(height=480, margin=dict(l=40, r=40, t=30, b=40))
+    fig.update_xaxes(title_text='Date')
+    if use_secondary:
+        fig.update_yaxes(title_text='Price', secondary_y=False)
+        fig.update_yaxes(title_text='Score', secondary_y=True, showgrid=False)
+    else:
+        fig.update_yaxes(title_text='Price/Score')
+    return fig
 
 def time_range_selector(ts: pd.DataFrame, key_prefix: str = 'ov') -> pd.DataFrame:
     """在总览中提供时间范围筛选，返回筛选后的时序数据。
@@ -1396,12 +1604,21 @@ with tab_stock:
                 if not options:  # 回退：无匹配时显示所有股票
                     stock_map = {f"{str(row['code']).zfill(6)} ({row['name'] if 'name' in row else ''})": str(row['code']).zfill(6) for _, row in stock_universe.iterrows()}
                     options = list(stock_map.keys())
-                # 默认选择
+                # 默认选择（优先选择预测文件中第一个可用股票）
                 default_idx = 0
-                for i, (k, v) in enumerate(stock_map.items()):
-                    if v == '000001':
-                        default_idx = i
-                        break
+                if avail_codes and only_avail:
+                    # 如果有可用股票列表，选择其中第一个
+                    first_avail = sorted(list(avail_codes))[0] if avail_codes else '000002'
+                    for i, (k, v) in enumerate(stock_map.items()):
+                        if v == first_avail:
+                            default_idx = i
+                            break
+                else:
+                    # 否则尝试选择000001，不存在则选择第一个
+                    for i, (k, v) in enumerate(stock_map.items()):
+                        if v == '000001':
+                            default_idx = i
+                            break
                 stock_choice = st.selectbox('选择股票', options, index=default_idx, help='仅显示可查询的股票（可关闭过滤）')
                 code_input = stock_map.get(stock_choice, '000001')
             else:
@@ -1486,6 +1703,10 @@ if submit_ss and pred_map_ss and pred_choice_ss != '(无)':
         if one.empty:
             st.warning('所选预测文件中未找到该股票。')
         else:
+            # 记住本次查询结果用于后续勾选切换时复用
+            st.session_state['ss_one'] = one.copy()
+            st.session_state['ss_code'] = code
+            st.session_state['ss_pred_path'] = pred_path_str
             # 读取价格
             price_path = DATA_DIR / f'{code}.csv'
             price_df = None
@@ -1496,83 +1717,60 @@ if submit_ss and pred_map_ss and pred_choice_ss != '(无)':
                 except Exception:
                     price_df = None
 
+            # 解析所属行业（优先 one，其次映射，再次股票池）
+            stock_industry = None
+            try:
+                if 'industry' in one.columns and not one['industry'].dropna().empty:
+                    stock_industry = str(one['industry'].dropna().iloc[-1])
+                if not stock_industry or stock_industry in ['未分类', 'None', 'nan', '']:
+                    import pandas as _pd
+                    mp_path = DATA_DIR / 'industry_mapping.csv'
+                    if mp_path.exists():
+                        mp = _pd.read_csv(mp_path, dtype={'code': str})
+                        ind_col = 'industry' if 'industry' in mp.columns else ('行业' if '行业' in mp.columns else None)
+                        if ind_col:
+                            m = {str(r['code']).zfill(6): str(r[ind_col]) for _, r in mp.iterrows()}
+                            stock_industry = m.get(code) or stock_industry
+                if (not stock_industry) or stock_industry in ['未分类', 'None', 'nan', '']:
+                    import pandas as _pd
+                    uni_path = DATA_DIR.parent / 'stock_universe.csv'
+                    if uni_path.exists():
+                        uni = _pd.read_csv(uni_path, dtype={'code': str})
+                        ind_col = 'industry' if 'industry' in uni.columns else ('行业' if '行业' in uni.columns else None)
+                        if ind_col:
+                            m2 = {str(r['code']).zfill(6): str(r[ind_col]) for _, r in uni.iterrows()}
+                            stock_industry = m2.get(code) or stock_industry
+            except Exception:
+                pass
+            if not stock_industry:
+                stock_industry = '未分类'
+
             # 概览指标
             lastN = one.tail(252)
             long_days = int(lastN['in_long'].sum())
             short_days = int(lastN['in_short'].sum())
-            colsS = st.columns(5)
+            colsS = st.columns(6)
             colsS[0].metric('近一年多头入选天数', f'{long_days}')
             colsS[1].metric('近一年空头入选天数', f'{short_days}')
-            colsS[2].metric('最新分数', f"{one['y_pred'].iloc[-1]:.3f}")
+            colsS[2].metric('最新分数', f"{one['y_pred'].iloc[-1]:.6f}")
             if 'ind_rank_pct' in one.columns and not one['ind_rank_pct'].isna().all():
                 colsS[3].metric('行业内最新分位', f"{one['ind_rank_pct'].iloc[-1]*100:.1f}%")
             if 'regime' in one.columns and not one['regime'].isna().all():
                 colsS[4].metric('最新制度', str(one['regime'].iloc[-1]))
+            colsS[5].metric('所属行业', stock_industry)
 
             c1, c2 = st.columns(2)
             with c1:
-                st.markdown('**价格与信号（含制度上色）**')
-                if go is not None:
-                    fig = go.Figure()
-                # 价格主图：优先K线
-                if go is not None:
-                    if price_df is not None and set(['open','high','low','close']).issubset(price_df.columns):
-                        merged = one.merge(price_df[['date','open','high','low','close']], on='date', how='left').dropna(subset=['close'])
-                        fig.add_trace(go.Candlestick(x=merged['date'], open=merged['open'], high=merged['high'], low=merged['low'], close=merged['close'], name='Price'))
-                    elif price_df is not None and 'close' in price_df.columns:
-                        merged = one.merge(price_df[['date','close']], on='date', how='left').dropna(subset=['close'])
-                        fig.add_trace(go.Scatter(x=merged['date'], y=merged['close'], mode='lines', name='Close', line=dict(color='#1f77b4')))
-                    # 信号副轴
-                    fig.add_trace(go.Scatter(x=one['date'], y=one['y_pred'], mode='lines', name='Score', yaxis='y2', line=dict(color='#ff7f0e')))
-                    # 标注多/空入选点（落在价格轴）
-                    try:
-                        if price_df is not None and 'close' in price_df.columns:
-                            marks = one[['date','in_long','in_short']].merge(price_df[['date','close']], on='date', how='left').dropna(subset=['close'])
-                            long_pts = marks[marks['in_long']]
-                            short_pts = marks[marks['in_short']]
-                            if not long_pts.empty:
-                                fig.add_trace(go.Scatter(x=long_pts['date'], y=long_pts['close'], mode='markers', name='Long Entry', marker=dict(symbol='triangle-up', color='green', size=8)))
-                            if not short_pts.empty:
-                                fig.add_trace(go.Scatter(x=short_pts['date'], y=short_pts['close'], mode='markers', name='Short Entry', marker=dict(symbol='triangle-down', color='red', size=8)))
-                    except Exception:
-                        pass
-                    # 制度上色
-                    try:
-                        reg_series = one[['date','regime']].dropna()
-                        if not reg_series.empty:
-                            regimes = reg_series['regime'].tolist()
-                            dates = reg_series['date'].tolist()
-                            starts = [dates[0]]
-                            labels = []
-                            for i in range(1, len(regimes)):
-                                if regimes[i] != regimes[i-1]:
-                                    starts.append(dates[i])
-                                    labels.append(regimes[i-1])
-                            labels.append(regimes[-1])
-                            ends = dates[1:] + [dates[-1]]
-                            color_map = {
-                                '正常': 'rgba(0, 128, 0, 0.06)',
-                                '高波动': 'rgba(255, 165, 0, 0.08)',
-                                '极高波动': 'rgba(255, 0, 0, 0.08)'
-                            }
-                            for s, e, lab in zip(starts, ends, labels):
-                                fig.add_vrect(x0=s, x1=e, fillcolor=color_map.get(str(lab), 'rgba(100,100,100,0.05)'), opacity=0.2, line_width=0)
-                    except Exception:
-                        pass
-                    fig.update_layout(
-                        xaxis=dict(title='Date'),
-                        yaxis=dict(title='Price'),
-                        yaxis2=dict(title='Score', overlaying='y', side='right', showgrid=False),
-                        height=420,
-                        margin=dict(l=40, r=40, t=30, b=40)
-                    )
-                    st.plotly_chart(fig, use_container_width=True)
-                else:
-                    # Fallback: 简单折线
-                    if price_df is not None and 'close' in price_df.columns:
-                        merged = one.merge(price_df[['date','close']], on='date', how='left')
-                        st.line_chart(merged[['date','close']].set_index('date'))
-                    st.line_chart(one[['date','y_pred']].set_index('date'))
+                st.markdown('**价格与信号图表**')
+                # 轻量的参数面板（横向排布）
+                t1, t2, t3, t4, t5 = st.columns(5)
+                with t1: show_regime = st.checkbox('制度轴', True, key='opt_regime')
+                with t2: show_score  = st.checkbox('分数线', True, key='opt_score')
+                with t3: show_buy    = st.checkbox('买入', True, key='opt_buy')
+                with t4: show_short  = st.checkbox('做空', True, key='opt_short')
+                with t5: show_close  = st.checkbox('清仓', True, key='opt_close')
+                fig = render_price_signal_chart_new(one, price_df, regime_df, show_regime, show_score, show_buy, show_short, show_close)
+                st.plotly_chart(fig, use_container_width=True, key=f"main_chart_{code}")
             with c2:
                 st.markdown('**入选轨迹（1=多，-1=空）**')
                 flag = one[['date','in_long','in_short']].copy()
@@ -1614,8 +1812,238 @@ if submit_ss and pred_map_ss and pred_choice_ss != '(无)':
                 st.dataframe(ev[['date','event']])
             else:
                 st.info('近90日无进出场变化。')
+
+            # 调试信息（帮助定位“分数恒为-0.01”或制度上色异常）
+            with st.expander('🛠 调试信息（仅开发用）', expanded=False):
+                try:
+                    st.write('预测文件：', pred_choice_ss)
+                    st.write('样本区间：', str(one['date'].min().date()) if not one.empty else '-', '→', str(one['date'].max().date()) if not one.empty else '-')
+                    if 'y_pred' in one.columns and not one.empty:
+                        st.write('y_pred 统计：min=', float(one['y_pred'].min()), ' max=', float(one['y_pred'].max()), ' mean=', float(one['y_pred'].mean()))
+                        st.write('最近5天：')
+                        st.dataframe(one[['date','y_pred','in_long','in_short']].tail(5))
+                    if 'regime' in one.columns:
+                        st.write('regime 非空天数：', int(one['regime'].notna().sum()))
+                except Exception as _e:
+                    st.write('调试面板异常：', str(_e))
+
+            # 行业画像与同业对比
+            with st.expander('🏷 行业画像与同业对比（按最新交易日）', expanded=False):
+                try:
+                    # 1) 确定该股票的行业（优先使用时序中携带的行业；否则从映射/股票池兜底）
+                    stock_industry = None
+                    if 'industry' in one.columns and not one['industry'].dropna().empty:
+                        stock_industry = str(one['industry'].dropna().iloc[-1])
+                    if not stock_industry or stock_industry in ['未分类', 'None', 'nan', '']:
+                        try:
+                            import pandas as _pd
+                            mp = _pd.read_csv(DATA_DIR / 'industry_mapping.csv', dtype={'code': str})
+                            ind_col = 'industry' if 'industry' in mp.columns else ('行业' if '行业' in mp.columns else None)
+                            if ind_col:
+                                m = {str(r['code']).zfill(6): str(r[ind_col]) for _, r in mp.iterrows()}
+                                stock_industry = m.get(code) or stock_industry
+                        except Exception:
+                            pass
+                    if (not stock_industry) or stock_industry in ['未分类', 'None', 'nan', '']:
+                        try:
+                            import pandas as _pd
+                            uni = _pd.read_csv(DATA_DIR.parent / 'stock_universe.csv', dtype={'code': str})
+                            ind_col = 'industry' if 'industry' in uni.columns else ('行业' if '行业' in uni.columns else None)
+                            if ind_col:
+                                m = {str(r['code']).zfill(6): str(r[ind_col]) for _, r in uni.iterrows()}
+                                stock_industry = m.get(code) or stock_industry
+                        except Exception:
+                            pass
+
+                    if not stock_industry or stock_industry in ['未分类', 'None', 'nan', '']:
+                        st.info('当前股票缺少行业信息（映射兜底也为空），暂无法生成同业对比。')
+                    else:
+                        target_date = pd.to_datetime(one['date'].max())
+                        st.write('行业：', stock_industry, ' | 日期：', target_date.date())
+
+                        # 获取目标日的全量预测（优先使用已加载的 dfp；否则分块读取）
+                        peers_all = None
+                        if 'dfp' in locals() and dfp is not None:
+                            peers_all = dfp[dfp['date'] == target_date].copy()
+                        else:
+                            # 分块读取目标日数据
+                            cols_need = ['date','stock_code','y_pred']
+                            extra_cols = []
+                            if regime_df is not None:
+                                extra_cols = []
+                            tmp_rows = []
+                            for chunk in pd.read_csv(pred_path_str, usecols=lambda c: c in set(cols_need+['industry']), chunksize=300000):
+                                chunk['date'] = pd.to_datetime(chunk['date'])
+                                chunk['stock_code'] = chunk['stock_code'].astype(str).str.zfill(6)
+                                day = chunk[chunk['date'] == target_date].copy()
+                                if day.empty:
+                                    continue
+                                # 若无行业列，尝试和 regime_df 在该日合并
+                                if 'industry' not in day.columns or day['industry'].isna().all():
+                                    if regime_df is not None:
+                                        reg_day = regime_df[regime_df['date'] == target_date][['date','stock_code','industry']]
+                                        day = day.merge(reg_day, on=['date','stock_code'], how='left')
+                                tmp_rows.append(day)
+                            if tmp_rows:
+                                peers_all = pd.concat(tmp_rows, ignore_index=True)
+
+                        if peers_all is None or peers_all.empty:
+                            st.info('未能加载目标日的全量预测，无法生成同业对比。可选择较小的预测文件或在侧边栏重新运行流水线。')
+                        else:
+                            # 补齐行业信息：优先使用 regime_df 最近<=目标日的行业，其次使用 industry_mapping.csv，再其次 stock_universe.csv
+                            try:
+                                need_fill = ('industry' not in peers_all.columns) or peers_all['industry'].isna().all()
+                            except Exception:
+                                need_fill = True
+                            if need_fill:
+                                # 1) 使用 regime_df 最近日期的行业
+                                try:
+                                    if regime_df is not None and not regime_df.empty:
+                                        reg_upto = regime_df[regime_df['date'] <= target_date][['stock_code','industry','date']].copy()
+                                        if not reg_upto.empty:
+                                            reg_upto = reg_upto.sort_values(['stock_code','date']).groupby('stock_code', as_index=False).tail(1)[['stock_code','industry']]
+                                            peers_all = peers_all.merge(reg_upto, on='stock_code', how='left')
+                                except Exception:
+                                    pass
+                                # 2) 使用 industry_mapping.csv
+                                try:
+                                    import pandas as _pd
+                                    mp = _pd.read_csv(DATA_DIR / 'industry_mapping.csv', dtype={'code': str})
+                                    ind_col = 'industry' if 'industry' in mp.columns else ('行业' if '行业' in mp.columns else None)
+                                    if ind_col:
+                                        m = {str(r['code']).zfill(6): str(r[ind_col]) for _, r in mp.iterrows()}
+                                        if 'industry' not in peers_all.columns:
+                                            peers_all['industry'] = peers_all['stock_code'].map(m)
+                                        else:
+                                            peers_all['industry'] = peers_all['industry'].fillna(peers_all['stock_code'].map(m))
+                                except Exception:
+                                    pass
+                                # 3) 使用 stock_universe.csv
+                                try:
+                                    import pandas as _pd
+                                    uni = _pd.read_csv(DATA_DIR.parent / 'stock_universe.csv', dtype={'code': str})
+                                    ind_col = 'industry' if 'industry' in uni.columns else ('行业' if '行业' in uni.columns else None)
+                                    if ind_col:
+                                        m2 = {str(r['code']).zfill(6): str(r[ind_col]) for _, r in uni.iterrows()}
+                                        if 'industry' not in peers_all.columns:
+                                            peers_all['industry'] = peers_all['stock_code'].map(m2)
+                                        else:
+                                            peers_all['industry'] = peers_all['industry'].fillna(peers_all['stock_code'].map(m2))
+                                except Exception:
+                                    pass
+
+                            # 仅该行业
+                            if 'industry' not in peers_all.columns or peers_all['industry'].isna().all():
+                                st.warning('目标日预测缺少行业列，且回退合并与映射均失败。')
+                            peers = peers_all.copy()
+                            peers['industry'] = peers.get('industry')
+                            peers = peers[peers['industry'] == stock_industry].copy()
+                            if peers.empty:
+                                st.info('目标日在该行业下无同业数据。')
+                            else:
+                                peers['rank'] = peers['y_pred'].rank(ascending=False, method='min')
+                                peers = peers.sort_values('rank')
+                                # 定位本股票排名
+                                me = peers[peers['stock_code'] == code]
+                                if not me.empty:
+                                    my_rank = int(me['rank'].iloc[0])
+                                    st.write(f'本股票在行业内排名：第 {my_rank} 名 / 共 {len(peers)} 个样本')
+                                # 展示Top/Bottom
+                                ctop, cbottom = st.columns(2)
+                                with ctop:
+                                    st.markdown('**行业 Top10（按 y_pred）**')
+                                    st.dataframe(peers[['stock_code','y_pred','rank']].head(10).reset_index(drop=True))
+                                with cbottom:
+                                    st.markdown('**行业 Bottom10（按 y_pred）**')
+                                    st.dataframe(peers[['stock_code','y_pred','rank']].tail(10).reset_index(drop=True))
+                                # 导出
+                                csv_out = peers[['stock_code','industry','y_pred','rank']].to_csv(index=False)
+                                st.download_button('⬇️ 下载行业同业对比CSV', data=csv_out, file_name=f'peers_{code}_{target_date.date()}.csv', mime='text/csv')
+                except Exception as _e:
+                    st.error(f'行业对比生成失败：{_e}')
     except Exception as e:
         st.error(f'个股查询失败：{e}')
+elif st.session_state.get('ss_one') is not None:
+    # 复用上次查询结果，勾选切换时不清空
+    try:
+        one = st.session_state['ss_one']
+        code = st.session_state.get('ss_code', '000001')
+        # 加载价格
+        price_df = None
+        price_path = DATA_DIR / f'{code}.csv'
+        if price_path.exists():
+            price_df = pd.read_csv(price_path)
+            price_df['date'] = pd.to_datetime(price_df['date'])
+        # 可能的制度文件
+        try:
+            from predictive_model import find_latest_regime_file as _find_reg
+            rp = _find_reg()
+            regime_df = None
+            if rp:
+                regime_df = pd.read_csv(rp, usecols=['date','stock_code','industry','regime'])
+                regime_df['date'] = pd.to_datetime(regime_df['date'])
+                regime_df['stock_code'] = regime_df['stock_code'].astype(str).str.zfill(6)
+        except Exception:
+            regime_df = None
+        # 概览指标（复用缓存时同样显示所属行业）
+        stock_industry = None
+        try:
+            if 'industry' in one.columns and not one['industry'].dropna().empty:
+                stock_industry = str(one['industry'].dropna().iloc[-1])
+            if not stock_industry or stock_industry in ['未分类', 'None', 'nan', '']:
+                import pandas as _pd
+                mp_path = DATA_DIR / 'industry_mapping.csv'
+                if mp_path.exists():
+                    mp = _pd.read_csv(mp_path, dtype={'code': str})
+                    ind_col = 'industry' if 'industry' in mp.columns else ('行业' if '行业' in mp.columns else None)
+                    if ind_col:
+                        m = {str(r['code']).zfill(6): str(r[ind_col]) for _, r in mp.iterrows()}
+                        stock_industry = m.get(code) or stock_industry
+            if (not stock_industry) or stock_industry in ['未分类', 'None', 'nan', '']:
+                import pandas as _pd
+                uni_path = DATA_DIR.parent / 'stock_universe.csv'
+                if uni_path.exists():
+                    uni = _pd.read_csv(uni_path, dtype={'code': str})
+                    ind_col = 'industry' if 'industry' in uni.columns else ('行业' if '行业' in uni.columns else None)
+                    if ind_col:
+                        m2 = {str(r['code']).zfill(6): str(r[ind_col]) for _, r in uni.iterrows()}
+                        stock_industry = m2.get(code) or stock_industry
+        except Exception:
+            pass
+        if not stock_industry:
+            stock_industry = '未分类'
+
+        lastN = one.tail(252)
+        long_days = int(lastN['in_long'].sum())
+        short_days = int(lastN['in_short'].sum())
+        colsS = st.columns(6)
+        colsS[0].metric('近一年多头入选天数', f'{long_days}')
+        colsS[1].metric('近一年空头入选天数', f'{short_days}')
+        colsS[2].metric('最新分数', f"{one['y_pred'].iloc[-1]:.6f}")
+        if 'ind_rank_pct' in one.columns and not one['ind_rank_pct'].isna().all():
+            colsS[3].metric('行业内最新分位', f"{one['ind_rank_pct'].iloc[-1]*100:.1f}%")
+        if 'regime' in one.columns and not one['regime'].isna().all():
+            colsS[4].metric('最新制度', str(one['regime'].iloc[-1]))
+        colsS[5].metric('所属行业', stock_industry)
+
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown('**价格与信号图表**')
+            t1, t2, t3, t4, t5 = st.columns(5)
+            with t1: show_regime = st.checkbox('制度轴', True, key='opt_regime')
+            with t2: show_score  = st.checkbox('分数线', True, key='opt_score')
+            with t3: show_buy    = st.checkbox('买入', True, key='opt_buy')
+            with t4: show_short  = st.checkbox('做空', True, key='opt_short')
+            with t5: show_close  = st.checkbox('清仓', True, key='opt_close')
+            fig = render_price_signal_chart_new(one, price_df, regime_df, show_regime, show_score, show_buy, show_short, show_close)
+            st.plotly_chart(fig, use_container_width=True, key=f"main_chart_{code}")
+        with c2:
+            st.markdown('**入选轨迹（1=多，-1=空）**')
+            flag = one[['date','in_long','in_short']].copy()
+            flag['pos'] = np.where(flag['in_long'], 1, np.where(flag['in_short'], -1, 0))
+            st.area_chart(flag[['date','pos']].set_index('date'))
+    except Exception as e:
+        st.error(f'个股查询复用缓存失败：{e}')
 elif submit_ss and (not pred_map_ss or pred_choice_ss == '(无)'):
     st.warning('未找到可用的预测文件。请先运行侧边栏“运行流水线”，或勾选“包含归档”后重试。')
 

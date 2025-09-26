@@ -28,7 +28,8 @@ class SimpleFactorCalculator:
         self.universe_file = Path(universe_file) if universe_file else None
         self.standardization_method = standardization.lower()
         self.output_filename = output_filename
-        self.industry_map = self._load_industry_map()
+        # 代码→行业、代码→名称 映射
+        self.industry_map, self.name_map = self._load_industry_map()
 
     def _load_codes(self) -> list[str]:
         if self.universe_file and self.universe_file.exists():
@@ -45,8 +46,15 @@ class SimpleFactorCalculator:
                 codes.append(p.stem[:6])
         return sorted(set(codes))
 
-    def _load_industry_map(self) -> dict:
-        industry_map = {}
+    def _load_industry_map(self) -> tuple[dict, dict]:
+        """加载股票→行业的映射。
+        兼容不同列名：
+        - 行业列：'industry' 或 '行业'
+        - 代码列：'code'（不足6位时左侧补零）
+        同时允许从 data/industry_mapping.csv 覆盖/追加。
+        """
+        industry_map: dict[str, str] = {}
+        name_map: dict[str, str] = {}
         candidates = []
         if self.universe_file and self.universe_file.exists():
             candidates.append(self.universe_file)
@@ -56,13 +64,58 @@ class SimpleFactorCalculator:
         for file in candidates:
             try:
                 df = pd.read_csv(file, dtype={'code': str})
-                if 'code' in df.columns and 'industry' in df.columns:
-                    tmp = df[['code', 'industry']].dropna()
-                    for _, row in tmp.iterrows():
-                        industry_map[row['code'].zfill(6)] = row['industry']
+                cols = set(df.columns)
+                if 'code' not in cols:
+                    continue
+                # 行业列兼容
+                ind_col = 'industry' if 'industry' in cols else ('行业' if '行业' in cols else None)
+                if ind_col is None:
+                    tmp = df[['code']].copy()
+                    tmp['industry'] = None
+                else:
+                    tmp = df[['code', ind_col]].rename(columns={ind_col: 'industry'})
+                for _, row in tmp.iterrows():
+                    code = str(row['code']).zfill(6)
+                    ind = row.get('industry', None)
+                    if pd.isna(ind) or ind in [None, 'nan', 'None', '']:
+                        # 留待后续名称推断
+                        pass
+                    else:
+                        industry_map[code] = str(ind)
+                # 名称列（若存在）
+                name_col = 'name' if 'name' in cols else ('名称' if '名称' in cols else None)
+                if name_col:
+                    for _, row in df[['code', name_col]].dropna().iterrows():
+                        name_map[str(row['code']).zfill(6)] = str(row[name_col])
             except Exception:
                 continue
-        return industry_map
+        return industry_map, name_map
+
+    @staticmethod
+    def _infer_industry_from_name(name: str | None) -> str:
+        """基于股票名称的简单行业推断（兜底用）。"""
+        if not name:
+            return '未分类'
+        n = str(name)
+        rules = [
+            ('银行', '银行'), ('证券', '证券'), ('保险', '保险'), ('信托', '非银金融'),
+            ('白酒', '食品饮料'), ('啤酒', '食品饮料'), ('饮料', '食品饮料'), ('乳业', '食品饮料'),
+            ('家电', '家用电器'), ('电器', '家用电器'),
+            ('半导体', '半导体'), ('芯片', '半导体'), ('集成电路', '半导体'), ('电子', '电子'),
+            ('汽车', '汽车'), ('整车', '汽车'), ('零部件', '汽车零部件'),
+            ('化工', '化工'), ('医药', '医药生物'), ('制药', '医药生物'), ('生物', '医药生物'),
+            ('计算机', '计算机'), ('软件', '计算机'), ('通信', '通信'), ('互联网', '计算机'),
+            ('煤', '煤炭'), ('钢铁', '钢铁'), ('有色', '有色金属'), ('黄金', '有色金属'),
+            ('电力', '公用事业'), ('公用', '公用事业'), ('水务', '公用事业'), ('燃气', '公用事业'),
+            ('建筑', '建筑装饰'), ('建材', '建筑材料'), ('地产', '房地产'), ('物业', '房地产'),
+            ('航运', '交通运输'), ('机场', '交通运输'), ('机场', '交通运输'), ('港口', '交通运输'),
+            ('军工', '国防军工'), ('航天', '国防军工'), ('航空', '国防军工'),
+            ('石油', '石油石化'), ('石化', '石油石化'), ('新能源', '电力设备'), ('光伏', '电力设备'), ('风电', '电力设备')
+        ]
+        for kw, ind in rules:
+            if kw in n:
+                return ind
+        return '未分类'
 
     @staticmethod
     def _compute_daily_return(df: pd.DataFrame) -> pd.DataFrame:
@@ -283,7 +336,12 @@ class SimpleFactorCalculator:
             df = self._compute_roll_spread(df)
             df = self._forward_returns(df)
 
-            df['industry'] = self.industry_map.get(code, '未分类')
+            # 行业：先映射，映射缺失/未分类时用名称兜底推断
+            ind = self.industry_map.get(code)
+            if not ind or ind in ['未分类', 'None', 'nan', '']:
+                name = self.name_map.get(code)
+                ind = self._infer_industry_from_name(name)
+            df['industry'] = ind if ind else '未分类'
 
             keep = ['date', 'stock_code', 'industry', 'close', 'daily_return', 'forward_return_1d',
                     'forward_return_5d', 'forward_return_10d',

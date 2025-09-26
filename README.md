@@ -1,4 +1,4 @@
-# 🚀 A股量化策略研究平台
+# [Volatility-Regime-Momentum]
 
 > 基于波动率制度的条件动量效应研究与策略测评工作台
 
@@ -8,11 +8,11 @@
 [![CI/CD](https://img.shields.io/badge/CI/CD-GitHub_Actions-green.svg)](/.github/workflows/ci.yml)
 [![Code Quality](https://img.shields.io/badge/code--quality-black%2Bisort%2Bflake8-brightgreen.svg)](#)
 
-## 🎯 项目概述
+##  项目概述
 
 本项目是一个**企业级量化研究平台**，专注于A股市场的条件动量效应研究。通过交互式Web界面，提供从数据处理、因子计算、模型训练到策略回测的完整工作流。
 
-### 🏆 核心价值
+###  核心价值
 
 - **学术研究**：首次在中国A股发现波动率条件动量效应，可发表学术论文
 - **策略开发**：完整的量化策略开发与测评框架
@@ -23,7 +23,7 @@
 
 可按下面“零基础三步上手”，一步一步照做即可跑通页面与策略。
 
-### 零基础三步上手（3–10分钟）
+### 零基础三步上手
 - 第一步：安装环境
   - 安装 Python 3.12（或≥3.10），并创建虚拟环境
   - `pip install -r requirements.txt`
@@ -34,12 +34,14 @@
   - 侧边栏点击“🚀 运行流水线”（保持默认参数即可）
   - 完成后“总览”会自动刷新，个股页可选择最新 `predictions_*.csv`
 
-提示：任何时候界面异常或列表不更新，可在侧边栏点击“🧹 清除缓存并刷新”。
+提示：任何时候界面异常或列表不更新，可在侧边栏点击"🧹 清除缓存并刷新"。
+
+**📊 数据说明**: 为避免GitHub 100MB限制，大型数据文件(因子/制度数据)已排除，但可通过"运行流水线"一键生成。详见 [DATA_SETUP.md](DATA_SETUP.md)
 
 ### 1️⃣ 环境配置
 ```bash
 # 克隆项目
-git clone <repository-url>
+git clone <https://github.com/1EchA/Volatility-Regime-Momentum>
 cd 回归分析-a股分析
 
 # 创建虚拟环境
@@ -76,16 +78,16 @@ streamlit run app/streamlit_app.py
 
 ### 📁 目录结构
 ```
-回归分析 a股分析/
-├── 📱 app/                          # Streamlit应用
+Volatility-Regime-Momentum/
+├── app/                          # Streamlit应用
 │   └── streamlit_app.py            # 主应用文件
-├── 📊 data/                        # 数据文件
+├── data/                        # 数据文件
 │   ├── archive/                    # 历史数据归档
 │   ├── *.csv                      # 股票价格数据
 │   └── *_results.json             # 分析结果
-├── 📚 docs/                        # 项目文档
-├── 🧪 tests/                       # 测试文件
-├── 📄 *.py                        # 核心分析脚本
+├── docs/                        # 项目文档
+├── tests/                       # 测试文件
+├── *.py                        # 核心分析脚本
 ├── stock_universe.csv              # 股票池信息
 └── README.md                       # 项目说明
 ```
@@ -232,7 +234,7 @@ python regime_model_sensitivity.py
 - 文件路径选择
 - 分析模式切换(简洁/高级)
 
-## ❓ 常见问题（新手向）
+## ❓ 常见问题
 
 1) 个股页提示“没有数据”？
 - 选中的股票可能不在该预测文件里。勾选“仅可用”让列表只显示有数据的股票，或更换预测文件。
@@ -284,9 +286,9 @@ A: 推荐Python 3.12+，最低支持3.10
 
 ## 📞 联系方式
 
-- 项目维护: [您的邮箱]
+- 项目维护: [pingtianhechuan@gmail.com]
 - 问题反馈: [GitHub Issues]
-- 技术交流: [微信群/QQ群]
+
 
 ---
 

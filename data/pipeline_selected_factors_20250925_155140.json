@@ -1,0 +1,19 @@
+{
+  "高波动": [
+    "gk_vol_21d_std",
+    "turnover_rate_std",
+    "illiq_std"
+  ],
+  "极高波动": [],
+  "正常": [
+    "turnover_rate_std",
+    "volatility_21d_std",
+    "breakout_high_63_std",
+    "zero_ret_ratio_21_std",
+    "amplitude_hl_std",
+    "dist_to_high_252_std",
+    "dist_to_low_252_std",
+    "obv_std",
+    "illiq_std"
+  ]
+}
