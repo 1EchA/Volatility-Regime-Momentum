@@ -1,0 +1,35 @@
+{
+  "高波动": [
+    "gk_vol_21d_std",
+    "amplitude_hl_std",
+    "turnover_rate_std",
+    "dist_to_low_252_std",
+    "zero_ret_ratio_21_std",
+    "illiq_std",
+    "volume_trend_20_60_std",
+    "volume_ratio_std",
+    "roll_spread_21_std"
+  ],
+  "正常": [
+    "gk_vol_21d_std",
+    "turnover_rate_std",
+    "amplitude_hl_std",
+    "zero_ret_ratio_21_std",
+    "dist_to_low_252_std",
+    "illiq_std",
+    "dist_to_high_252_std",
+    "volume_trend_20_60_std",
+    "volume_ratio_std",
+    "breakout_high_63_std",
+    "vol_ratio_21_63_std"
+  ],
+  "极高波动": [
+    "momentum_21d_std",
+    "momentum_60d_std",
+    "dist_to_high_252_std",
+    "illiq_std",
+    "volume_ratio_std",
+    "volume_trend_20_60_std",
+    "breakout_high_63_std"
+  ]
+}

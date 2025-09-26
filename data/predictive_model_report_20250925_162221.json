@@ -1,0 +1,30 @@
+{
+  "metrics": {
+    "ic_mean": 0.026261912050377256,
+    "ic_std": 0.2802900680305231,
+    "ic_ir": 0.09369547852661472,
+    "ic_win_rate": 0.556390977443609,
+    "n_days": 665,
+    "long_mean": NaN,
+    "short_mean": NaN,
+    "ls_mean": NaN,
+    "ls_ann": NaN,
+    "ls_ir": NaN
+  },
+  "performance_metrics": {
+    "n_days": 665,
+    "ic_mean": 0.026261912050377256,
+    "ic_ir": 0.09369547852628045,
+    "ic_win_rate": 0.556390977443609,
+    "long_mean": 2.4580875882313186e-05,
+    "short_mean": 2.4580875882313186e-05,
+    "ls_mean": -1.6708437761069342e-06,
+    "ls_ann": -0.00042105263157894745,
+    "ls_ir": -0.6820007911634177,
+    "ls_win_rate": 0.0,
+    "avg_turnover": 0.0033416875522138683,
+    "max_drawdown": -0.0001111111111111113
+  },
+  "prediction_file": "data/predictions_20250925_162221.csv",
+  "report_file": "data/predictive_model_report_20250925_162221.txt"
+}

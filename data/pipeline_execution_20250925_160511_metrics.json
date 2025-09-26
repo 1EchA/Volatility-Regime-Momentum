@@ -1,0 +1,27 @@
+{
+  "strategy": "hysteresis",
+  "param": "delta=15",
+  "metrics": {
+    "n_days": 364,
+    "ic_mean": 0.024659526780237227,
+    "ic_ir": 0.0850493752180689,
+    "ic_win_rate": 0.5054945054945055,
+    "long_mean": -9.85819166144584e-05,
+    "short_mean": -9.85819166144584e-05,
+    "ls_mean": -3.0704589528118945e-06,
+    "ls_ann": -0.0007737556561085975,
+    "ls_ir": -0.9270445856918623,
+    "ls_win_rate": 0.0,
+    "avg_turnover": 0.006140917905623788,
+    "max_drawdown": -0.00011764705882352962
+  },
+  "execution_profile": {
+    "avg_turnover": 0.006140917905623788,
+    "avg_overlap_long": 0.9969295410471881,
+    "avg_overlap_short": 0.9969295410471881,
+    "avg_added_long": 0.04945054945054945,
+    "avg_added_short": 0.04945054945054945,
+    "half_life_long_days": 364.0,
+    "half_life_short_days": 364.0
+  }
+}
