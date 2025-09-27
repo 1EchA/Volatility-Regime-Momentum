@@ -85,8 +85,9 @@ data/temp/          # 临时文件夹
 *.pkl
 *.h5
 
-# 日志文件
+# 日志文件 (保留目录结构)
 logs/
+!logs/.gitkeep
 *.log
 
 # 临时文件
