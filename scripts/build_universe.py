@@ -229,7 +229,8 @@ def main():
 
     # 1) candidates from local CSVs
     local_df = load_local_candidates()
-    if local_df.empty and args.download:
+    # argparse converts --download-missing -> download_missing
+    if local_df.empty and args.download_missing:
         try:
             from data_collector import DataCollector
 
