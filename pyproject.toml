@@ -3,16 +3,16 @@ requires = ["setuptools>=68.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "a-share-quant-research"
+name = "volatility-regime-momentum"
 version = "1.0.0"
 description = "A股量化策略研究平台：基于波动率制度的条件动量效应分析"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "Quant Research Team", email = "your-email@example.com"},
+    {name = "1EchA", email = "pingtianhechuan@gmail.com"},
 ]
 maintainers = [
-    {name = "Quant Research Team", email = "your-email@example.com"},
+    {name = "1EchA", email = "pingtianhechuan@gmail.com"},
 ]
 keywords = [
     "quantitative finance",
@@ -35,16 +35,36 @@ classifiers = [
 ]
 requires-python = ">=3.11"
 dependencies = [
+    # Core Data Processing
     "pandas>=2.1.0,<3.0.0",
     "numpy>=1.24.0,<2.0.0",
     "scipy>=1.10.0,<2.0.0",
+    # Web Interface
     "streamlit>=1.28.0,<2.0.0",
     "plotly>=5.15.0,<6.0.0",
+    "streamlit-plotly-events>=0.0.6",
+    # Machine Learning & Statistics
     "scikit-learn>=1.3.0,<2.0.0",
     "statsmodels>=0.14.0,<1.0.0",
+    # Data Visualization
     "matplotlib>=3.7.0,<4.0.0",
     "seaborn>=0.12.0,<1.0.0",
+    # Data Sources
     "akshare>=1.14.0,<2.0.0",
+    "yfinance>=0.2.0,<1.0.0",
+    # Utilities
+    "requests>=2.31.0,<3.0.0",
+    "beautifulsoup4>=4.12.0,<5.0.0",
+    "openpyxl>=3.1.0,<4.0.0",
+    "python-dateutil>=2.8.0,<3.0.0",
+    # Performance
+    "numba>=0.58.0,<1.0.0",
+    "joblib>=1.3.0,<2.0.0",
+    # Configuration
+    "pydantic>=2.5.0,<3.0.0",
+    "pyyaml>=6.0.0,<7.0.0",
+    # Progress & Logging
+    "tqdm>=4.65.0,<5.0.0",
 ]
 
 [project.optional-dependencies]
@@ -63,18 +83,40 @@ docs = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/your-username/a-share-quant-research"
-"Bug Reports" = "https://github.com/your-username/a-share-quant-research/issues"
-"Source" = "https://github.com/your-username/a-share-quant-research"
-"Documentation" = "https://your-username.github.io/a-share-quant-research"
+"Homepage" = "https://github.com/1EchA/Volatility-Regime-Momentum"
+"Bug Reports" = "https://github.com/1EchA/Volatility-Regime-Momentum/issues"
+"Source" = "https://github.com/1EchA/Volatility-Regime-Momentum"
 
-[project.scripts]
-quant-research = "app.streamlit_app:main"
+# CLI entrypoint disabled - streamlit_app.py has no main() function
+# To enable, add def main(): ... to app/streamlit_app.py
+# [project.scripts]
+# vrm = "app.streamlit_app:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["app*", "tests*"]
-exclude = ["data*", "logs*", ".venv*"]
+include = ["app*", "analysis*", "scripts*"]
+exclude = ["data*", "logs*", ".venv*", "tests*", "docs*", "cache*"]
+
+[tool.setuptools]
+py-modules = [
+    "run_full_pipeline",
+    "data_collector",
+    "data_collector_50stocks",
+    "simple_factor_calculator",
+    "volatility_regime_analyzer",
+    "predictive_model",
+    "fama_macbeth_analyzer",
+    "conditional_fama_macbeth_analyzer",
+    "regime_difference_analyzer",
+    "regime_factor_selector",
+    "regime_model_grid_search",
+    "regime_model_sensitivity",
+    "factor_selector",
+    "model_grid_search",
+    "industry_classifier",
+    "single_factor_ic_analyzer",
+    "universe_selector",
+]
 
 [tool.black]
 line-length = 88
@@ -100,7 +142,7 @@ exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["app", "tests"]
+known_first_party = ["app", "analysis", "tests"]
 
 [tool.flake8]
 max-line-length = 88
@@ -132,7 +174,7 @@ markers = [
 ]
 
 [tool.coverage.run]
-source = ["app"]
+source = ["app", "analysis"]
 omit = [
     "*/tests/*",
     "*/test_*",

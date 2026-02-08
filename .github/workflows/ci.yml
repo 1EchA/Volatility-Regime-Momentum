@@ -78,7 +78,7 @@ jobs:
     - name: Run unit tests
       run: |
         pytest tests/ -v --tb=short
-      continue-on-error: true
+      # Removed continue-on-error: test failures should block CI
 
     - name: Generate test coverage
       run: |

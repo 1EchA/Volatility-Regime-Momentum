@@ -204,23 +204,73 @@ def render_price_signal_chart_new(one: pd.DataFrame,
     """Robust Plotly figure (price + score + events + regime background)."""
     use_secondary = (make_subplots is not None and go is not None)
     fig = make_subplots(specs=[[{"secondary_y": True}]]) if use_secondary else go.Figure()
+    
+    # Enrich data for hover
+    hover_cols = ['date']
+    if 'y_pred' in one.columns: hover_cols.append('y_pred')
+    if 'ind_rank_pct' in one.columns: hover_cols.append('ind_rank_pct')
+    if 'regime' in one.columns: hover_cols.append('regime')
+    
     # Price trace
     merged = None
     if price_df is not None and not price_df.empty:
+        # Merge price with signals for unified hover data
+        cols_to_merge = list(set(hover_cols) & set(one.columns))
+        # Avoid duplicate date column
+        if 'date' in cols_to_merge: cols_to_merge.remove('date')
+        
         if set(['open','high','low','close']).issubset(price_df.columns):
-            merged = one.merge(price_df[['date','open','high','low','close']], on='date', how='left').dropna(subset=['close'])
-            if not merged.empty:
-                fig.add_candlestick(x=merged['date'], open=merged['open'], high=merged['high'], low=merged['low'], close=merged['close'], name='Price')
+            merged = price_df[['date','open','high','low','close']].merge(one[['date'] + cols_to_merge], on='date', how='left')
+            merged = merged.dropna(subset=['close'])
+            
+            # Pre-format hover strings for Candlestick (avoids hovertemplate compatibility issues)
+            h_texts = []
+            for _, r in merged.iterrows():
+                score_str = f"{r['y_pred']:.4f}" if pd.notna(r.get('y_pred')) else "N/A"
+                rank_str = f"{r['ind_rank_pct']:.1%}" if pd.notna(r.get('ind_rank_pct')) else "N/A"
+                txt = (f"<b>{r['date'].strftime('%Y-%m-%d')}</b><br>"
+                       f"开盘: {r['open']:.2f}<br>最高: {r['high']:.2f}<br>"
+                       f"最低: {r['low']:.2f}<br>收盘: {r['close']:.2f}<br>"
+                       f"预测分: {score_str}<br>"
+                       f"行业分位: {rank_str}<br>"
+                       f"制度: {r.get('regime', '-')}")
+                h_texts.append(txt)
+                
+            fig.add_trace(go.Candlestick(
+                x=merged['date'], open=merged['open'], high=merged['high'], low=merged['low'], close=merged['close'],
+                name='Price',
+                text=h_texts,
+                hoverinfo='text'
+            ), secondary_y=False)
+            
         elif 'close' in price_df.columns:
-            merged = one.merge(price_df[['date','close']], on='date', how='left').dropna(subset=['close'])
-            if not merged.empty:
-                fig.add_scatter(x=merged['date'], y=merged['close'], mode='lines', name='Close', line=dict(color='#1f77b4'))
+            merged = price_df[['date','close']].merge(one[['date'] + cols_to_merge], on='date', how='left')
+            merged = merged.dropna(subset=['close'])
+            
+            h_texts = []
+            for _, r in merged.iterrows():
+                score_str = f"{r['y_pred']:.4f}" if pd.notna(r.get('y_pred')) else "N/A"
+                rank_str = f"{r['ind_rank_pct']:.1%}" if pd.notna(r.get('ind_rank_pct')) else "N/A"
+                txt = (f"<b>{r['date'].strftime('%Y-%m-%d')}</b><br>"
+                       f"收盘价: {r['close']:.2f}<br>"
+                       f"预测分: {score_str}<br>"
+                       f"行业分位: {rank_str}<br>"
+                       f"制度: {r.get('regime', '-')}")
+                h_texts.append(txt)
+
+            fig.add_trace(go.Scatter(
+                x=merged['date'], y=merged['close'], mode='lines', name='Close',
+                line=dict(color='#1f77b4'),
+                text=h_texts,
+                hoverinfo='text'
+            ), secondary_y=False)
+
     # score line
     if show_score and 'y_pred' in one.columns and not one['y_pred'].isna().all():
         if use_secondary:
-            fig.add_scatter(x=one['date'], y=one['y_pred'], mode='lines', name='Score', line=dict(color='#ff7f0e', width=2), secondary_y=True)
+            fig.add_trace(go.Scatter(x=one['date'], y=one['y_pred'], mode='lines', name='Score', line=dict(color='#ff7f0e', width=1), opacity=0.6), secondary_y=True)
         else:
-            fig.add_scatter(x=one['date'], y=one['y_pred'], mode='lines', name='Score', line=dict(color='#ff7f0e', width=2))
+            fig.add_trace(go.Scatter(x=one['date'], y=one['y_pred'], mode='lines', name='Score', line=dict(color='#ff7f0e', width=1), opacity=0.6))
 
     # Events
     evt = one[['date','in_long','in_short']].copy()
@@ -230,103 +280,29 @@ def render_price_signal_chart_new(one: pd.DataFrame,
     evt['short_open']  = (~prev['in_short']) & (evt['in_short'])
     evt['long_close']  = (prev['in_long'])   & (~evt['in_long'])
     evt['short_close'] = (prev['in_short'])  & (~evt['in_short'])
-    hover_p = '<b>%{x|%Y-%m-%d}</b><br>价格: %{y:.2f}<br>事件: %{customdata}'
-    hover_s = '<b>%{x|%Y-%m-%d}</b><br>分数: %{y:.3f}<br>事件: %{customdata}'
+    
+    hover_event = '<b>%{x|%Y-%m-%d}</b><br>价格: %{y:.2f}<br>事件: %{customdata}'
+    
     if merged is not None and not merged.empty:
-        marks_full = evt.merge(merged[['date','close']], on='date', how='left')
-        price_pts = marks_full.dropna(subset=['close'])
-        # 在价格轴标注有 close 的事件
+        # Use merged to ensure we have prices for events
+        # We need to re-merge events to merged to get prices
+        marks_full = merged[['date','close']].merge(evt, on='date', how='inner')
+        
         if show_buy:
-            d = price_pts[price_pts['long_open']]
+            d = marks_full[marks_full['long_open']]
             if not d.empty:
-                fig.add_scatter(x=d['date'], y=d['close'], mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=9), customdata=['买入']*len(d), hovertemplate=hover_p)
+                fig.add_trace(go.Scatter(x=d['date'], y=d['close'], mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=10), customdata=['买入']*len(d), hovertemplate=hover_event), secondary_y=False)
         if show_short:
-            d = price_pts[price_pts['short_open']]
+            d = marks_full[marks_full['short_open']]
             if not d.empty:
-                fig.add_scatter(x=d['date'], y=d['close'], mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=9), customdata=['做空']*len(d), hovertemplate=hover_p)
+                fig.add_trace(go.Scatter(x=d['date'], y=d['close'], mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=10), customdata=['做空']*len(d), hovertemplate=hover_event), secondary_y=False)
         if show_close:
-            d = price_pts[price_pts['long_close']]
+            d = marks_full[marks_full['long_close']]
             if not d.empty:
-                fig.add_scatter(x=d['date'], y=d['close'], mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_p)
-            d = price_pts[price_pts['short_close']]
+                fig.add_trace(go.Scatter(x=d['date'], y=d['close'], mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_event), secondary_y=False)
+            d = marks_full[marks_full['short_close']]
             if not d.empty:
-                fig.add_scatter(x=d['date'], y=d['close'], mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_p)
-
-        # 对于没有 close 的事件，尽量在分数轴标注（若开启了分数线）；否则用前值插值到价格轴
-        miss = marks_full[marks_full['close'].isna()]
-        if not miss.empty:
-            if show_score and 'y_pred' in one.columns:
-                s = one.set_index('date')['y_pred']
-                if show_buy:
-                    d = miss[miss['long_open']]
-                    if not d.empty:
-                        y = s.reindex(d['date']).values
-                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=9), customdata=['买入']*len(d), hovertemplate=hover_s, secondary_y=bool(make_subplots))
-                if show_short:
-                    d = miss[miss['short_open']]
-                    if not d.empty:
-                        y = s.reindex(d['date']).values
-                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=9), customdata=['做空']*len(d), hovertemplate=hover_s, secondary_y=bool(make_subplots))
-                if show_close:
-                    d = miss[miss['long_close']]
-                    if not d.empty:
-                        y = s.reindex(d['date']).values
-                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_s, secondary_y=bool(make_subplots))
-                    d = miss[miss['short_close']]
-                    if not d.empty:
-                        y = s.reindex(d['date']).values
-                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_s, secondary_y=bool(make_subplots))
-            else:
-                # 前值填充近似到价格轴
-                close_map = merged.set_index('date')['close'].sort_index().ffill()
-                if show_buy:
-                    d = miss[miss['long_open']]
-                    if not d.empty:
-                        y = close_map.reindex(d['date']).values
-                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=9), customdata=['买入']*len(d), hovertemplate=hover_p)
-                if show_short:
-                    d = miss[miss['short_open']]
-                    if not d.empty:
-                        y = close_map.reindex(d['date']).values
-                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=9), customdata=['做空']*len(d), hovertemplate=hover_p)
-                if show_close:
-                    d = miss[miss['long_close']]
-                    if not d.empty:
-                        y = close_map.reindex(d['date']).values
-                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_p)
-                    d = miss[miss['short_close']]
-                    if not d.empty:
-                        y = close_map.reindex(d['date']).values
-                        fig.add_scatter(x=d['date'], y=y, mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_p)
-    else:
-        # fallback on score axis
-        if show_buy:
-            d = evt[evt['long_open']]
-            if not d.empty:
-                if use_secondary:
-                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=9), customdata=['买入']*len(d), hovertemplate=hover_s, secondary_y=True)
-                else:
-                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='买入(多开)', marker=dict(symbol='triangle-up', color='#2ecc71', size=9), customdata=['买入']*len(d), hovertemplate=hover_s)
-        if show_short:
-            d = evt[evt['short_open']]
-            if not d.empty:
-                if use_secondary:
-                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=9), customdata=['做空']*len(d), hovertemplate=hover_s, secondary_y=True)
-                else:
-                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='做空(空开)', marker=dict(symbol='triangle-down', color='#e74c3c', size=9), customdata=['做空']*len(d), hovertemplate=hover_s)
-        if show_close:
-            d = evt[evt['long_close']]
-            if not d.empty:
-                if use_secondary:
-                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_s, secondary_y=True)
-                else:
-                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='多平仓', marker=dict(symbol='x', color='#2ecc71', size=8, line=dict(width=2)), customdata=['清仓(多)']*len(d), hovertemplate=hover_s)
-            d = evt[evt['short_close']]
-            if not d.empty:
-                if use_secondary:
-                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_s, secondary_y=True)
-                else:
-                    fig.add_scatter(x=d['date'], y=one.set_index('date').loc[d['date'],'y_pred'], mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_s)
+                fig.add_trace(go.Scatter(x=d['date'], y=d['close'], mode='markers', name='空平仓', marker=dict(symbol='x', color='#e74c3c', size=8, line=dict(width=2)), customdata=['清仓(空)']*len(d), hovertemplate=hover_event), secondary_y=False)
 
     # Regime background
     if show_regime:
@@ -355,7 +331,7 @@ def render_price_signal_chart_new(one: pd.DataFrame,
         except Exception:
             pass
 
-    fig.update_layout(height=480, margin=dict(l=40, r=40, t=30, b=40))
+    fig.update_layout(height=500, margin=dict(l=40, r=40, t=30, b=40), hovermode='x unified')
     fig.update_xaxes(title_text='Date')
     if use_secondary:
         fig.update_yaxes(title_text='Price', secondary_y=False)
@@ -519,13 +495,63 @@ st.markdown(
 
 def info_icon(text: str):
     st.markdown(f'<span class="tip" data-tip="{text}">i</span>', unsafe_allow_html=True)
-st.title('Volatility Regime Momentum — Trial Dashboard')
+st.title('波动率制度动量策略 — 量化研究仪表盘')
 tab_overview, tab_grid, tab_exec, tab_robust, tab_stock, tab_pack = st.tabs([
-    '总览', '网格与曲面', '执行测试', '稳健性', '个股', '打包'
+    '📊 总览', '🔥 网格与曲面', '⚡ 执行测试', '🔒 稳健性', '📈 个股', '📦 打包'
 ])
 
 with tab_overview:
     reports = list_reports()
+
+    # Helper to render metrics
+    def render_metrics_row(m):
+        cols = st.columns(4)
+        cols[0].metric("多空年化收益", f"{m.get('ls_ann', 0):.2%}")
+        cols[1].metric("信息比率 (IR)", f"{m.get('ls_ir', 0):.3f}")
+        cols[2].metric("IC均值", f"{m.get('ic_mean', 0):.3f}")
+        cols[3].metric("最大回撤", f"{m.get('max_drawdown', 0):.2%}")
+
+    # Helper to render health monitor
+    def render_health(m):
+        ir = m.get('ls_ir', 0)
+        dd = m.get('max_drawdown', 0)
+        to = m.get('avg_turnover', 0)
+        if ir > 0.5 and dd > -0.2 and to < 0.8:
+            st.success("🟢 策略健康度：良好 (Robust)")
+        elif ir < 0.2 or dd < -0.3:
+            st.error("🔴 策略健康度：高风险 (High Risk)")
+        else:
+            st.warning("🟡 策略健康度：需关注 (Attention Needed)")
+
+    # Helper to render unified chart
+    def render_unified_chart(ts_data):
+        if ts_data is None or ts_data.empty:
+            st.info("暂无时序数据")
+            return
+        
+        # Plotly Combined Chart
+        if make_subplots is not None:
+            fig = make_subplots(rows=2, cols=1, shared_xaxes=True, vertical_spacing=0.03,
+                                row_heights=[0.7, 0.3],
+                                subplot_titles=('累计净值 (Equity Curve)', '动态回撤 (Drawdown)'))
+            
+            # Equity
+            fig.add_trace(go.Scatter(x=ts_data['date'], y=ts_data['cum_ls_net'], 
+                                   name='多空净值 (Net)', line=dict(color='#2ecc71', width=2)), row=1, col=1)
+            if 'cum_ls_gross' in ts_data.columns:
+                fig.add_trace(go.Scatter(x=ts_data['date'], y=ts_data['cum_ls_gross'], 
+                                       name='多空毛值 (Gross)', line=dict(color='#95a5a6', width=1, dash='dot')), row=1, col=1)
+            
+            # Drawdown
+            fig.add_trace(go.Scatter(x=ts_data['date'], y=ts_data['drawdown'], 
+                                   name='回撤', fill='tozeroy', line=dict(color='#e74c3c', width=1)), row=2, col=1)
+            
+            fig.update_layout(height=550, margin=dict(l=40, r=40, t=40, b=40), hovermode='x unified')
+            st.plotly_chart(fig, use_container_width=True)
+        else:
+            st.line_chart(ts_data[['date', 'cum_ls_net']].set_index('date'))
+            st.area_chart(ts_data[['date', 'drawdown']].set_index('date'))
+
     if not reports:
         # Fallback: 使用最新执行层产物作为概览
         exec_m = _latest('pipeline_execution_*_metrics.json')
@@ -535,33 +561,19 @@ with tab_overview:
             import json as _json
             meta = _json.loads(exec_m.read_text(encoding='utf-8'))
             metrics = meta.get('metrics', {})
-            # Summary metrics
-            st.subheader('Summary Metrics')
-            cols = st.columns(4)
-            for col, (key, label) in zip(cols,
-                                          [('ls_ann','Annualised LS'),('ls_ir','LS IR'),('ic_mean','IC Mean'),('max_drawdown','Max Drawdown')]):
-                value = metrics.get(key)
-                if value is None:
-                    col.metric(label, '--')
-                elif key == 'max_drawdown':
-                    col.metric(label, f"{value:.2%}")
-                else:
-                    col.metric(label, f"{value:.3f}")
-            # Curves
+            
+            render_health(metrics)
+            st.subheader('关键指标 (Key Metrics)')
+            render_metrics_row(metrics)
+            
             try:
                 ts = load_csv_cached(str(exec_ts))
                 ts['date'] = pd.to_datetime(ts['date'])
                 ts_disp = time_range_selector(ts, key_prefix='ov_fb')
-                st.subheader('Equity Curve')
-                # 同时显示净值与毛值（若存在）
-                cols = ['cum_ls_net']
-                if 'cum_ls_gross' in ts_disp.columns:
-                    cols.append('cum_ls_gross')
-                st.line_chart(ts_disp[['date'] + cols].set_index('date'))
-                st.subheader('Drawdown (Net)')
-                st.area_chart(ts_disp[['date', 'drawdown']].set_index('date'))
-            except Exception:
-                pass
+                st.subheader('策略表现 (Performance)')
+                render_unified_chart(ts_disp)
+            except Exception as e:
+                st.error(f"图表加载失败: {e}")
             st.button('刷新总览', on_click=lambda: st.rerun())
         else:
             st.warning('No performance reports found. Run `python run_full_pipeline.py` first.')
@@ -574,44 +586,38 @@ with tab_overview:
             key=lambda p: p.name,
         )
 
-        st.subheader('Summary Metrics')
-        cols = st.columns(4)
-        metric_keys = ['ls_ann', 'ls_ir', 'ic_mean', 'max_drawdown']
-        labels = ['Annualised LS', 'LS IR', 'IC Mean', 'Max Drawdown']
-        for col, key, label in zip(cols, metric_keys, labels):
-            value = metrics.get(key)
-            if value is None:
-                col.metric(label, '--')
-            elif key == 'max_drawdown':
-                col.metric(label, f"{value:.2%}")
-            else:
-                col.metric(label, f"{value:.3f}")
+        render_health(metrics)
+        st.subheader('关键指标 (Key Metrics)')
+        render_metrics_row(metrics)
 
-        st.subheader('Equity Curve')
+        st.subheader('策略表现 (Performance)')
         if not ts.empty:
             ts2 = time_range_selector(ts, key_prefix='ov')
-            ts_display = ts2[['date', 'cum_ls_net', 'cum_ls_gross']].set_index('date')
-            st.line_chart(ts_display)
+            render_unified_chart(ts2)
         else:
             st.info('Timeseries file missing for this report.')
 
-        st.subheader('Drawdown (Net)')
-        if not ts.empty:
-            drawdown = ts2[['date', 'drawdown']].set_index('date')
-            st.area_chart(drawdown)
-
-        st.subheader('Regime Contribution Snapshot')
+        st.subheader('制度归因 (Regime Attribution)')
         if not regimes.empty:
             regimes_display = regimes.copy()
+            # Format table
             regimes_display['ls_ann'] = regimes_display['ls_ann'].map(lambda v: f"{v:.2%}")
             regimes_display['ls_ir'] = regimes_display['ls_ir'].map(lambda v: f"{v:.3f}")
             regimes_display['ic_mean'] = regimes_display['ic_mean'].map(lambda v: f"{v:.3f}")
-            st.table(regimes_display[['regime', 'ic_mean', 'ls_ann', 'ls_ir', 'weight_days']])
+            
+            c1, c2 = st.columns([0.6, 0.4])
+            with c1:
+                st.table(regimes_display[['regime', 'ic_mean', 'ls_ann', 'ls_ir', 'weight_days']])
+            with c2:
+                if go is not None:
+                    fig_pie = go.Figure(data=[go.Pie(labels=regimes['regime'], values=regimes['weight_days'], hole=.4)])
+                    fig_pie.update_layout(title_text="制度时间占比", height=300, margin=dict(t=30, b=0, l=20, r=20))
+                    st.plotly_chart(fig_pie, use_container_width=True)
         else:
             st.info('Regime contribution file missing for this report.')
 
         if heatmaps:
-            st.subheader('Parameter Heatmaps')
+            st.subheader('参数热力图 (Heatmaps)')
             cols = st.columns(min(2, len(heatmaps)))
             for idx, img_path in enumerate(heatmaps):
                 with cols[idx % len(cols)]:
@@ -772,7 +778,7 @@ with tab_overview:
                 st.info('暂无')
         c4, c5 = st.columns(2)
         with c4:
-            st.markdown('**Robustness**')
+            st.markdown('**稳健性分析 (Robustness)**')
             if latest_rb:
                 import pandas as _pd
                 rb = _pd.read_csv(latest_rb[-1])
@@ -1002,14 +1008,14 @@ else:
             pivot_metric = st.sidebar.selectbox('Pivot metric', pivot_metric_options or ['ls_ir'], index=0)
 
             with tab_grid:
-                st.subheader('Cost Sensitivity — Top Configurations (by LS IR)')
+                st.subheader('成本敏感性分析 — 最佳配置 (按 LS IR)')
                 st.dataframe(
                     grid_df.sort_values('ls_ir', ascending=False).head(top_k)[
                         ['train_window', 'alpha', 'top_n', 'bottom_n', 'cost_bps', 'ls_ir', 'ls_ann', 'ic_mean']
                     ]
                 )
 
-                st.subheader(f'Cost Sensitivity — Pivot ({pivot_metric})')
+                st.subheader(f'成本敏感性透视 ({pivot_metric})')
                 try:
                     pivot = grid_df.pivot_table(
                         index='top_n', columns=['train_window', 'cost_bps'], values=pivot_metric, aggfunc='max'
@@ -1084,6 +1090,99 @@ if turnover_grids:
         filtered = turnover_df.copy()
     
     with tab_exec:
+        # ---------------------------------------------------------
+        # 🛠 沙箱演练 (Sandbox) - 移至 Exec Tab 顶部
+        # ---------------------------------------------------------
+        with st.expander('🛠 沙箱演练 (Sandbox)', expanded=True):
+            st.markdown('**🔄 实时策略测试**')
+            with st.form('custom_portfolio_in_tab'):
+                if pred_files:
+                    pred_map = {p.name: p for p in pred_files}
+                    pred_choice = st.selectbox('预测文件', list(pred_map.keys()), index=0)
+                else:
+                    pred_map = {}
+                    pred_choice = None
+                    st.info('在 data/ 下未找到预测文件。')
+    
+                # 执行策略选择
+                strat_opts = ['hysteresis_bands'] if st.session_state.get('cfg_simple_mode', True) else ['baseline_daily', 'hysteresis_bands', 'ema_hysteresis_combo']
+                strategy_type = st.selectbox('执行策略', strat_opts, help='简洁模式仅保留滞后带方案')
+    
+                c1, c2, c3 = st.columns(3)
+                with c1:
+                    top_n_input = st.slider('持仓股票数 TopN', min_value=5, max_value=50, value=30, step=5)
+                with c2:
+                    bottom_n_input = st.slider('空头股票数 BottomN', min_value=5, max_value=50, value=30, step=5)
+                with c3:
+                    cost_input = st.number_input('每侧成本 (bps)', min_value=0.0, value=5.0, step=0.5)
+    
+                c4, c5 = st.columns(2)
+                with c4:
+                    if strategy_type == 'hysteresis_bands':
+                        delta = st.slider('滞后带宽 Δ', 5, 25, 15)
+                        ema_span = None
+                    elif strategy_type == 'ema_hysteresis_combo':
+                        ema_span = st.slider('EMA窗口', 2, 15, 4)
+                        delta = st.slider('滞后带宽 Δ', 5, 25, 15)
+                    else:
+                        delta = None
+                        ema_span = None
+                with c5:
+                    st.markdown('<div style="height: 28px;"></div>', unsafe_allow_html=True)
+                    submit_custom = st.form_submit_button('🎯 计算并对比')    
+            if pred_files and submit_custom and pred_choice:
+                pred_path = pred_map[pred_choice]
+                custom_pred = load_predictions_df(str(pred_path))
+                cost_decimal = cost_input / 10000.0
+                
+                # 根据策略类型计算结果
+                if strategy_type == 'baseline_daily':
+                    ts_custom = baseline_daily(custom_pred, top_n_input, bottom_n_input, cost_decimal)
+                    ic_series = compute_ic_series_with_score(custom_pred, 'y_pred')
+                elif strategy_type == 'hysteresis_bands':
+                    ts_custom = hysteresis_bands(custom_pred, top_n_input, bottom_n_input, cost_decimal, delta)
+                    ic_series = compute_ic_series_with_score(custom_pred, 'y_pred')
+                elif strategy_type == 'ema_hysteresis_combo':
+                    ts_custom, scored_df = ema_hysteresis_combo(
+                        custom_pred, top_n_input, bottom_n_input, cost_decimal, ema_span, delta
+                    )
+                    ic_series = compute_ic_series_with_score(scored_df, 'y_score')
+                else:
+                    ts_custom = pd.DataFrame()
+                    ic_series = pd.Series()
+                
+                if ts_custom.empty:
+                    st.warning('应用参数后数据不足，无法计算指标。')
+                else:
+                    # 计算指标
+                    custom_metrics = compute_summary_metrics(ts_custom, ic_series)
+                    
+                    # 显示关键指标 (Chinese)
+                    st.markdown(f'**测试结果: {strategy_type}**')
+                    cols_custom = st.columns(5)
+                    display_pairs = [
+                        ('ls_ann', '年化收益'), ('ls_ir', '信息比率'), ('ic_mean', 'IC均值'),
+                        ('avg_turnover', '平均换手率'), ('max_drawdown', '最大回撤'),
+                    ]
+                    for col, (key, label) in zip(cols_custom, display_pairs):
+                        val = custom_metrics.get(key)
+                        if key in ['max_drawdown', 'ls_ann', 'avg_turnover']:
+                            col.metric(label, f"{val:.2%}")
+                        else:
+                            col.metric(label, f"{val:.3f}")
+                    
+                    # 显示图表 (Unified)
+                    if make_subplots is not None:
+                        fig_sb = make_subplots(rows=2, cols=1, shared_xaxes=True, row_heights=[0.7, 0.3], vertical_spacing=0.03)
+                        fig_sb.add_trace(go.Scatter(x=ts_custom['date'], y=ts_custom['cum_ls_net'], name='净值', line=dict(color='#2ecc71')), row=1, col=1)
+                        fig_sb.add_trace(go.Scatter(x=ts_custom['date'], y=ts_custom['drawdown'], name='回撤', fill='tozeroy', line=dict(color='#e74c3c')), row=2, col=1)
+                        fig_sb.update_layout(height=400, margin=dict(l=20, r=20, t=20, b=20), hovermode='x unified')
+                        st.plotly_chart(fig_sb, use_container_width=True)
+                    else:
+                        st.line_chart(ts_custom[['date', 'cum_ls_net']].set_index('date'))
+    
+        st.markdown('---')
+    
         # 标题栏与刷新按钮
         exec_cols = st.columns([0.8, 0.2])
         with exec_cols[0]:
@@ -1166,95 +1265,7 @@ if not st.session_state.get('cfg_simple_mode', True):
                             st.error('网格任务失败')
                             st.text_area('错误日志', (e.stdout or '') + '\n' + (e.stderr or ''), height=300)
 
-with st.sidebar.form('custom_portfolio'):
-    st.markdown('**🔄 实时策略测试**')
-    if pred_files:
-        pred_map = {p.name: p for p in pred_files}
-        pred_choice = st.selectbox('预测文件', list(pred_map.keys()), index=0)
-    else:
-        pred_map = {}
-        pred_choice = None
-        st.info('在 data/ 下未找到预测文件。')
-    
-    # 执行策略选择
-    strat_opts = ['hysteresis_bands'] if st.session_state.get('cfg_simple_mode', True) else ['baseline_daily', 'hysteresis_bands', 'ema_hysteresis_combo']
-    strategy_type = st.selectbox('执行策略', strat_opts, help='简洁模式仅保留滞后带方案')
-    
-    # 基本参数
-    top_n_input = st.slider('持仓股票数 TopN', min_value=5, max_value=50, value=30, step=5)
-    bottom_n_input = st.slider('空头股票数 BottomN', min_value=5, max_value=50, value=30, step=5)
-    cost_input = st.number_input('每侧成本 (bps)', min_value=0.0, value=5.0, step=0.5)
-    
-    # 根据策略类型显示相应参数
-    if strategy_type == 'hysteresis_bands':
-        delta = st.slider('滞后带宽 Δ', 5, 25, 15)
-        ema_span = None
-    elif strategy_type == 'ema_hysteresis_combo':
-        ema_span = st.slider('EMA窗口', 2, 15, 4)
-        delta = st.slider('滞后带Delta', 5, 25, 15)
-    else:
-        delta = None
-        ema_span = None
-    
-    submit_custom = st.form_submit_button('🎯 计算指标')
 
-if pred_files and submit_custom and pred_choice:
-    pred_path = pred_map[pred_choice]
-    custom_pred = load_predictions_df(str(pred_path))
-    
-    cost_decimal = cost_input / 10000.0
-    
-    # 根据策略类型计算结果
-    if strategy_type == 'baseline_daily':
-        ts_custom = baseline_daily(custom_pred, top_n_input, bottom_n_input, cost_decimal)
-        ic_series = compute_ic_series_with_score(custom_pred, 'y_pred')
-    elif strategy_type == 'hysteresis_bands':
-        ts_custom = hysteresis_bands(custom_pred, top_n_input, bottom_n_input, cost_decimal, delta)
-        ic_series = compute_ic_series_with_score(custom_pred, 'y_pred')
-    elif strategy_type == 'ema_hysteresis_combo':
-        ts_custom, scored_df = ema_hysteresis_combo(
-            custom_pred, top_n_input, bottom_n_input, cost_decimal, ema_span, delta
-        )
-        ic_series = compute_ic_series_with_score(scored_df, 'y_score')
-    else:
-        ts_custom = pd.DataFrame()
-        ic_series = pd.Series()
-    
-    if ts_custom.empty:
-        st.warning('应用参数后数据不足，无法计算指标。')
-    else:
-        # 计算指标
-        custom_metrics = compute_summary_metrics(ts_custom, ic_series)
-        
-        with tab_exec:
-            st.subheader(f'📊 自定义策略效果 - {strategy_type}')
-        
-        # 显示关键指标
-        cols_custom = st.columns(5)
-        display_pairs = [
-            ('ls_ann', '年化收益'),
-            ('ls_ir', '信息比率'),
-            ('ic_mean', 'IC均值'),
-            ('avg_turnover', '平均换手率'),
-            ('max_drawdown', '最大回撤'),
-        ]
-        for col, (key, label) in zip(cols_custom, display_pairs):
-            val = custom_metrics.get(key)
-            if key in ['max_drawdown', 'ls_ann', 'avg_turnover']:
-                col.metric(label, f"{val:.2%}")
-            else:
-                col.metric(label, f"{val:.3f}")
-        
-        # 显示图表
-            col1, col2 = st.columns(2)
-            with col1:
-                st.markdown('**累积收益曲线**')
-                st.line_chart(ts_custom[['date', 'cum_ls_net']].set_index('date'))
-            with col2:
-                st.markdown('**回撤曲线**')
-                st.area_chart(ts_custom[['date', 'drawdown']].set_index('date'))
-
-st.sidebar.info('Trial version — extend with parameter controls and interactive filtering in subsequent iterations.')
 
 # 稳健性验证面板（输出位于“稳健性”Tab）
 with tab_robust:
@@ -1574,15 +1585,17 @@ with tab_stock:
         stock_universe = load_stock_universe()
 
         # 第一行：预测文件选择 + 归档开关 + 仅可用
-        c_pred, c_arch, c_only = st.columns([0.62, 0.18, 0.20])
+        c_pred, c_arch, c_only = st.columns([0.65, 0.15, 0.20])
         include_arch_state = st.session_state.get('cfg_include_arch_preds', False)
         with c_pred:
             pred_files_ss = list_predictions(include_archive=include_arch_state)
             pred_map_ss = {p.name: p for p in pred_files_ss}
             pred_choice_ss = st.selectbox('预测文件', list(pred_map_ss.keys()) if pred_map_ss else ['(无)'], help='用于计算每日排序与入选情况')
         with c_arch:
+            st.markdown('<div style="height: 38px;"></div>', unsafe_allow_html=True)
             include_arch = st.checkbox('归档', value=include_arch_state, key='cfg_include_arch_preds', help='包含 data/archive 下的旧预测文件')
         with c_only:
+            st.markdown('<div style="height: 38px;"></div>', unsafe_allow_html=True)
             # 根据预测文件可选股票进行过滤（默认只显示有数据的）
             only_avail = st.checkbox('仅可用', value=True, key='cfg_stock_only_avail', help='仅显示当前预测文件中存在数据的股票')
 
