@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>技术架构文档 &mdash; Volatility-Regime-Momentum  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="研究方法与实验设计文档" href="RESEARCH.html" />
+    <link rel="prev" title="🎯 高级使用技巧" href="USER_GUIDE.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Volatility-Regime-Momentum
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="USER_GUIDE.html">🎯 高级使用技巧</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">技术架构文档</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1. 系统架构概览</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.1 核心组件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.2 数据流架构</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">2. 核心模块详解</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">2.1 数据管理系统</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">文件组织结构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">数据安全策略</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">2.2 缓存与状态管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#streamlit">Streamlit缓存策略</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">状态持久化</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ui">2.3 UI状态与交互设计</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">标签页架构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">响应式设计</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">3. 算法与计算引擎</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">3.1 因子计算框架</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">动量因子计算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">波动率制度分类</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">3.2 策略回测引擎</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fama-macbeth">Fama-MacBeth两步法回归</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">性能指标计算</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">3.3 风险管理模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id20">换手率控制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">风险分解</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">4. 性能优化</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id23">4.1 计算性能优化</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id24">数据读取优化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">内存管理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">4.2 用户体验优化</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id27">加载性能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">交互响应</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id29">5. 监控与日志</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id30">5.1 日志系统架构</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id31">双重日志记录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">日志级别管理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">5.2 性能监控</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id34">关键指标监控</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id35">6. 部署与运维</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id36">6.1 容器化部署</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker">Docker配置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ci-cd">6.2 CI/CD流水线</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id37">自动化流程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id38">7. 扩展性设计</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id39">7.1 模块化架构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">7.2 数据源扩展</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id41">8. 安全考虑</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id42">8.1 数据安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">8.2 系统安全</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="RESEARCH.html">研究方法与实验设计文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FILE_FORMATS.html">📋 文件格式规范</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Volatility-Regime-Momentum</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">技术架构文档</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/TECHNICAL.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>技术架构文档<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2>1. 系统架构概览<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>1.1 核心组件<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>A股量化策略研究平台
+├── 数据层 (Data Layer)
+│   ├── 原始数据文件 (data/*.csv, *.json)
+│   ├── 归档系统 (data/archive/)
+│   └── 缓存机制 (@st.cache_data)
+├── 业务逻辑层 (Business Logic)
+│   ├── 因子计算引擎 (Factor Engine)
+│   ├── 策略回测引擎 (Backtesting Engine)
+│   ├── 风险管理模块 (Risk Management)
+│   └── 性能分析模块 (Performance Analytics)
+├── 表示层 (Presentation Layer)
+│   ├── Streamlit Web界面 (app/streamlit_app.py)
+│   ├── 交互式图表 (Plotly可视化)
+│   └── 响应式UI组件
+└── 基础设施层 (Infrastructure)
+    ├── 日志系统 (双重日志记录)
+    ├── 测试框架 (E2E Testing)
+    ├── CI/CD流水线 (GitHub Actions)
+    └── 容器化部署 (Docker)
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>1.2 数据流架构<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph TD
+    A[原始市场数据] --&gt; B[数据预处理]
+    B --&gt; C[因子计算]
+    C --&gt; D[信号生成]
+    D --&gt; E[组合构建]
+    E --&gt; F[回测执行]
+    F --&gt; G[风险分析]
+    G --&gt; H[性能评估]
+    H --&gt; I[结果可视化]
+
+    J[用户界面] --&gt; K[参数配置]
+    K --&gt; L[策略执行]
+    L --&gt; M[实时监控]
+    M --&gt; N[结果展示]
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>2. 核心模块详解<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id6">
+<h3>2.1 数据管理系统<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id7">
+<h4>文件组织结构<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>原始数据</strong>: <code class="docutils literal notranslate"><span class="pre">data/</span></code> 目录下的CSV和JSON文件</p></li>
+<li><p><strong>归档数据</strong>: <code class="docutils literal notranslate"><span class="pre">data/archive/</span></code> 按类型分类存储</p></li>
+<li><p><strong>缓存机制</strong>: Streamlit缓存装饰器优化读取性能</p></li>
+</ul>
+</section>
+<section id="id8">
+<h4>数据安全策略<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_glob_exclude_archive</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">exclude_dirs</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;安全的文件搜索，排除归档目录&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">exclude_dirs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">exclude_dirs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;archive&#39;</span><span class="p">]</span>
+    <span class="n">all_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">))</span>
+    <span class="n">filtered_files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">part</span> <span class="ow">in</span> <span class="n">exclude_dirs</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">file_path</span><span class="o">.</span><span class="n">parts</span><span class="p">):</span>
+            <span class="n">filtered_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered_files</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id9">
+<h3>2.2 缓存与状态管理<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="streamlit">
+<h4>Streamlit缓存策略<a class="headerlink" href="#streamlit" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;st.cache_data</span></code>: 数据文件读取缓存</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ttl</span></code>: 时间生存期控制</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show_spinner</span></code>: 用户体验优化</p></li>
+</ul>
+</section>
+<section id="id10">
+<h4>状态持久化<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>会话状态管理 (<code class="docutils literal notranslate"><span class="pre">st.session_state</span></code>)</p></li>
+<li><p>参数配置持久化</p></li>
+<li><p>计算结果缓存</p></li>
+</ul>
+</section>
+</section>
+<section id="ui">
+<h3>2.3 UI状态与交互设计<a class="headerlink" href="#ui" title="Link to this heading"></a></h3>
+<section id="id11">
+<h4>标签页架构<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>总览 (Overview)</strong>: 策略性能总览和关键指标</p></li>
+<li><p><strong>网格分析 (Grid Analysis)</strong>: 参数优化和敏感性分析</p></li>
+<li><p><strong>个股查询 (Stock Query)</strong>: 单一标的深度分析</p></li>
+<li><p><strong>执行画像 (Execution Profile)</strong>: 策略执行统计和画像分析</p></li>
+</ol>
+</section>
+<section id="id12">
+<h4>响应式设计<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>简洁模式与高级模式切换</p></li>
+<li><p>可折叠参数配置区域</p></li>
+<li><p>动态图表更新机制</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id13">
+<h2>3. 算法与计算引擎<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<section id="id14">
+<h3>3.1 因子计算框架<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<section id="id15">
+<h4>动量因子计算<a class="headerlink" href="#id15" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 价格动量</span>
+<span class="n">momentum_1m</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_price</span> <span class="o">/</span> <span class="n">price_1m_ago</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">momentum_3m</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_price</span> <span class="o">/</span> <span class="n">price_3m_ago</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="c1"># 波动率制度识别</span>
+<span class="n">volatility_regime</span> <span class="o">=</span> <span class="n">calculate_volatility_regime</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">252</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h4>波动率制度分类<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>低波动率制度</strong>: VIX &lt; 20或历史波动率 &lt; 15%</p></li>
+<li><p><strong>高波动率制度</strong>: VIX &gt; 30或历史波动率 &gt; 25%</p></li>
+<li><p><strong>中等波动率制度</strong>: 介于两者之间</p></li>
+</ul>
+</section>
+</section>
+<section id="id17">
+<h3>3.2 策略回测引擎<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<section id="fama-macbeth">
+<h4>Fama-MacBeth两步法回归<a class="headerlink" href="#fama-macbeth" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>第一步</strong>: 时间序列回归，估计个股因子暴露</p></li>
+<li><p><strong>第二步</strong>: 截面回归，计算因子风险溢价</p></li>
+</ol>
+</section>
+<section id="id18">
+<h4>性能指标计算<a class="headerlink" href="#id18" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Information Coefficient (IC)</strong>: 信息系数</p></li>
+<li><p><strong>Information Ratio (IR)</strong>: 信息比率</p></li>
+<li><p><strong>最大回撤</strong>: 策略风险控制指标</p></li>
+<li><p><strong>夏普比率</strong>: 风险调整后收益</p></li>
+</ul>
+</section>
+</section>
+<section id="id19">
+<h3>3.3 风险管理模块<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<section id="id20">
+<h4>换手率控制<a class="headerlink" href="#id20" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>目标换手率: 23-70%区间</p></li>
+<li><p>交易成本模型: 线性成本函数</p></li>
+<li><p>容量约束: 大资金适用性分析</p></li>
+</ul>
+</section>
+<section id="id21">
+<h4>风险分解<a class="headerlink" href="#id21" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>行业风险暴露</p></li>
+<li><p>风格因子风险</p></li>
+<li><p>特异性风险控制</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id22">
+<h2>4. 性能优化<a class="headerlink" href="#id22" title="Link to this heading"></a></h2>
+<section id="id23">
+<h3>4.1 计算性能优化<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<section id="id24">
+<h4>数据读取优化<a class="headerlink" href="#id24" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>缓存机制减少I/O操作</p></li>
+<li><p>增量计算避免重复运算</p></li>
+<li><p>并行处理提升计算效率</p></li>
+</ul>
+</section>
+<section id="id25">
+<h4>内存管理<a class="headerlink" href="#id25" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>大文件分块处理</p></li>
+<li><p>及时释放无用对象</p></li>
+<li><p>Pandas内存优化技巧</p></li>
+</ul>
+</section>
+</section>
+<section id="id26">
+<h3>4.2 用户体验优化<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<section id="id27">
+<h4>加载性能<a class="headerlink" href="#id27" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>进度条显示计算进度</p></li>
+<li><p>异步加载长时间任务</p></li>
+<li><p>缓存热点数据</p></li>
+</ul>
+</section>
+<section id="id28">
+<h4>交互响应<a class="headerlink" href="#id28" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>防抖动处理用户输入</p></li>
+<li><p>智能默认参数设置</p></li>
+<li><p>错误处理与用户提示</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id29">
+<h2>5. 监控与日志<a class="headerlink" href="#id29" title="Link to this heading"></a></h2>
+<section id="id30">
+<h3>5.1 日志系统架构<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<section id="id31">
+<h4>双重日志记录<a class="headerlink" href="#id31" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文件日志</span>
+<span class="n">file_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s1">&#39;logs/app.log&#39;</span><span class="p">)</span>
+<span class="c1"># 控制台日志</span>
+<span class="n">console_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+
+<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">console_handler</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id32">
+<h4>日志级别管理<a class="headerlink" href="#id32" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>INFO</strong>: 正常业务流程记录</p></li>
+<li><p><strong>WARNING</strong>: 潜在问题提醒</p></li>
+<li><p><strong>ERROR</strong>: 错误异常记录</p></li>
+<li><p><strong>DEBUG</strong>: 开发调试信息</p></li>
+</ul>
+</section>
+</section>
+<section id="id33">
+<h3>5.2 性能监控<a class="headerlink" href="#id33" title="Link to this heading"></a></h3>
+<section id="id34">
+<h4>关键指标监控<a class="headerlink" href="#id34" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>页面加载时间</p></li>
+<li><p>计算执行时间</p></li>
+<li><p>内存使用情况</p></li>
+<li><p>缓存命中率</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id35">
+<h2>6. 部署与运维<a class="headerlink" href="#id35" title="Link to this heading"></a></h2>
+<section id="id36">
+<h3>6.1 容器化部署<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
+<section id="docker">
+<h4>Docker配置<a class="headerlink" href="#docker" title="Link to this heading"></a></h4>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8501</span>
+<span class="k">HEALTHCHECK</span><span class="w"> </span>--interval<span class="o">=</span>30s<span class="w"> </span>--timeout<span class="o">=</span>30s<span class="w"> </span>--start-period<span class="o">=</span>5s<span class="w"> </span>--retries<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>CMD<span class="w"> </span>curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8501/_stcore/health
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;streamlit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;app/streamlit_app.py&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ci-cd">
+<h3>6.2 CI/CD流水线<a class="headerlink" href="#ci-cd" title="Link to this heading"></a></h3>
+<section id="id37">
+<h4>自动化流程<a class="headerlink" href="#id37" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>代码质量检查 (Black, isort, flake8)</p></li>
+<li><p>类型检查 (mypy)</p></li>
+<li><p>单元测试执行 (pytest)</p></li>
+<li><p>安全扫描 (bandit, safety)</p></li>
+<li><p>容器构建与测试</p></li>
+<li><p>文档自动生成</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="id38">
+<h2>7. 扩展性设计<a class="headerlink" href="#id38" title="Link to this heading"></a></h2>
+<section id="id39">
+<h3>7.1 模块化架构<a class="headerlink" href="#id39" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>松耦合组件设计</p></li>
+<li><p>插件化因子框架</p></li>
+<li><p>策略模板系统</p></li>
+</ul>
+</section>
+<section id="id40">
+<h3>7.2 数据源扩展<a class="headerlink" href="#id40" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>多数据源适配器</p></li>
+<li><p>实时数据接入接口</p></li>
+<li><p>外部API集成框架</p></li>
+</ul>
+</section>
+</section>
+<section id="id41">
+<h2>8. 安全考虑<a class="headerlink" href="#id41" title="Link to this heading"></a></h2>
+<section id="id42">
+<h3>8.1 数据安全<a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>敏感数据脱敏处理</p></li>
+<li><p>访问权限控制</p></li>
+<li><p>数据备份与恢复</p></li>
+</ul>
+</section>
+<section id="id43">
+<h3>8.2 系统安全<a class="headerlink" href="#id43" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>容器安全扫描</p></li>
+<li><p>依赖漏洞检测</p></li>
+<li><p>运行时安全监控</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>最后更新</strong>: 2025-09-25
+<strong>文档版本</strong>: v1.0
+<strong>维护者</strong>: Quant Research Team</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="USER_GUIDE.html" class="btn btn-neutral float-left" title="🎯 高级使用技巧" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="RESEARCH.html" class="btn btn-neutral float-right" title="研究方法与实验设计文档" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, 1EchA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

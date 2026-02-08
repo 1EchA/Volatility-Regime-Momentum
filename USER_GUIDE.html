@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎯 高级使用技巧 &mdash; Volatility-Regime-Momentum  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="技术架构文档" href="TECHNICAL.html" />
+    <link rel="prev" title="Volatility-Regime-Momentum" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Volatility-Regime-Momentum
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">🎯 高级使用技巧</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">🔬 高级研究工作流</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1. 多维参数优化策略</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">参数空间设计</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">热力图深度解读</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">2. 制度条件分析技巧</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">制度切换点识别</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">制度特定因子选择</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">3. 换手率优化高级技巧</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">动态滞后带策略</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ema">EMA平滑参数选择</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">💡 专业分析场景</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">场景1: 因子有效性衰减检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">场景2: 行业中性化策略</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">场景3: 交易成本敏感性分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">场景4: 稳健性压力测试</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">🛠️ 命令行高级操作</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">批处理流水线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-api">Python API 高级用法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">📊 可视化高级技巧</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plotly">自定义Plotly图表</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">🔍 调试与诊断</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id20">数据质量检查</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">性能瓶颈定位</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">📚 最佳实践建议</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id23">研究工作流建议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">性能优化建议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">风险管理建议</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id26">⚡ 快捷技巧集锦</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id27">🆘 高级故障排除</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id28">内存溢出</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">计算速度慢</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">数据不一致</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id31">📞 获取高级支持</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TECHNICAL.html">技术架构文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RESEARCH.html">研究方法与实验设计文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FILE_FORMATS.html">📋 文件格式规范</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Volatility-Regime-Momentum</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🎯 高级使用技巧</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/USER_GUIDE.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>🎯 高级使用技巧<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>为资深用户和研究者提供的深度功能指南</p>
+</div></blockquote>
+<p>本文档面向熟悉平台基础操作的用户，提供高级功能、优化技巧和专业使用场景的详细说明。基础操作请参考主 <span class="xref myst">README.md</span>。</p>
+<section id="id2">
+<h2>🔬 高级研究工作流<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>1. 多维参数优化策略<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="id4">
+<h4>参数空间设计<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 推荐的参数组合策略</span>
+<span class="n">优化层次</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">粗网格扫描</span> <span class="p">(</span><span class="n">步长大</span><span class="err">，</span><span class="n">快速定位区域</span><span class="p">)</span>
+   <span class="o">-</span> <span class="n">Top_N</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+   <span class="o">-</span> <span class="n">Bottom_N</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+   <span class="o">-</span> <span class="n">Cost</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0003</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">]</span>
+
+<span class="mf">2.</span> <span class="n">精细网格搜索</span> <span class="p">(</span><span class="n">在最优区域附近密集搜索</span><span class="p">)</span>
+   <span class="o">-</span> <span class="n">Top_N</span><span class="p">:</span> <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">36</span><span class="p">]</span>
+   <span class="o">-</span> <span class="n">Bottom_N</span><span class="p">:</span> <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">36</span><span class="p">]</span>
+   <span class="o">-</span> <span class="n">Cost</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0004</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.0006</span><span class="p">]</span>
+
+<span class="mf">3.</span> <span class="n">鲁棒性验证</span> <span class="p">(</span><span class="n">不同时间窗口和市场条件</span><span class="p">)</span>
+   <span class="o">-</span> <span class="n">滚动窗口</span><span class="p">:</span> <span class="mi">252</span><span class="o">/</span><span class="mi">504</span><span class="o">/</span><span class="mi">756</span> <span class="n">天</span>
+   <span class="o">-</span> <span class="n">分制度测试</span><span class="p">:</span> <span class="n">正常</span><span class="o">/</span><span class="n">高波动</span><span class="o">/</span><span class="n">极高波动</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h4>热力图深度解读<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>对角线模式</strong>: TopN=BottomN时的对称策略表现</p></li>
+<li><p><strong>边界效应</strong>: 参数极值处的性能衰减</p></li>
+<li><p><strong>最优带</strong>: 通常在30-40之间形成高性能带状区域</p></li>
+<li><p><strong>交互效应</strong>: 观察TopN和BottomN的协同作用</p></li>
+</ul>
+</section>
+</section>
+<section id="id6">
+<h3>2. 制度条件分析技巧<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id7">
+<h4>制度切换点识别<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 命令行分析制度转换特征</span>
+python<span class="w"> </span>regime_difference_analyzer.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--regime-file<span class="w"> </span>data/volatility_regime_data_latest.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--transition-analysis<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>transition_report.json
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h4>制度特定因子选择<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<p>不同制度下的最优因子组合通常不同：</p>
+<ul class="simple">
+<li><p><strong>正常制度</strong>: 中长期动量(10d/20d) + 低波动率</p></li>
+<li><p><strong>高波动制度</strong>: 短期动量(1d/5d) + 高换手率</p></li>
+<li><p><strong>极高波动制度</strong>: 反转因子 + 极端波动率</p></li>
+</ul>
+</section>
+</section>
+<section id="id9">
+<h3>3. 换手率优化高级技巧<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id10">
+<h4>动态滞后带策略<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 根据市场状态动态调整滞后带</span>
+<span class="n">制度依赖滞后带</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">正常制度</span><span class="p">:</span> <span class="n">Δ</span> <span class="o">=</span> <span class="mi">5</span> <span class="p">(</span><span class="n">低频调仓</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">高波动</span><span class="p">:</span> <span class="n">Δ</span> <span class="o">=</span> <span class="mi">10</span> <span class="p">(</span><span class="n">中频调仓</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">极高波动</span><span class="p">:</span> <span class="n">Δ</span> <span class="o">=</span> <span class="mi">15</span> <span class="p">(</span><span class="n">高频捕捉机会</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ema">
+<h4>EMA平滑参数选择<a class="headerlink" href="#ema" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 不同持仓周期的EMA参数</span>
+python<span class="w"> </span>analysis/turnover_strategy_grid.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ema-span<span class="w"> </span><span class="m">3</span>,5,7,10,15<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--holding-period<span class="w"> </span><span class="m">5</span>,10,20<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>turnover_optimization.csv
+</pre></div>
+</div>
+<p><strong>选择原则</strong>:</p>
+<ul class="simple">
+<li><p>持仓周期越长，EMA跨度越大</p></li>
+<li><p>市场波动越大，需要更强的平滑</p></li>
+<li><p>信噪比低时，增加EMA跨度</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id11">
+<h2>💡 专业分析场景<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<section id="id12">
+<h3>场景1: 因子有效性衰减检测<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 时序IC分析</span>
+python<span class="w"> </span>single_factor_ic_analyzer.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--factor<span class="w"> </span>momentum_5d<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--rolling-window<span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--plot-decay<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>factor_decay_analysis.png
+</pre></div>
+</div>
+<p><strong>关键指标</strong>:</p>
+<ul class="simple">
+<li><p>IC时序稳定性 (std &lt; 0.02 理想)</p></li>
+<li><p>IC衰减速率 (每年衰减 &lt; 20%)</p></li>
+<li><p>制度依赖IC差异 (极高/正常 &gt; 2倍为显著)</p></li>
+</ul>
+</section>
+<section id="id13">
+<h3>场景2: 行业中性化策略<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 行业中性化验证</span>
+python<span class="w"> </span>analysis/industry_neutral_validator.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--predictions<span class="w"> </span>data/predictions_latest.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--industry-file<span class="w"> </span>data/industry_mapping.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--neutral-method<span class="w"> </span>demean<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>neutral_validation.json
+</pre></div>
+</div>
+<p><strong>中性化效果评估</strong>:</p>
+<ul class="simple">
+<li><p>行业暴露 &lt; 0.1 (良好中性化)</p></li>
+<li><p>残差IC提升 &gt; 5% (中性化增强信号)</p></li>
+<li><p>换手率增加 &lt; 20% (可接受成本)</p></li>
+</ul>
+</section>
+<section id="id14">
+<h3>场景3: 交易成本敏感性分析<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 成本冲击3D分析</span>
+python<span class="w"> </span>analysis/cost_sensitivity_grid.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cost-range<span class="w"> </span><span class="m">0</span>.0001,0.0020,0.0001<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--turnover-range<span class="w"> </span><span class="m">0</span>.2,1.0,0.1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--visualize-3d<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>cost_3d_surface.html
+</pre></div>
+</div>
+<p><strong>临界成本识别</strong>:</p>
+<ul class="simple">
+<li><p>盈亏平衡点: 策略收益 = 交易成本</p></li>
+<li><p>最优频率: 收益/成本比最大化</p></li>
+<li><p>容量约束: 换手率 × 日均成交量 &lt; 5%</p></li>
+</ul>
+</section>
+<section id="id15">
+<h3>场景4: 稳健性压力测试<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 多维稳健性测试</span>
+python<span class="w"> </span>analysis/robustness_validator.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--test-scenarios<span class="w"> </span>bootstrap,jackknife,regime_split<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--n-bootstrap<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--confidence-level<span class="w"> </span><span class="m">0</span>.95<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>robustness_report.csv
+</pre></div>
+</div>
+<p><strong>稳健性标准</strong>:</p>
+<ul class="simple">
+<li><p>Bootstrap 95%置信区间不包含0</p></li>
+<li><p>Jackknife删除单个制度后IR &gt; 0.3</p></li>
+<li><p>子样本分割后IC相关性 &gt; 0.7</p></li>
+</ul>
+</section>
+</section>
+<section id="id16">
+<h2>🛠️ 命令行高级操作<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<section id="id17">
+<h3>批处理流水线<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 完整研究流水线脚本</span>
+<span class="c1">#!/bin/bash</span>
+
+<span class="c1"># 1. 重算因子和制度</span>
+python<span class="w"> </span>run_full_pipeline.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--recompute-factors<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--recompute-regime<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--start-oos<span class="w"> </span><span class="m">2022</span>-01-01
+
+<span class="c1"># 2. 参数网格搜索</span>
+python<span class="w"> </span>model_grid_search.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--top_n<span class="w"> </span><span class="m">25</span>,30,35,40,45<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cost_bps<span class="w"> </span><span class="m">0</span>.0003,0.0005,0.0008
+
+<span class="c1"># 3. 增强模型对比</span>
+python<span class="w"> </span>analysis/model_enhancement_runner.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--models<span class="w"> </span>baseline,elasticnet,gboost,xgboost
+
+<span class="c1"># 4. 生成综合报告</span>
+python<span class="w"> </span>analysis/report_packager.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--predictions<span class="w"> </span>data/predictions_*.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--execution-metrics<span class="w"> </span>data/pipeline_execution_*_metrics.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--visuals<span class="w"> </span>data/*.png
+</pre></div>
+</div>
+</section>
+<section id="python-api">
+<h3>Python API 高级用法<a class="headerlink" href="#python-api" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">simple_factor_calculator</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleFactorCalculator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">volatility_regime_analyzer</span><span class="w"> </span><span class="kn">import</span> <span class="n">VolatilityRegimeAnalyzer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">predictive_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">PredictiveModel</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 自定义因子计算流程</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomFactorPipeline</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calculator</span> <span class="o">=</span> <span class="n">SimpleFactorCalculator</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regime_analyzer</span> <span class="o">=</span> <span class="n">VolatilityRegimeAnalyzer</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_custom_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">factor_func</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;添加自定义因子&quot;&quot;&quot;</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;custom_factor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">factor_func</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">regime_conditional_zscore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;制度条件下的Z-score标准化&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">regime</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;regime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;regime&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">regime</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="s1">&#39;factor_zscore&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="s1">&#39;factor&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="s1">&#39;factor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="s1">&#39;factor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">df</span>
+
+<span class="c1"># 高级预测工作流</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">advanced_prediction_workflow</span><span class="p">(</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2022-01-01&#39;</span><span class="p">,</span>
+    <span class="n">regime_dependent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">neutralize_industry</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">):</span>
+    <span class="c1"># 加载数据</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="n">load_factor_data</span><span class="p">()</span>
+    <span class="n">regimes</span> <span class="o">=</span> <span class="n">identify_regimes</span><span class="p">()</span>
+
+    <span class="c1"># 制度条件建模</span>
+    <span class="k">if</span> <span class="n">regime_dependent</span><span class="p">:</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">regime</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;正常&#39;</span><span class="p">,</span> <span class="s1">&#39;高波动&#39;</span><span class="p">,</span> <span class="s1">&#39;极高波动&#39;</span><span class="p">]:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">train_regime_model</span><span class="p">(</span><span class="n">factors</span><span class="p">,</span> <span class="n">regime</span><span class="p">)</span>
+            <span class="n">predictions</span><span class="p">[</span><span class="n">regime</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+
+    <span class="c1"># 行业中性化</span>
+    <span class="k">if</span> <span class="n">neutralize_industry</span><span class="p">:</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="n">neutralize_by_industry</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">predictions</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id18">
+<h2>📊 可视化高级技巧<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<section id="plotly">
+<h3>自定义Plotly图表<a class="headerlink" href="#plotly" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">plotly.subplots</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_subplots</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_advanced_regime_plot</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建高级制度分析图表&quot;&quot;&quot;</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span>
+        <span class="n">rows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">subplot_titles</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;价格与制度&#39;</span><span class="p">,</span> <span class="s1">&#39;IC时序&#39;</span><span class="p">,</span> <span class="s1">&#39;换手率分布&#39;</span><span class="p">),</span>
+        <span class="n">vertical_spacing</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">row_heights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="c1"># 制度背景着色</span>
+    <span class="k">for</span> <span class="n">regime</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;正常&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;高波动&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;极高波动&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)]:</span>
+        <span class="n">regime_periods</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;regime&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">regime</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">period</span> <span class="ow">in</span> <span class="n">regime_periods</span><span class="p">:</span>
+            <span class="n">fig</span><span class="o">.</span><span class="n">add_vrect</span><span class="p">(</span>
+                <span class="n">x0</span><span class="o">=</span><span class="n">period</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">],</span> <span class="n">x1</span><span class="o">=</span><span class="n">period</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">],</span>
+                <span class="n">fillcolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                <span class="n">layer</span><span class="o">=</span><span class="s2">&quot;below&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span>
+            <span class="p">)</span>
+
+    <span class="c1"># 添加价格曲线</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+        <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;价格&#39;</span><span class="p">),</span>
+        <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
+
+    <span class="c1"># IC时序图</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+        <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;IC&#39;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;IC&#39;</span><span class="p">),</span>
+        <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
+
+    <span class="c1"># 换手率直方图</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+        <span class="n">go</span><span class="o">.</span><span class="n">Histogram</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;turnover&#39;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;换手率&#39;</span><span class="p">),</span>
+        <span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">showlegend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id19">
+<h2>🔍 调试与诊断<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
+<section id="id20">
+<h3>数据质量检查<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">diagnose_data_quality</span><span class="p">(</span><span class="n">predictions_file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;诊断预测文件数据质量&quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">predictions_file</span><span class="p">)</span>
+
+    <span class="n">issues</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># 检查缺失值</span>
+    <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">issues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;发现 </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> 个缺失值&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 检查异常值</span>
+    <span class="n">outliers</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">outliers</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">issues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;发现 </span><span class="si">{</span><span class="n">outliers</span><span class="si">}</span><span class="s2"> 个预测异常值 (|z| &gt; 5)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 检查日期连续性</span>
+    <span class="n">date_gaps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">days</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">date_gaps</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">issues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;发现 </span><span class="si">{</span><span class="p">(</span><span class="n">date_gaps</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> 个日期断档&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 检查股票覆盖度</span>
+    <span class="n">stocks_per_day</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)[</span><span class="s1">&#39;stock_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">stocks_per_day</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">/</span> <span class="n">stocks_per_day</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.2</span><span class="p">:</span>
+        <span class="n">issues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;每日股票数量波动较大&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">issues</span> <span class="k">if</span> <span class="n">issues</span> <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;数据质量良好&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h3>性能瓶颈定位<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用Python性能分析</span>
+python<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"> </span>-o<span class="w"> </span>profile.stats<span class="w"> </span>run_full_pipeline.py
+
+<span class="c1"># 分析结果</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import pstats</span>
+<span class="s2">p = pstats.Stats(&#39;profile.stats&#39;)</span>
+<span class="s2">p.sort_stats(&#39;cumulative&#39;).print_stats(20)</span>
+<span class="s2">&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id22">
+<h2>📚 最佳实践建议<a class="headerlink" href="#id22" title="Link to this heading"></a></h2>
+<section id="id23">
+<h3>研究工作流建议<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>迭代式开发</strong></p>
+<ul class="simple">
+<li><p>从简单基线模型开始</p></li>
+<li><p>逐步添加复杂特征</p></li>
+<li><p>每次迭代记录结果</p></li>
+</ul>
+</li>
+<li><p><strong>版本控制</strong></p>
+<ul class="simple">
+<li><p>使用Git管理代码和配置</p></li>
+<li><p>数据文件用时间戳命名</p></li>
+<li><p>重要结果保存到<code class="docutils literal notranslate"><span class="pre">data/archive/</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>结果可重现性</strong></p>
+<ul class="simple">
+<li><p>记录随机种子</p></li>
+<li><p>保存完整参数配置</p></li>
+<li><p>使用配置快照功能</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id24">
+<h3>性能优化建议<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>数据缓存</strong>: 合理使用<code class="docutils literal notranslate"><span class="pre">&#64;st.cache_data</span></code></p></li>
+<li><p><strong>并行计算</strong>: 因子计算使用多进程</p></li>
+<li><p><strong>内存管理</strong>: 及时释放大DataFrame</p></li>
+<li><p><strong>增量更新</strong>: 避免重复计算历史数据</p></li>
+</ul>
+</section>
+<section id="id25">
+<h3>风险管理建议<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>过拟合防范</strong>: 严格样本外验证</p></li>
+<li><p><strong>制度切换</strong>: 监控制度转换点的策略表现</p></li>
+<li><p><strong>极端情况</strong>: 压力测试极端市场条件</p></li>
+<li><p><strong>实盘差异</strong>: 考虑滑点、冲击成本等实际因素</p></li>
+</ul>
+</section>
+</section>
+<section id="id26">
+<h2>⚡ 快捷技巧集锦<a class="headerlink" href="#id26" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>任务</p></th>
+<th class="head"><p>快捷方法</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>快速测试新参数</p></td>
+<td><p>在”总览”直接调整侧边栏</p></td>
+<td><p>即时反馈</p></td>
+</tr>
+<tr class="row-odd"><td><p>批量参数搜索</p></td>
+<td><p>使用命令行grid_search</p></td>
+<td><p>后台运行</p></td>
+</tr>
+<tr class="row-even"><td><p>导出分析结果</p></td>
+<td><p>点击”报告打包”按钮</p></td>
+<td><p>一键打包</p></td>
+</tr>
+<tr class="row-odd"><td><p>复现历史结果</p></td>
+<td><p>加载配置快照</p></td>
+<td><p>参数完全一致</p></td>
+</tr>
+<tr class="row-even"><td><p>对比不同策略</p></td>
+<td><p>同时打开多个浏览器标签</p></td>
+<td><p>并排对比</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id27">
+<h2>🆘 高级故障排除<a class="headerlink" href="#id27" title="Link to this heading"></a></h2>
+<section id="id28">
+<h3>内存溢出<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 减少批次大小</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">BATCH_SIZE</span><span class="o">=</span><span class="m">10000</span>
+python<span class="w"> </span>run_full_pipeline.py
+</pre></div>
+</div>
+</section>
+<section id="id29">
+<h3>计算速度慢<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 启用多进程</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">multiprocessing</span>
+<span class="n">multiprocessing</span><span class="o">.</span><span class="n">set_start_method</span><span class="p">(</span><span class="s1">&#39;fork&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id30">
+<h3>数据不一致<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 清理所有缓存重新计算</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>data/cache/
+streamlit<span class="w"> </span>cache<span class="w"> </span>clear
+python<span class="w"> </span>run_full_pipeline.py<span class="w"> </span>--recompute-all
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id31">
+<h2>📞 获取高级支持<a class="headerlink" href="#id31" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>GitHub Discussions</strong>: 技术问题讨论</p></li>
+<li><p><strong>Issues</strong>: Bug报告和功能请求</p></li>
+<li><p><strong>Email</strong>: pingtianhechuan&#64;gmail.com</p></li>
+<li><p><strong>研究合作</strong>: 欢迎学术合作和联合研究</p></li>
+</ul>
+<hr class="docutils" />
+<p>💡 <strong>提示</strong>: 高级功能需要对量化研究有一定理解。建议先熟悉基础功能，再逐步探索高级特性。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Volatility-Regime-Momentum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="TECHNICAL.html" class="btn btn-neutral float-right" title="技术架构文档" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, 1EchA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

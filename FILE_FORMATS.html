@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📋 文件格式规范 &mdash; Volatility-Regime-Momentum  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="研究方法与实验设计文档" href="RESEARCH.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Volatility-Regime-Momentum
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="USER_GUIDE.html">🎯 高级使用技巧</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TECHNICAL.html">技术架构文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RESEARCH.html">研究方法与实验设计文档</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">📋 文件格式规范</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">📊 数据文件类型总览</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#individual-stock-csv">1️⃣ <strong>股票价格数据</strong> (Individual Stock CSV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#predictions-csv">2️⃣ <strong>预测结果文件</strong> (Predictions CSV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#volatility-regime-csv">3️⃣ <strong>波动率制度数据</strong> (Volatility Regime CSV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strategy-performance-csv">4️⃣ <strong>策略执行结果</strong> (Strategy Performance CSV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameter-grid-csv">5️⃣ <strong>参数网格结果</strong> (Parameter Grid CSV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#factor-data-csv">6️⃣ <strong>因子数据</strong> (Factor Data CSV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stock-universe-csv">7️⃣ <strong>股票池信息</strong> (Stock Universe CSV)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">📈 1. 股票价格数据格式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-columns">🔧 必需列 (Required Columns)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">⚠️ 注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">🎯 2. 预测结果文件格式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">🔧 必需列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">📊 性能优化</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">📊 3. 波动率制度数据格式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">🔧 必需列</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">⚙️ 4. 策略执行结果格式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">🔧 核心列</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">🔍 5. 参数网格结果格式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">🔧 核心列</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">📊 6. 因子数据格式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">🔧 基础列</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">📋 7. 股票池信息格式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">🔧 必需列</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">🔧 文件处理最佳实践</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id19">📁 文件组织</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">🔄 数据更新流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">⚡ 性能优化建议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">❗ 常见错误避免</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">🛠️ 验证工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id24">📊 自动验证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">🔍 手动验证</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Volatility-Regime-Momentum</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">📋 文件格式规范</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/FILE_FORMATS.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>📋 文件格式规范<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>A股量化策略研究平台数据文件格式标准</p>
+</div></blockquote>
+<section id="id2">
+<h2>📊 数据文件类型总览<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>本平台处理以下几类数据文件，每种都有严格的格式要求：</p>
+<section id="individual-stock-csv">
+<h3>1️⃣ <strong>股票价格数据</strong> (Individual Stock CSV)<a class="headerlink" href="#individual-stock-csv" title="Link to this heading"></a></h3>
+</section>
+<section id="predictions-csv">
+<h3>2️⃣ <strong>预测结果文件</strong> (Predictions CSV)<a class="headerlink" href="#predictions-csv" title="Link to this heading"></a></h3>
+</section>
+<section id="volatility-regime-csv">
+<h3>3️⃣ <strong>波动率制度数据</strong> (Volatility Regime CSV)<a class="headerlink" href="#volatility-regime-csv" title="Link to this heading"></a></h3>
+</section>
+<section id="strategy-performance-csv">
+<h3>4️⃣ <strong>策略执行结果</strong> (Strategy Performance CSV)<a class="headerlink" href="#strategy-performance-csv" title="Link to this heading"></a></h3>
+</section>
+<section id="parameter-grid-csv">
+<h3>5️⃣ <strong>参数网格结果</strong> (Parameter Grid CSV)<a class="headerlink" href="#parameter-grid-csv" title="Link to this heading"></a></h3>
+</section>
+<section id="factor-data-csv">
+<h3>6️⃣ <strong>因子数据</strong> (Factor Data CSV)<a class="headerlink" href="#factor-data-csv" title="Link to this heading"></a></h3>
+</section>
+<section id="stock-universe-csv">
+<h3>7️⃣ <strong>股票池信息</strong> (Stock Universe CSV)<a class="headerlink" href="#stock-universe-csv" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="id3">
+<h2>📈 1. 股票价格数据格式<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p><strong>文件命名</strong>: <code class="docutils literal notranslate"><span class="pre">{6位股票代码}.csv</span></code> (如: <code class="docutils literal notranslate"><span class="pre">000001.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">600519.csv</span></code>)
+<strong>存放目录</strong>: <code class="docutils literal notranslate"><span class="pre">data/</span></code>
+<strong>编码格式</strong>: UTF-8</p>
+<section id="required-columns">
+<h3>🔧 必需列 (Required Columns)<a class="headerlink" href="#required-columns" title="Link to this heading"></a></h3>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>date,open,high,low,close,volume,amount,股票代码,股票名称
+2020-01-02,11.85,11.94,11.83,11.92,486384,579736640.0,000001,平安银行
+2020-01-03,11.90,12.05,11.88,12.02,712484,854442752.0,000001,平安银行
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列名</p></th>
+<th class="head"><p>数据类型</p></th>
+<th class="head"><p>说明</p></th>
+<th class="head"><p>示例</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td><p>String/Date</p></td>
+<td><p>交易日期 (YYYY-MM-DD)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2020-01-02</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">open</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>开盘价</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">11.85</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>最高价</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">11.94</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">low</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>最低价</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">11.83</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">close</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>收盘价</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">11.92</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">volume</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>成交量(股)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">486384</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">amount</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>成交额(元)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">579736640.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">股票代码</span></code></p></td>
+<td><p>String</p></td>
+<td><p>6位股票代码</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">000001</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">股票名称</span></code></p></td>
+<td><p>String</p></td>
+<td><p>股票中文名称</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">平安银行</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3>⚠️ 注意事项<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>日期必须连续，缺失交易日会影响计算</p></li>
+<li><p>价格数据建议使用前复权价格</p></li>
+<li><p>成交量/成交额用于计算流动性指标</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>🎯 2. 预测结果文件格式<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p><strong>文件命名</strong>: <code class="docutils literal notranslate"><span class="pre">predictions_{YYYYMMDD}_{HHMMSS}.csv</span></code>
+<strong>存放目录</strong>: <code class="docutils literal notranslate"><span class="pre">data/</span></code>
+<strong>文件大小</strong>: 通常50-100MB+</p>
+<section id="id6">
+<h3>🔧 必需列<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>date,stock_code,y_pred,y_true,regime,industry
+2020-01-02,000001,0.0234,-0.0156,正常,银行
+2020-01-02,000002,0.0145,0.0089,正常,房地产
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列名</p></th>
+<th class="head"><p>数据类型</p></th>
+<th class="head"><p>说明</p></th>
+<th class="head"><p>示例</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td><p>String/Date</p></td>
+<td><p>预测日期</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2020-01-02</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stock_code</span></code></p></td>
+<td><p>String</p></td>
+<td><p>6位股票代码(补齐前导0)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">000001</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y_pred</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>预测收益率</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0234</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">y_true</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>实际收益率</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-0.0156</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">regime</span></code></p></td>
+<td><p>String</p></td>
+<td><p>波动率制度</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">正常</span></code>/<code class="docutils literal notranslate"><span class="pre">高波动</span></code>/<code class="docutils literal notranslate"><span class="pre">极高波动</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">industry</span></code></p></td>
+<td><p>String</p></td>
+<td><p>行业分类(可选)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">银行</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id7">
+<h3>📊 性能优化<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>文件按日期排序提高读取效率</p></li>
+<li><p>支持分块读取(chunksize=300000)</p></li>
+<li><p>股票代码统一6位格式(前导零补齐)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>📊 3. 波动率制度数据格式<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p><strong>文件命名</strong>: <code class="docutils literal notranslate"><span class="pre">volatility_regime_data_{YYYYMMDD}_{HHMMSS}.csv</span></code>
+<strong>存放目录</strong>: <code class="docutils literal notranslate"><span class="pre">data/</span></code></p>
+<section id="id9">
+<h3>🔧 必需列<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>date,stock_code,returns,volatility,regime,regime_prob
+2020-01-02,000001,-0.0156,0.0234,正常,0.85
+2020-01-02,000002,0.0089,0.0145,高波动,0.72
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列名</p></th>
+<th class="head"><p>数据类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td><p>Date</p></td>
+<td><p>日期</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stock_code</span></code></p></td>
+<td><p>String</p></td>
+<td><p>股票代码</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">returns</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>日收益率</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">volatility</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>波动率估计值</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">regime</span></code></p></td>
+<td><p>String</p></td>
+<td><p>制度分类</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">regime_prob</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>制度概率(0-1)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2>⚙️ 4. 策略执行结果格式<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<p><strong>文件命名</strong>: <code class="docutils literal notranslate"><span class="pre">performance_report_{YYYYMMDD}_{HHMMSS}_timeseries.csv</span></code></p>
+<section id="id11">
+<h3>🔧 核心列<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>date,long_ret,short_ret,ls_ret,cumulative_ret,drawdown,turnover
+2020-01-02,0.0123,-0.0089,0.0212,0.0212,0.0,0.23
+2020-01-03,0.0156,-0.0034,0.0190,0.0406,-0.01,0.18
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列名</p></th>
+<th class="head"><p>数据类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td><p>Date</p></td>
+<td><p>日期</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">long_ret</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>多头收益率</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">short_ret</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>空头收益率</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ls_ret</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>多空收益率</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cumulative_ret</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>累积收益率</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">drawdown</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>回撤</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">turnover</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>换手率</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2>🔍 5. 参数网格结果格式<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<p><strong>文件命名</strong>: <code class="docutils literal notranslate"><span class="pre">turnover_strategy_grid_{YYYYMMDD}_{HHMMSS}.csv</span></code></p>
+<section id="id13">
+<h3>🔧 核心列<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>strategy,param,param_name,ema_span,delta,top_n,bottom_n,cost_bps,n_days,ic_mean,ic_ir,ls_mean,ls_ann,ls_ir,max_drawdown,avg_turnover
+E_combo,3_12,ema_span_delta,3,12,35,35,0.0003,515,0.0115,0.0577,0.0001,0.0158,0.0887,-0.1922,0.2438
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列名</p></th>
+<th class="head"><p>数据类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">strategy</span></code></p></td>
+<td><p>String</p></td>
+<td><p>策略名称</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">top_n</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>做多股票数量</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bottom_n</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>做空股票数量</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost_bps</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>交易成本(基点)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ic_mean</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>平均IC</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ic_ir</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>信息比率</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ls_ir</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>多空信息比率</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_drawdown</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>最大回撤</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">avg_turnover</span></code></p></td>
+<td><p>Float</p></td>
+<td><p>平均换手率</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h2>📊 6. 因子数据格式<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<p><strong>文件命名</strong>: <code class="docutils literal notranslate"><span class="pre">factors_data_redesigned.csv</span></code></p>
+<section id="id15">
+<h3>🔧 基础列<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>date,stock_code,ret_1d,ret_5d,volatility_20d,momentum_12d,rsi_14d
+2020-01-02,000001,-0.0156,0.0234,0.0189,0.0456,0.45
+</pre></div>
+</div>
+<p><strong>因子分类</strong>:</p>
+<ul class="simple">
+<li><p><strong>收益率类</strong>: <code class="docutils literal notranslate"><span class="pre">ret_1d</span></code>, <code class="docutils literal notranslate"><span class="pre">ret_5d</span></code>, <code class="docutils literal notranslate"><span class="pre">ret_20d</span></code></p></li>
+<li><p><strong>动量类</strong>: <code class="docutils literal notranslate"><span class="pre">momentum_12d</span></code>, <code class="docutils literal notranslate"><span class="pre">momentum_60d</span></code></p></li>
+<li><p><strong>技术指标</strong>: <code class="docutils literal notranslate"><span class="pre">rsi_14d</span></code>, <code class="docutils literal notranslate"><span class="pre">macd_signal</span></code></p></li>
+<li><p><strong>波动率类</strong>: <code class="docutils literal notranslate"><span class="pre">volatility_20d</span></code>, <code class="docutils literal notranslate"><span class="pre">volatility_60d</span></code></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h2>📋 7. 股票池信息格式<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<p><strong>文件名</strong>: <code class="docutils literal notranslate"><span class="pre">stock_universe.csv</span></code>
+<strong>位置</strong>: 项目根目录</p>
+<section id="id17">
+<h3>🔧 必需列<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>code,name,市值排名,总市值_亿元,流通市值_亿元,市盈率-动态,市净率,行业,样本标识,更新时间
+601138,工业富联,1,12157.97,12157.18,50.18,8.02,未分类,扩展500只,2025-09-12 10:45:33
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>列名</p></th>
+<th class="head"><p>数据类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">code</span></code></p></td>
+<td><p>String</p></td>
+<td><p>6位股票代码</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>String</p></td>
+<td><p>股票名称</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">市值排名</span></code></p></td>
+<td><p>Integer</p></td>
+<td><p>市值排名</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">行业</span></code></p></td>
+<td><p>String</p></td>
+<td><p>行业分类</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h2>🔧 文件处理最佳实践<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<section id="id19">
+<h3>📁 文件组织<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data/
+├── 000001.csv              # 股票价格
+├── 000002.csv
+├── ...
+├── predictions_latest.csv   # 最新预测结果
+├── volatility_regime_data_latest.csv
+└── archive/                # 历史文件归档
+    ├── old_predictions/
+    └── old_results/
+</pre></div>
+</div>
+</section>
+<section id="id20">
+<h3>🔄 数据更新流程<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>增量更新</strong>: 新数据追加到现有文件</p></li>
+<li><p><strong>全量替换</strong>: 重新生成完整数据文件</p></li>
+<li><p><strong>文件归档</strong>: 定期将旧文件移至archive目录</p></li>
+<li><p><strong>缓存清理</strong>: 数据更新后清除相关缓存</p></li>
+</ol>
+</section>
+<section id="id21">
+<h3>⚡ 性能优化建议<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>分块读取</strong>: 大文件使用pandas chunksize参数</p></li>
+<li><p><strong>数据类型优化</strong>: 合理设置dtype减少内存占用</p></li>
+<li><p><strong>索引优化</strong>: 对频繁查询的列建立索引</p></li>
+<li><p><strong>压缩存储</strong>: 考虑使用parquet格式替代CSV</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>❗ 常见错误避免<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>编码问题</strong>: 统一使用UTF-8编码</p></li>
+<li><p><strong>日期格式</strong>: 统一使用YYYY-MM-DD格式</p></li>
+<li><p><strong>缺失值</strong>: 明确缺失值的表示方式(NaN/NULL)</p></li>
+<li><p><strong>数据类型</strong>: 确保数值列不包含字符串</p></li>
+<li><p><strong>文件大小</strong>: 监控文件大小，及时分割或压缩</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id23">
+<h2>🛠️ 验证工具<a class="headerlink" href="#id23" title="Link to this heading"></a></h2>
+<p>平台提供以下验证功能确保数据质量:</p>
+<section id="id24">
+<h3>📊 自动验证<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>文件格式检查</p></li>
+<li><p>必需列验证</p></li>
+<li><p>数据类型校验</p></li>
+<li><p>缺失值检测</p></li>
+</ul>
+</section>
+<section id="id25">
+<h3>🔍 手动验证<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>数据统计摘要</p></li>
+<li><p>异常值识别</p></li>
+<li><p>时间序列连续性检查</p></li>
+<li><p>跨文件一致性验证</p></li>
+</ul>
+<p>使用这些标准格式可以确保平台的正常运行和最佳性能表现。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="RESEARCH.html" class="btn btn-neutral float-left" title="研究方法与实验设计文档" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, 1EchA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
