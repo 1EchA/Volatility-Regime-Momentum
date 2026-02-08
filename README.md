@@ -10,7 +10,8 @@
 
 **VRM (Volatility-Regime-Momentum)** 是一个专业的量化金融研究平台，致力于探索中国 A 股市场在不同**波动率制度**（正常/高波动/极高波动）下的动量效应差异。
 
-![image-20260208140043219](/Users/xujia/Library/Application Support/typora-user-images/image-20260208140043219.png)
+<img width="1920" height="899" alt="image" src="https://github.com/user-attachments/assets/b09f5a45-b29e-4bbf-9e5e-a10b3150f8c1" />
+
 
 平台通过 GARCH 模型动态识别市场状态，并在不同制度下自适应地选择有效因子，构建具备**制度适应性**的量化投资策略。配合全新的 **Streamlit 交互式仪表盘**，用户可以从数据清洗、因子计算、模型训练到策略回测，实现全流程的可视化研究与实盘模拟。
 
@@ -97,7 +98,8 @@ Volatility-Regime-Momentum/
   - 🟡 **高波动制度**: 75 分位 ≤ 波动率 < 90 分位
   - 🔴 **极高波动制度**: 波动率 ≥ 90 分位
 
-![image-20260208141413432](/Users/xujia/Library/Application Support/typora-user-images/image-20260208141413432.png)
+<img width="1432" height="369" alt="image" src="https://github.com/user-attachments/assets/cf01eab4-106d-4350-ad4f-cd991acd8570" />
+
 
 ### 2. 制度条件预测
 - **条件 Fama-MacBeth 回归**: 在不同波动率制度下，分别训练因子权重。
@@ -111,13 +113,15 @@ Volatility-Regime-Momentum/
   - **EMA 平滑**: 对预测信号进行指数平滑，减少噪音交易。
   - **换手率约束**: 强制限制每日最大换手比例。
 
-![image-20260208140355965](/Users/xujia/Library/Application Support/typora-user-images/image-20260208140355965.png)
+<img width="1920" height="949" alt="image" src="https://github.com/user-attachments/assets/169b7a17-2488-4660-9e88-4272430a49cd" />
+
 
 ### 4. 全能可视化平台
 - **策略总览**: 净值曲线与回撤曲线联动展示，制度收益贡献一目了然。
 - **个股显微镜**: 悬浮查看每日预测分、行业内排名百分位及当时的市场制度。
 
-![image-20260208140430462](/Users/xujia/Library/Application Support/typora-user-images/image-20260208140430462.png)
+<img width="1398" height="701" alt="image" src="https://github.com/user-attachments/assets/8632d38f-323b-4a18-83b1-55b6243f477e" />
+
 
 - **参数敏感性**: 热力图展示不同回测窗口和成本设定下的 IR 稳定性。
 
