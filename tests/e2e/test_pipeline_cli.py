@@ -51,32 +51,31 @@ class TestPipelineExecution:
         assert 'run_full_pipeline' in result.stdout or 'usage' in result.stdout.lower(), \
             "Expected help output not found"
 
-        # Verify key output files are generated
-        expected_files = [
-            'predictions_*.csv',
-            'pipeline_execution_*_metrics.json',
-            'pipeline_execution_*_timeseries.csv'
-        ]
-
-        for pattern in expected_files:
-            files = list(DATA_DIR.glob(pattern))
-            assert len(files) > 0, f"Expected output file matching {pattern} not found"
+    def test_pipeline_output_files(self):
+        """Test pipeline output file structure (requires local data)."""
+        # Skip if no prediction files exist (CI environment)
+        pred_files = list(DATA_DIR.glob('predictions_*.csv'))
+        if not pred_files:
+            pytest.skip("No predictions file found - run pipeline first")
 
         # Verify predictions file structure
-        latest_pred = max(DATA_DIR.glob('predictions_*.csv'), key=lambda x: x.stat().st_mtime)
-        df = pd.read_csv(latest_pred, nrows=1000)  # Read sample
+        latest_pred = max(pred_files, key=lambda x: x.stat().st_mtime)
+        df = pd.read_csv(latest_pred, nrows=1000)
 
         required_columns = ['date', 'stock_code', 'y_pred', 'y_true']
         for col in required_columns:
             assert col in df.columns, f"Required column {col} missing from predictions"
 
         # Verify metrics file content
-        latest_metrics = max(DATA_DIR.glob('pipeline_execution_*_metrics.json'), key=lambda x: x.stat().st_mtime)
+        metrics_files = list(DATA_DIR.glob('pipeline_execution_*_metrics.json'))
+        if not metrics_files:
+            pytest.skip("No metrics file found - run pipeline first")
+
+        latest_metrics = max(metrics_files, key=lambda x: x.stat().st_mtime)
         with open(latest_metrics) as f:
             metrics = json.load(f)
 
         expected_metrics = ['ic_mean', 'ic_ir']
-        # Metrics may be nested under 'metrics' key
         metrics_data = metrics.get('metrics', metrics)
         for metric in expected_metrics:
             assert metric in metrics_data, f"Expected metric {metric} not found in results"
@@ -131,18 +130,19 @@ class TestTurnoverGridExecution:
         assert 'regime_model_grid_search' in result.stdout or 'usage' in result.stdout.lower(), \
             "Expected help output not found"
 
-        # If successful, verify output
-        if result.returncode == 0:
-            grid_files = list(DATA_DIR.glob('turnover_strategy_grid_*.csv'))
-            assert len(grid_files) > 0, "Expected turnover grid output file not found"
+    def test_turnover_grid_output(self):
+        """Test turnover grid output file structure (requires local data)."""
+        grid_files = list(DATA_DIR.glob('turnover_strategy_grid_*.csv'))
+        if not grid_files:
+            pytest.skip("No grid output file found - run grid search first")
 
-            # Verify grid file structure
-            latest_grid = max(grid_files, key=lambda x: x.stat().st_mtime)
-            df = pd.read_csv(latest_grid)
+        # Verify grid file structure
+        latest_grid = max(grid_files, key=lambda x: x.stat().st_mtime)
+        df = pd.read_csv(latest_grid)
 
-            required_grid_columns = ['strategy', 'top_n', 'cost_bps', 'ls_ir']
-            for col in required_grid_columns:
-                assert col in df.columns, f"Grid file missing required column: {col}"
+        required_grid_columns = ['strategy', 'top_n', 'cost_bps', 'ls_ir']
+        for col in required_grid_columns:
+            assert col in df.columns, f"Grid file missing required column: {col}"
 
 
 class TestDataIntegrity:
