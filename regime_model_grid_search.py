@@ -11,16 +11,17 @@
 - data/regime_model_grid_results_YYYYMMDD_HHMMSS.csv
 """
 
-import pandas as pd
-import numpy as np
-from pathlib import Path
-from datetime import datetime
 import json
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
 
 from predictive_model import (
+    evaluate_predictions,
     load_data,
     walk_forward_predict_regime_specific,
-    evaluate_predictions,
 )
 
 

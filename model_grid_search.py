@@ -13,18 +13,19 @@
 - 控制台打印Top结果
 """
 
-import pandas as pd
-import numpy as np
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+from scipy import stats
 
 from predictive_model import (
-    load_data,
     detect_factor_columns,
-    walk_forward_predict,
     evaluate_predictions,
+    load_data,
+    walk_forward_predict,
 )
-from scipy import stats
 
 
 def align_factor_signs(

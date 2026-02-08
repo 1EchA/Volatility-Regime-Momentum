@@ -11,8 +11,8 @@ returns.
 
 from __future__ import annotations
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -30,9 +30,9 @@ import pandas as pd
 from predictive_model import (
     detect_factor_columns,
     evaluate_predictions,
+    find_latest_regime_file,
     walk_forward_predict,
     walk_forward_predict_regime_specific,
-    find_latest_regime_file,
 )
 from regime_model_grid_search import find_latest_mapping
 

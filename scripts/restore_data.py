@@ -13,8 +13,8 @@ from __future__ import annotations
 
 import argparse
 import subprocess
-from pathlib import Path
 import sys
+from pathlib import Path
 from typing import List
 
 import pandas as pd

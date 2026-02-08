@@ -13,14 +13,14 @@ Can be launched with: `streamlit run app/streamlit_app.py`
 
 from __future__ import annotations
 
+import io
 import json
 import logging
-from pathlib import Path
+import subprocess
 import sys
+from pathlib import Path
 
 import pandas as pd
-import subprocess
-import io
 
 # 配置日志系统
 # 确保logs目录存在
@@ -50,25 +50,24 @@ try:
     HAS_PLOTLY_EVENTS = True
 except Exception:
     HAS_PLOTLY_EVENTS = False
-import streamlit as st
 import numpy as np
+import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from analysis.execution_strategies import (
+    baseline_daily,
+    compute_ic_series_with_score,
+    ema_hysteresis_combo,
+    ema_smoothed,
+    hysteresis_bands,
+)
 from analysis.performance_reporter import (
     compute_ic_series,
     compute_portfolio_timeseries,
     compute_summary_metrics,
-)
-
-from analysis.execution_strategies import (
-    baseline_daily,
-    hysteresis_bands,
-    ema_smoothed,
-    ema_hysteresis_combo,
-    compute_ic_series_with_score,
 )
 from predictive_model import find_latest_regime_file
 
@@ -1395,7 +1394,8 @@ with st.sidebar.form("snapshot_form"):
     snap_name = st.text_input("快照名称(保存/覆盖)", "", key="cfg_snapshot_name")
     save_snap = st.form_submit_button("💾 保存当前配置为快照")
 if save_snap:
-    import json, time
+    import json
+    import time
 
     cfg = _current_config()
     name = st.session_state.get("cfg_snapshot_name") or time.strftime("%Y%m%d_%H%M%S")

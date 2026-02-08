@@ -6,10 +6,11 @@
 更新 CSV 中的 industry 列，并输出 data/industry_mapping.csv 备后续使用。
 """
 
-import akshare as ak
-import pandas as pd
 import time
 from pathlib import Path
+
+import akshare as ak
+import pandas as pd
 
 
 def load_bulk_classification() -> dict:

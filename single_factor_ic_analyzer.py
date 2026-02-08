@@ -4,12 +4,13 @@
 计算每个因子的信息系数(Information Coefficient)并进行统计显著性检验
 """
 
-import pandas as pd
-import numpy as np
-from scipy import stats
 import json
-from datetime import datetime
 import warnings
+from datetime import datetime
+
+import numpy as np
+import pandas as pd
+from scipy import stats
 
 warnings.filterwarnings("ignore")
 

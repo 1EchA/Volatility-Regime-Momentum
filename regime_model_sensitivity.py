@@ -11,15 +11,16 @@
 - data/regime_model_sensitivity_YYYYMMDD_HHMMSS.csv
 """
 
-import pandas as pd
-from pathlib import Path
-from datetime import datetime
 import json
+from datetime import datetime
+from pathlib import Path
+
+import pandas as pd
 
 from predictive_model import (
+    evaluate_predictions,
     load_data,
     walk_forward_predict_regime_specific,
-    evaluate_predictions,
 )
 
 

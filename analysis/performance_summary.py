@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """汇总预测结果的性能指标"""
 
-import pandas as pd
-import numpy as np
 from pathlib import Path
+
+import numpy as np
+import pandas as pd
 
 
 def evaluate(path: Path, top_n: int, bottom_n: int, label: str) -> dict:

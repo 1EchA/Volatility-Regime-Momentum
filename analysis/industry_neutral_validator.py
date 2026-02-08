@@ -9,15 +9,15 @@ applying cross-sectional industry neutralization. Results are saved to the
 
 from __future__ import annotations
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import json
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from datetime import datetime
 
 import numpy as np
@@ -25,10 +25,10 @@ import pandas as pd
 
 from predictive_model import (
     detect_factor_columns,
-    walk_forward_predict,
-    walk_forward_predict_regime_specific,
     evaluate_predictions,
     find_latest_regime_file,
+    walk_forward_predict,
+    walk_forward_predict_regime_specific,
 )
 from regime_model_grid_search import find_latest_mapping
 

@@ -18,8 +18,8 @@ and data/industry_mapping.csv for downstream use.
 from __future__ import annotations
 
 import sys
-from pathlib import Path
 from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Dict, List, Tuple
 
 import pandas as pd

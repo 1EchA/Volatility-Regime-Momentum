@@ -14,10 +14,11 @@
 - 报告: data/predictive_model_report_YYYYMMDD_HHMMSS.txt
 """
 
-import pandas as pd
-import numpy as np
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
 
 try:
     from sklearn.linear_model import Ridge

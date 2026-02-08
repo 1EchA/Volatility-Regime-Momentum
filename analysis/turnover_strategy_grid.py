@@ -12,8 +12,8 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -28,16 +28,16 @@ from typing import Iterable
 import numpy as np
 import pandas as pd
 
-from analysis.performance_reporter import compute_summary_metrics
 from analysis.execution_strategies import (
     baseline_daily,
-    low_freq_rebalance,
-    hysteresis_bands,
-    ema_smoothed,
-    swap_cap_limited,
-    ema_hysteresis_combo,
     compute_ic_series_with_score,
+    ema_hysteresis_combo,
+    ema_smoothed,
+    hysteresis_bands,
+    low_freq_rebalance,
+    swap_cap_limited,
 )
+from analysis.performance_reporter import compute_summary_metrics
 
 
 def _parse_list(text: str, cast=float) -> list:

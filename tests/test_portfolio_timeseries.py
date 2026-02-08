@@ -1,5 +1,6 @@
-import pandas as pd
 from datetime import datetime, timedelta
+
+import pandas as pd
 
 from analysis.performance_reporter import (
     compute_portfolio_timeseries,

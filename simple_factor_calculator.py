@@ -14,10 +14,11 @@
 输出：data/simple_factor_data.csv（包含原始与横截面标准化后的 *_std 列）
 """
 
-import pandas as pd
-import numpy as np
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
 from scipy.stats import norm
 
 

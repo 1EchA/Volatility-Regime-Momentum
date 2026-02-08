@@ -9,15 +9,15 @@ key metrics for downstream documentation (execution plan item 1.4).
 
 from __future__ import annotations
 
-from pathlib import Path
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import json
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from datetime import datetime
 from typing import Callable, Dict, Iterable, List, Optional, Set
 
@@ -27,15 +27,15 @@ import pandas as pd
 from predictive_model import (
     detect_factor_columns,
     evaluate_predictions,
-    walk_forward_predict_regime_specific,
     find_latest_regime_file,
+    walk_forward_predict_regime_specific,
 )
 from regime_model_grid_search import find_latest_mapping
 
 try:
-    from sklearn.linear_model import Ridge, ElasticNet
-    from sklearn.preprocessing import StandardScaler
     from sklearn.ensemble import GradientBoostingRegressor
+    from sklearn.linear_model import ElasticNet, Ridge
+    from sklearn.preprocessing import StandardScaler
 except ImportError:  # pragma: no cover - fallback if sklearn missing
     Ridge = None
     ElasticNet = None

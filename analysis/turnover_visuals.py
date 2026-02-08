@@ -19,13 +19,13 @@ Notes:
 
 from __future__ import annotations
 
-from pathlib import Path
 import argparse
 from datetime import datetime
+from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
 
 sns.set_style("whitegrid")

@@ -4,14 +4,14 @@ End-to-end tests for the quantitative research pipeline.
 Tests the full pipeline execution from data processing to results generation.
 """
 
+import json
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
+
 import pandas as pd
 import pytest
-import json
-from datetime import datetime
-
 
 # Test configuration
 TEST_CONFIG = {

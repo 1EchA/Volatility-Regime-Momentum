@@ -4,14 +4,15 @@
 使用多种统计方法检验波动率制度间的动量效应差异
 """
 
-import pandas as pd
-import numpy as np
-from scipy import stats
-from scipy.stats import mannwhitneyu, levene, bartlett
-from statsmodels.stats.multitest import multipletests
 import json
-from datetime import datetime
 import warnings
+from datetime import datetime
+
+import numpy as np
+import pandas as pd
+from scipy import stats
+from scipy.stats import bartlett, levene, mannwhitneyu
+from statsmodels.stats.multitest import multipletests
 
 warnings.filterwarnings("ignore")
 
