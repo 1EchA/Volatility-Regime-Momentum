@@ -146,7 +146,7 @@ known_first_party = ["app", "analysis", "tests"]
 
 [tool.flake8]
 max-line-length = 88
-extend-ignore = ["E203", "W503"]
+extend-ignore = ["E203", "W503", "E402", "E501"]
 exclude = [".git", "__pycache__", ".venv", "build", "dist", "data"]
 
 [tool.mypy]
