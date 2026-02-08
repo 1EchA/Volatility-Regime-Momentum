@@ -864,7 +864,32 @@ with tab_overview:
                 "Heatmap images not found. Run the performance reporter to generate them."
             )
 
-        st.markdown("---")
+
+def _current_config() -> dict:
+    """获取当前侧边栏配置参数"""
+    return {
+        "standardisation": st.session_state.get("cfg_standardisation", "zscore"),
+        "start_oos": st.session_state.get("cfg_start_oos", "2022-01-01"),
+        "train_window": st.session_state.get("cfg_train_window", 756),
+        "alpha": st.session_state.get("cfg_alpha", 1.0),
+        "top_n": st.session_state.get("cfg_top_n", 30),
+        "bottom_n": st.session_state.get("cfg_bottom_n", 30),
+        "cost_bps_ui": st.session_state.get("cfg_cost_bps_ui", 5.0),
+        "neutral_shrink": st.session_state.get("cfg_neutral_shrink", 0.0),
+        "neutral_industries": st.session_state.get("cfg_neutral_industries", ""),
+        "exec_strategy": st.session_state.get("cfg_exec_strategy", "hysteresis"),
+        "delta": st.session_state.get("cfg_delta", 15),
+        "ema_span": st.session_state.get("cfg_ema_span", 4),
+        "k": st.session_state.get("cfg_k", 5),
+        "swap_cap": st.session_state.get("cfg_swap_cap", 0.2),
+        "run_cost_grid": st.session_state.get("cfg_run_cost_grid", False),
+        "run_turnover_grid": st.session_state.get("cfg_run_turnover_grid", False),
+        "recompute_factors": st.session_state.get("cfg_recompute_factors", False),
+        "recompute_regime": st.session_state.get("cfg_recompute_regime", False),
+    }
+
+
+with tab_pack:
         st.subheader("⚡ 快捷操作")
         c1, c2, c3 = st.columns(3)
         with c1:
@@ -1351,29 +1376,6 @@ if submit_run:
 # 快照目录与保存/加载逻辑
 SNAP_DIR = DATA_DIR / "config_snapshots"
 SNAP_DIR.mkdir(exist_ok=True)
-
-
-def _current_config() -> dict:
-    return {
-        "standardisation": st.session_state.get("cfg_standardisation", "zscore"),
-        "start_oos": st.session_state.get("cfg_start_oos", "2022-01-01"),
-        "train_window": st.session_state.get("cfg_train_window", 756),
-        "alpha": st.session_state.get("cfg_alpha", 1.0),
-        "top_n": st.session_state.get("cfg_top_n", 30),
-        "bottom_n": st.session_state.get("cfg_bottom_n", 30),
-        "cost_bps_ui": st.session_state.get("cfg_cost_bps_ui", 5.0),
-        "neutral_shrink": st.session_state.get("cfg_neutral_shrink", 0.0),
-        "neutral_industries": st.session_state.get("cfg_neutral_industries", ""),
-        "exec_strategy": st.session_state.get("cfg_exec_strategy", "hysteresis"),
-        "delta": st.session_state.get("cfg_delta", 15),
-        "ema_span": st.session_state.get("cfg_ema_span", 4),
-        "k": st.session_state.get("cfg_k", 5),
-        "swap_cap": st.session_state.get("cfg_swap_cap", 0.2),
-        "run_cost_grid": st.session_state.get("cfg_run_cost_grid", False),
-        "run_turnover_grid": st.session_state.get("cfg_run_turnover_grid", False),
-        "recompute_factors": st.session_state.get("cfg_recompute_factors", False),
-        "recompute_regime": st.session_state.get("cfg_recompute_regime", False),
-    }
 
 
 def _list_snapshots():
