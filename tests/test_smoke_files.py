@@ -19,7 +19,8 @@ def test_execution_exist_or_skip():
     ts = latest("data/pipeline_execution_*_timeseries.csv")
     met = latest("data/pipeline_execution_*_metrics.json")
     if not (ts and met):
-        pytest.skip("no pipeline_execution_* artifacts found (run pipeline with execution layer)")
+        pytest.skip(
+            "no pipeline_execution_* artifacts found (run pipeline with execution layer)"
+        )
     assert os.path.getsize(ts) > 0
     assert os.path.getsize(met) > 0
-

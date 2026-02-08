@@ -15,13 +15,13 @@ from datetime import datetime
 
 # Test configuration
 TEST_CONFIG = {
-    'small_universe_size': 10,  # Use small subset for faster testing
-    'test_days': 30,  # Test with recent 30 days
-    'timeout': 300,  # 5 minute timeout for pipeline tests
+    "small_universe_size": 10,  # Use small subset for faster testing
+    "test_days": 30,  # Test with recent 30 days
+    "timeout": 300,  # 5 minute timeout for pipeline tests
 }
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
-DATA_DIR = PROJECT_ROOT / 'data'
+DATA_DIR = PROJECT_ROOT / "data"
 
 
 class TestPipelineExecution:
@@ -33,8 +33,8 @@ class TestPipelineExecution:
         # Note: --k and --swap-cap are execution layer params, only valid with --execution-strategy
         cmd = [
             sys.executable,
-            str(PROJECT_ROOT / 'run_full_pipeline.py'),
-            '--help',  # Just verify CLI is accessible for quick test
+            str(PROJECT_ROOT / "run_full_pipeline.py"),
+            "--help",  # Just verify CLI is accessible for quick test
         ]
 
         # Execute pipeline help to verify CLI works
@@ -42,19 +42,20 @@ class TestPipelineExecution:
             cmd,
             capture_output=True,
             text=True,
-            timeout=TEST_CONFIG['timeout'],
-            cwd=PROJECT_ROOT
+            timeout=TEST_CONFIG["timeout"],
+            cwd=PROJECT_ROOT,
         )
 
         # Assert help command successful (returncode 0)
         assert result.returncode == 0, f"Pipeline CLI failed: {result.stderr}"
-        assert 'run_full_pipeline' in result.stdout or 'usage' in result.stdout.lower(), \
-            "Expected help output not found"
+        assert (
+            "run_full_pipeline" in result.stdout or "usage" in result.stdout.lower()
+        ), "Expected help output not found"
 
     def test_pipeline_output_files(self):
         """Test pipeline output file structure (requires local data)."""
         # Skip if no prediction files exist (CI environment)
-        pred_files = list(DATA_DIR.glob('predictions_*.csv'))
+        pred_files = list(DATA_DIR.glob("predictions_*.csv"))
         if not pred_files:
             pytest.skip("No predictions file found - run pipeline first")
 
@@ -62,12 +63,12 @@ class TestPipelineExecution:
         latest_pred = max(pred_files, key=lambda x: x.stat().st_mtime)
         df = pd.read_csv(latest_pred, nrows=1000)
 
-        required_columns = ['date', 'stock_code', 'y_pred', 'y_true']
+        required_columns = ["date", "stock_code", "y_pred", "y_true"]
         for col in required_columns:
             assert col in df.columns, f"Required column {col} missing from predictions"
 
         # Verify metrics file content
-        metrics_files = list(DATA_DIR.glob('pipeline_execution_*_metrics.json'))
+        metrics_files = list(DATA_DIR.glob("pipeline_execution_*_metrics.json"))
         if not metrics_files:
             pytest.skip("No metrics file found - run pipeline first")
 
@@ -75,29 +76,32 @@ class TestPipelineExecution:
         with open(latest_metrics) as f:
             metrics = json.load(f)
 
-        expected_metrics = ['ic_mean', 'ic_ir']
-        metrics_data = metrics.get('metrics', metrics)
+        expected_metrics = ["ic_mean", "ic_ir"]
+        metrics_data = metrics.get("metrics", metrics)
         for metric in expected_metrics:
-            assert metric in metrics_data, f"Expected metric {metric} not found in results"
+            assert (
+                metric in metrics_data
+            ), f"Expected metric {metric} not found in results"
 
     def test_pipeline_with_data_validation(self):
         """Test pipeline execution with data quality validation."""
         # Check if we have sufficient input data
-        stock_files = list(DATA_DIR.glob('0*.csv')) + list(DATA_DIR.glob('6*.csv'))
-        assert len(stock_files) >= TEST_CONFIG['small_universe_size'], \
-            f"Insufficient stock data files: {len(stock_files)} < {TEST_CONFIG['small_universe_size']}"
+        stock_files = list(DATA_DIR.glob("0*.csv")) + list(DATA_DIR.glob("6*.csv"))
+        assert (
+            len(stock_files) >= TEST_CONFIG["small_universe_size"]
+        ), f"Insufficient stock data files: {len(stock_files)} < {TEST_CONFIG['small_universe_size']}"
 
         # Validate stock data format
         sample_stock = stock_files[0]
         df = pd.read_csv(sample_stock, nrows=10)
 
-        required_price_columns = ['date', 'open', 'high', 'low', 'close', 'volume']
+        required_price_columns = ["date", "open", "high", "low", "close", "volume"]
         for col in required_price_columns:
             assert col in df.columns, f"Stock data missing required column: {col}"
 
         # Ensure dates are properly formatted
-        df['date'] = pd.to_datetime(df['date'])
-        assert not df['date'].isna().any(), "Invalid dates found in stock data"
+        df["date"] = pd.to_datetime(df["date"])
+        assert not df["date"].isna().any(), "Invalid dates found in stock data"
 
 
 class TestTurnoverGridExecution:
@@ -106,33 +110,35 @@ class TestTurnoverGridExecution:
     def test_turnover_grid_generation(self):
         """Test turnover strategy grid generation."""
         # First ensure we have predictions file
-        pred_files = list(DATA_DIR.glob('predictions_*.csv'))
+        pred_files = list(DATA_DIR.glob("predictions_*.csv"))
         if not pred_files:
             pytest.skip("No predictions file found, skipping grid test")
 
         # Test CLI help to verify script is accessible
         cmd = [
             sys.executable,
-            str(PROJECT_ROOT / 'regime_model_grid_search.py'),
-            '--help',
+            str(PROJECT_ROOT / "regime_model_grid_search.py"),
+            "--help",
         ]
 
         result = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
-            timeout=TEST_CONFIG['timeout'],
-            cwd=PROJECT_ROOT
+            timeout=TEST_CONFIG["timeout"],
+            cwd=PROJECT_ROOT,
         )
 
         # Should show help without error
         assert result.returncode == 0, f"Grid search CLI failed: {result.stderr}"
-        assert 'regime_model_grid_search' in result.stdout or 'usage' in result.stdout.lower(), \
-            "Expected help output not found"
+        assert (
+            "regime_model_grid_search" in result.stdout
+            or "usage" in result.stdout.lower()
+        ), "Expected help output not found"
 
     def test_turnover_grid_output(self):
         """Test turnover grid output file structure (requires local data)."""
-        grid_files = list(DATA_DIR.glob('turnover_strategy_grid_*.csv'))
+        grid_files = list(DATA_DIR.glob("turnover_strategy_grid_*.csv"))
         if not grid_files:
             pytest.skip("No grid output file found - run grid search first")
 
@@ -140,7 +146,7 @@ class TestTurnoverGridExecution:
         latest_grid = max(grid_files, key=lambda x: x.stat().st_mtime)
         df = pd.read_csv(latest_grid)
 
-        required_grid_columns = ['strategy', 'top_n', 'cost_bps', 'ls_ir']
+        required_grid_columns = ["strategy", "top_n", "cost_bps", "ls_ir"]
         for col in required_grid_columns:
             assert col in df.columns, f"Grid file missing required column: {col}"
 
@@ -150,19 +156,21 @@ class TestDataIntegrity:
 
     def test_stock_universe_consistency(self):
         """Test stock universe file consistency with actual data."""
-        universe_file = PROJECT_ROOT / 'stock_universe.csv'
+        universe_file = PROJECT_ROOT / "stock_universe.csv"
 
         if not universe_file.exists():
             pytest.skip("Stock universe file not found")
 
         # Load universe
         universe = pd.read_csv(universe_file)
-        assert 'code' in universe.columns, "Universe missing 'code' column"
-        assert 'name' in universe.columns, "Universe missing 'name' column"
+        assert "code" in universe.columns, "Universe missing 'code' column"
+        assert "name" in universe.columns, "Universe missing 'name' column"
 
         # Check if universe stocks have corresponding data files
-        universe_codes = set(universe['code'].astype(str).str.zfill(6))
-        data_files = set(f.stem for f in DATA_DIR.glob('0*.csv')) | set(f.stem for f in DATA_DIR.glob('6*.csv'))
+        universe_codes = set(universe["code"].astype(str).str.zfill(6))
+        data_files = set(f.stem for f in DATA_DIR.glob("0*.csv")) | set(
+            f.stem for f in DATA_DIR.glob("6*.csv")
+        )
 
         # At least some overlap should exist
         overlap = universe_codes & data_files
@@ -170,19 +178,22 @@ class TestDataIntegrity:
 
     def test_recent_data_availability(self):
         """Test that we have recent data for analysis."""
-        stock_files = list(DATA_DIR.glob('0*.csv'))[:5]  # Sample first 5 files
+        stock_files = list(DATA_DIR.glob("0*.csv"))[:5]  # Sample first 5 files
 
         if not stock_files:
             pytest.skip("No stock data files found")
 
-        recent_threshold = datetime.now().replace(year=datetime.now().year - 2)  # 2 years ago
+        recent_threshold = datetime.now().replace(
+            year=datetime.now().year - 2
+        )  # 2 years ago
 
         for stock_file in stock_files:
-            df = pd.read_csv(stock_file, parse_dates=['date'])
-            latest_date = df['date'].max()
+            df = pd.read_csv(stock_file, parse_dates=["date"])
+            latest_date = df["date"].max()
 
-            assert latest_date > pd.Timestamp(recent_threshold), \
-                f"Stock {stock_file.stem} data too old: {latest_date}"
+            assert latest_date > pd.Timestamp(
+                recent_threshold
+            ), f"Stock {stock_file.stem} data too old: {latest_date}"
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -190,13 +201,13 @@ def setup_test_environment():
     """Setup test environment before running tests."""
     # Ensure required directories exist
     DATA_DIR.mkdir(exist_ok=True)
-    (PROJECT_ROOT / 'logs').mkdir(exist_ok=True)
+    (PROJECT_ROOT / "logs").mkdir(exist_ok=True)
 
     # Clean up any existing test artifacts
     test_patterns = [
-        'test_predictions_*.csv',
-        'test_pipeline_*.json',
-        'test_turnover_*.csv'
+        "test_predictions_*.csv",
+        "test_pipeline_*.json",
+        "test_turnover_*.csv",
     ]
 
     for pattern in test_patterns:

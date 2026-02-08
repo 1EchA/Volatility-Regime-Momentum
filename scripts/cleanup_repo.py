@@ -12,7 +12,7 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / 'data'
+DATA = ROOT / "data"
 
 
 def safe_rmtree(p: Path):
@@ -22,17 +22,17 @@ def safe_rmtree(p: Path):
 
 def main():
     # 1) Remove local virtualenv
-    safe_rmtree(ROOT / '.venv')
-    safe_rmtree(ROOT / '.venv-3.12')
+    safe_rmtree(ROOT / ".venv")
+    safe_rmtree(ROOT / ".venv-3.12")
 
     # 2) Remove pycaches
-    for d in ROOT.rglob('__pycache__'):
+    for d in ROOT.rglob("__pycache__"):
         safe_rmtree(d)
 
     # 3) Prune data directory, keep placeholders
     if DATA.exists():
         for p in DATA.iterdir():
-            if p.name in {'README_DATA.md', 'predictions_20240101_000000.csv'}:
+            if p.name in {"README_DATA.md", "predictions_20240101_000000.csv"}:
                 continue
             if p.is_dir():
                 safe_rmtree(p)
@@ -43,19 +43,18 @@ def main():
                     pass
 
     # 4) Keep logs directory but empty
-    logs = ROOT / 'logs'
+    logs = ROOT / "logs"
     logs.mkdir(exist_ok=True)
-    for f in logs.glob('*'):
-        if f.name == '.gitkeep':
+    for f in logs.glob("*"):
+        if f.name == ".gitkeep":
             continue
         try:
             f.unlink()
         except Exception:
             pass
 
-    print('Cleanup complete. Repo is ready for publishing.')
+    print("Cleanup complete. Repo is ready for publishing.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-

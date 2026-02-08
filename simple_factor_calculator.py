@@ -22,8 +22,13 @@ from scipy.stats import norm
 
 
 class SimpleFactorCalculator:
-    def __init__(self, data_dir: str = 'data', universe_file: str | None = None,
-                 standardization: str = 'zscore', output_filename: str = 'simple_factor_data.csv'):
+    def __init__(
+        self,
+        data_dir: str = "data",
+        universe_file: str | None = None,
+        standardization: str = "zscore",
+        output_filename: str = "simple_factor_data.csv",
+    ):
         self.data_dir = Path(data_dir)
         self.universe_file = Path(universe_file) if universe_file else None
         self.standardization_method = standardization.lower()
@@ -33,14 +38,23 @@ class SimpleFactorCalculator:
 
     def _load_codes(self) -> list[str]:
         if self.universe_file and self.universe_file.exists():
-            df = pd.read_csv(self.universe_file, dtype={'code': str})
-            if 'code' in df.columns:
-                return df['code'].astype(str).str.zfill(6).unique().tolist()
+            df = pd.read_csv(self.universe_file, dtype={"code": str})
+            if "code" in df.columns:
+                return df["code"].astype(str).str.zfill(6).unique().tolist()
         # 否则从 data 目录下已有CSV推断
         codes = []
-        for p in self.data_dir.glob('*.csv'):
+        for p in self.data_dir.glob("*.csv"):
             # 排除非个股数据文件
-            if p.name.startswith(('baseline_', 'factors_', 'processed_', 'market_', 'regression_', 'volatility_')):
+            if p.name.startswith(
+                (
+                    "baseline_",
+                    "factors_",
+                    "processed_",
+                    "market_",
+                    "regression_",
+                    "volatility_",
+                )
+            ):
                 continue
             if p.stem.isdigit() and len(p.stem) in (6, 7):
                 codes.append(p.stem[:6])
@@ -58,35 +72,41 @@ class SimpleFactorCalculator:
         candidates = []
         if self.universe_file and self.universe_file.exists():
             candidates.append(self.universe_file)
-        mapping_file = self.data_dir / 'industry_mapping.csv'
+        mapping_file = self.data_dir / "industry_mapping.csv"
         if mapping_file.exists():
             candidates.append(mapping_file)
         for file in candidates:
             try:
-                df = pd.read_csv(file, dtype={'code': str})
+                df = pd.read_csv(file, dtype={"code": str})
                 cols = set(df.columns)
-                if 'code' not in cols:
+                if "code" not in cols:
                     continue
                 # 行业列兼容
-                ind_col = 'industry' if 'industry' in cols else ('行业' if '行业' in cols else None)
+                ind_col = (
+                    "industry"
+                    if "industry" in cols
+                    else ("行业" if "行业" in cols else None)
+                )
                 if ind_col is None:
-                    tmp = df[['code']].copy()
-                    tmp['industry'] = None
+                    tmp = df[["code"]].copy()
+                    tmp["industry"] = None
                 else:
-                    tmp = df[['code', ind_col]].rename(columns={ind_col: 'industry'})
+                    tmp = df[["code", ind_col]].rename(columns={ind_col: "industry"})
                 for _, row in tmp.iterrows():
-                    code = str(row['code']).zfill(6)
-                    ind = row.get('industry', None)
-                    if pd.isna(ind) or ind in [None, 'nan', 'None', '']:
+                    code = str(row["code"]).zfill(6)
+                    ind = row.get("industry", None)
+                    if pd.isna(ind) or ind in [None, "nan", "None", ""]:
                         # 留待后续名称推断
                         pass
                     else:
                         industry_map[code] = str(ind)
                 # 名称列（若存在）
-                name_col = 'name' if 'name' in cols else ('名称' if '名称' in cols else None)
+                name_col = (
+                    "name" if "name" in cols else ("名称" if "名称" in cols else None)
+                )
                 if name_col:
-                    for _, row in df[['code', name_col]].dropna().iterrows():
-                        name_map[str(row['code']).zfill(6)] = str(row[name_col])
+                    for _, row in df[["code", name_col]].dropna().iterrows():
+                        name_map[str(row["code"]).zfill(6)] = str(row[name_col])
             except Exception:
                 continue
         return industry_map, name_map
@@ -95,134 +115,195 @@ class SimpleFactorCalculator:
     def _infer_industry_from_name(name: str | None) -> str:
         """基于股票名称的简单行业推断（兜底用）。"""
         if not name:
-            return '未分类'
+            return "未分类"
         n = str(name)
         rules = [
-            ('银行', '银行'), ('证券', '证券'), ('保险', '保险'), ('信托', '非银金融'),
-            ('白酒', '食品饮料'), ('啤酒', '食品饮料'), ('饮料', '食品饮料'), ('乳业', '食品饮料'),
-            ('家电', '家用电器'), ('电器', '家用电器'),
-            ('半导体', '半导体'), ('芯片', '半导体'), ('集成电路', '半导体'), ('电子', '电子'),
-            ('汽车', '汽车'), ('整车', '汽车'), ('零部件', '汽车零部件'),
-            ('化工', '化工'), ('医药', '医药生物'), ('制药', '医药生物'), ('生物', '医药生物'),
-            ('计算机', '计算机'), ('软件', '计算机'), ('通信', '通信'), ('互联网', '计算机'),
-            ('煤', '煤炭'), ('钢铁', '钢铁'), ('有色', '有色金属'), ('黄金', '有色金属'),
-            ('电力', '公用事业'), ('公用', '公用事业'), ('水务', '公用事业'), ('燃气', '公用事业'),
-            ('建筑', '建筑装饰'), ('建材', '建筑材料'), ('地产', '房地产'), ('物业', '房地产'),
-            ('航运', '交通运输'), ('机场', '交通运输'), ('机场', '交通运输'), ('港口', '交通运输'),
-            ('军工', '国防军工'), ('航天', '国防军工'), ('航空', '国防军工'),
-            ('石油', '石油石化'), ('石化', '石油石化'), ('新能源', '电力设备'), ('光伏', '电力设备'), ('风电', '电力设备')
+            ("银行", "银行"),
+            ("证券", "证券"),
+            ("保险", "保险"),
+            ("信托", "非银金融"),
+            ("白酒", "食品饮料"),
+            ("啤酒", "食品饮料"),
+            ("饮料", "食品饮料"),
+            ("乳业", "食品饮料"),
+            ("家电", "家用电器"),
+            ("电器", "家用电器"),
+            ("半导体", "半导体"),
+            ("芯片", "半导体"),
+            ("集成电路", "半导体"),
+            ("电子", "电子"),
+            ("汽车", "汽车"),
+            ("整车", "汽车"),
+            ("零部件", "汽车零部件"),
+            ("化工", "化工"),
+            ("医药", "医药生物"),
+            ("制药", "医药生物"),
+            ("生物", "医药生物"),
+            ("计算机", "计算机"),
+            ("软件", "计算机"),
+            ("通信", "通信"),
+            ("互联网", "计算机"),
+            ("煤", "煤炭"),
+            ("钢铁", "钢铁"),
+            ("有色", "有色金属"),
+            ("黄金", "有色金属"),
+            ("电力", "公用事业"),
+            ("公用", "公用事业"),
+            ("水务", "公用事业"),
+            ("燃气", "公用事业"),
+            ("建筑", "建筑装饰"),
+            ("建材", "建筑材料"),
+            ("地产", "房地产"),
+            ("物业", "房地产"),
+            ("航运", "交通运输"),
+            ("机场", "交通运输"),
+            ("机场", "交通运输"),
+            ("港口", "交通运输"),
+            ("军工", "国防军工"),
+            ("航天", "国防军工"),
+            ("航空", "国防军工"),
+            ("石油", "石油石化"),
+            ("石化", "石油石化"),
+            ("新能源", "电力设备"),
+            ("光伏", "电力设备"),
+            ("风电", "电力设备"),
         ]
         for kw, ind in rules:
             if kw in n:
                 return ind
-        return '未分类'
+        return "未分类"
 
     @staticmethod
     def _compute_daily_return(df: pd.DataFrame) -> pd.DataFrame:
-        df['daily_return'] = df['close'].pct_change()
+        df["daily_return"] = df["close"].pct_change()
         return df
 
     @staticmethod
     def _compute_momentum(df: pd.DataFrame, period: int, colname: str) -> pd.DataFrame:
         # t-2 vs t-(period+1)
-        df[colname] = df['close'].shift(2) / df['close'].shift(period + 1) - 1
+        df[colname] = df["close"].shift(2) / df["close"].shift(period + 1) - 1
         return df
 
     @staticmethod
     def _compute_volatility_21d(df: pd.DataFrame) -> pd.DataFrame:
-        df['volatility_21d'] = df['daily_return'].rolling(window=21, min_periods=15).std() * np.sqrt(252)
+        df["volatility_21d"] = df["daily_return"].rolling(
+            window=21, min_periods=15
+        ).std() * np.sqrt(252)
         return df
 
     @staticmethod
     def _compute_vol_ratio(df: pd.DataFrame) -> pd.DataFrame:
         # 使用滞后收益构造滚动波动率，避免前瞻
-        ret_lag = df['daily_return'].shift(1)
+        ret_lag = df["daily_return"].shift(1)
         vol21 = ret_lag.rolling(21, min_periods=15).std()
         vol63 = ret_lag.rolling(63, min_periods=30).std()
-        df['vol_ratio_21_63'] = (vol21 / (vol63 + 1e-12)) - 1
+        df["vol_ratio_21_63"] = (vol21 / (vol63 + 1e-12)) - 1
         return df
 
     @staticmethod
     def _compute_atr14(df: pd.DataFrame) -> pd.DataFrame:
         # 需要 high/low/close
-        if all(c in df.columns for c in ['high', 'low', 'close']):
-            prev_close = df['close'].shift(1)
-            tr1 = (df['high'] - df['low']).abs()
-            tr2 = (df['high'] - prev_close).abs()
-            tr3 = (df['low'] - prev_close).abs()
+        if all(c in df.columns for c in ["high", "low", "close"]):
+            prev_close = df["close"].shift(1)
+            tr1 = (df["high"] - df["low"]).abs()
+            tr2 = (df["high"] - prev_close).abs()
+            tr3 = (df["low"] - prev_close).abs()
             tr = np.nanmax(np.vstack([tr1, tr2, tr3]), axis=0)
             atr = pd.Series(tr).rolling(14, min_periods=10).mean().values
-            df['atr14'] = atr / (df['close'].replace(0, np.nan))
+            df["atr14"] = atr / (df["close"].replace(0, np.nan))
         else:
-            df['atr14'] = np.nan
+            df["atr14"] = np.nan
         return df
 
     @staticmethod
     def _compute_gk_vol(df: pd.DataFrame) -> pd.DataFrame:
         # Garman-Klass 日波动估计 + 21日滚动均值（年化）
-        if all(c in df.columns for c in ['open', 'high', 'low', 'close']):
-            with np.errstate(divide='ignore', invalid='ignore'):
-                log_hl = np.log(df['high'] / df['low']).replace([np.inf, -np.inf], np.nan)
-                log_co = np.log(df['close'] / df['open']).replace([np.inf, -np.inf], np.nan)
-                gk_var = 0.5 * (log_hl ** 2) - (2 * np.log(2) - 1) * (log_co ** 2)
-            gk_vol = gk_var.rolling(21, min_periods=15).mean().clip(lower=0).pow(0.5) * np.sqrt(252)
-            df['gk_vol_21d'] = gk_vol
+        if all(c in df.columns for c in ["open", "high", "low", "close"]):
+            with np.errstate(divide="ignore", invalid="ignore"):
+                log_hl = np.log(df["high"] / df["low"]).replace(
+                    [np.inf, -np.inf], np.nan
+                )
+                log_co = np.log(df["close"] / df["open"]).replace(
+                    [np.inf, -np.inf], np.nan
+                )
+                gk_var = 0.5 * (log_hl**2) - (2 * np.log(2) - 1) * (log_co**2)
+            gk_vol = gk_var.rolling(21, min_periods=15).mean().clip(lower=0).pow(
+                0.5
+            ) * np.sqrt(252)
+            df["gk_vol_21d"] = gk_vol
         else:
-            df['gk_vol_21d'] = np.nan
+            df["gk_vol_21d"] = np.nan
         return df
 
     @staticmethod
     def _compute_amplitude(df: pd.DataFrame) -> pd.DataFrame:
-        if all(c in df.columns for c in ['high', 'low', 'close']):
-            df['amplitude_hl'] = (df['high'] - df['low']) / (df['close'].replace(0, np.nan))
+        if all(c in df.columns for c in ["high", "low", "close"]):
+            df["amplitude_hl"] = (df["high"] - df["low"]) / (
+                df["close"].replace(0, np.nan)
+            )
         else:
-            df['amplitude_hl'] = np.nan
+            df["amplitude_hl"] = np.nan
         return df
 
     @staticmethod
     def _compute_breakout(df: pd.DataFrame, window: int = 63) -> pd.DataFrame:
         # 使用滞后窗口的滚动高/低，避免前瞻
-        roll_max = df['close'].shift(1).rolling(window, min_periods=int(window*0.6)).max()
-        roll_min = df['close'].shift(1).rolling(window, min_periods=int(window*0.6)).min()
-        df[f'breakout_high_{window}'] = (df['close'] > roll_max).astype(float)
-        df[f'breakout_low_{window}'] = (df['close'] < roll_min).astype(float)
+        roll_max = (
+            df["close"].shift(1).rolling(window, min_periods=int(window * 0.6)).max()
+        )
+        roll_min = (
+            df["close"].shift(1).rolling(window, min_periods=int(window * 0.6)).min()
+        )
+        df[f"breakout_high_{window}"] = (df["close"] > roll_max).astype(float)
+        df[f"breakout_low_{window}"] = (df["close"] < roll_min).astype(float)
         return df
 
     @staticmethod
-    def _compute_distance_to_extrema(df: pd.DataFrame, window: int = 252) -> pd.DataFrame:
-        max_win = df['close'].shift(1).rolling(window, min_periods=int(window*0.6)).max()
-        min_win = df['close'].shift(1).rolling(window, min_periods=int(window*0.6)).min()
-        df[f'dist_to_high_{window}'] = df['close'] / (max_win + 1e-12) - 1
-        df[f'dist_to_low_{window}'] = df['close'] / (min_win + 1e-12) - 1
+    def _compute_distance_to_extrema(
+        df: pd.DataFrame, window: int = 252
+    ) -> pd.DataFrame:
+        max_win = (
+            df["close"].shift(1).rolling(window, min_periods=int(window * 0.6)).max()
+        )
+        min_win = (
+            df["close"].shift(1).rolling(window, min_periods=int(window * 0.6)).min()
+        )
+        df[f"dist_to_high_{window}"] = df["close"] / (max_win + 1e-12) - 1
+        df[f"dist_to_low_{window}"] = df["close"] / (min_win + 1e-12) - 1
         return df
 
     @staticmethod
     def _compute_volume_trend(df: pd.DataFrame) -> pd.DataFrame:
-        vol = df['volume'] if 'volume' in df.columns else pd.Series(np.nan, index=df.index)
+        vol = (
+            df["volume"]
+            if "volume" in df.columns
+            else pd.Series(np.nan, index=df.index)
+        )
         ma20 = vol.shift(1).rolling(20, min_periods=10).mean()
         ma60 = vol.shift(1).rolling(60, min_periods=30).mean()
-        df['volume_trend_20_60'] = (ma20 / (ma60 + 1e-12)) - 1
+        df["volume_trend_20_60"] = (ma20 / (ma60 + 1e-12)) - 1
         return df
 
     @staticmethod
     def _compute_obv(df: pd.DataFrame) -> pd.DataFrame:
-        if 'volume' in df.columns:
-            sign = np.sign(df['close'].diff()).fillna(0)
-            obv = (sign * df['volume']).fillna(0).cumsum()
-            df['obv'] = obv
+        if "volume" in df.columns:
+            sign = np.sign(df["close"].diff()).fillna(0)
+            obv = (sign * df["volume"]).fillna(0).cumsum()
+            df["obv"] = obv
         else:
-            df['obv'] = np.nan
+            df["obv"] = np.nan
         return df
 
     @staticmethod
     def _compute_zero_ret_ratio(df: pd.DataFrame) -> pd.DataFrame:
-        zr = (df['daily_return'].shift(1).fillna(0).abs() < 1e-10).astype(float)
-        df['zero_ret_ratio_21'] = zr.rolling(21, min_periods=10).mean()
+        zr = (df["daily_return"].shift(1).fillna(0).abs() < 1e-10).astype(float)
+        df["zero_ret_ratio_21"] = zr.rolling(21, min_periods=10).mean()
         return df
 
     @staticmethod
     def _compute_roll_spread(df: pd.DataFrame) -> pd.DataFrame:
-        r = df['daily_return'].shift(1)
+        r = df["daily_return"].shift(1)
+
         # 计算滞后1期自协方差（滚动窗口）
         def cov_lag1(x):
             x = pd.Series(x).dropna()
@@ -231,66 +312,76 @@ class SimpleFactorCalculator:
             x0 = x[:-1]
             x1 = x[1:]
             return np.cov(x0, x1, ddof=0)[0, 1]
+
         cov1 = r.rolling(21, min_periods=15).apply(cov_lag1, raw=True)
         # Roll spread 近似：2 * sqrt(-cov1)，仅当cov1<0
         spread = 2 * np.sqrt(np.clip(-cov1, 0, None))
-        df['roll_spread_21'] = spread
+        df["roll_spread_21"] = spread
         return df
 
     @staticmethod
     def _compute_volume_ratio(df: pd.DataFrame) -> pd.DataFrame:
-        vol_ma20 = df['volume'].rolling(window=20, min_periods=15).mean()
-        df['volume_ratio'] = df['volume'] / vol_ma20
+        vol_ma20 = df["volume"].rolling(window=20, min_periods=15).mean()
+        df["volume_ratio"] = df["volume"] / vol_ma20
         return df
 
     @staticmethod
     def _compute_turnover_rate(df: pd.DataFrame) -> pd.DataFrame:
         # 兼容不同列名：turnover / turnover_rate
-        if 'turnover' in df.columns:
-            df['turnover_rate'] = pd.to_numeric(df['turnover'], errors='coerce')
-        elif 'turnover_rate' in df.columns:
-            df['turnover_rate'] = pd.to_numeric(df['turnover_rate'], errors='coerce')
+        if "turnover" in df.columns:
+            df["turnover_rate"] = pd.to_numeric(df["turnover"], errors="coerce")
+        elif "turnover_rate" in df.columns:
+            df["turnover_rate"] = pd.to_numeric(df["turnover_rate"], errors="coerce")
         else:
-            df['turnover_rate'] = np.nan
+            df["turnover_rate"] = np.nan
         return df
 
     @staticmethod
     def _compute_illiq(df: pd.DataFrame) -> pd.DataFrame:
-        df['illiq'] = (df['daily_return'].shift(1).abs() / (df['amount'].shift(1) + 1)) * 1e9
+        df["illiq"] = (
+            df["daily_return"].shift(1).abs() / (df["amount"].shift(1) + 1)
+        ) * 1e9
         return df
 
     @staticmethod
     def _forward_returns(df: pd.DataFrame) -> pd.DataFrame:
-        df['forward_return_1d'] = df['daily_return'].shift(-1)
-        df['forward_return_5d'] = df['close'].shift(-5) / df['close'] - 1
-        df['forward_return_10d'] = df['close'].shift(-10) / df['close'] - 1
+        df["forward_return_1d"] = df["daily_return"].shift(-1)
+        df["forward_return_5d"] = df["close"].shift(-5) / df["close"] - 1
+        df["forward_return_10d"] = df["close"].shift(-10) / df["close"] - 1
         return df
 
     def _load_stock_df(self, code: str) -> pd.DataFrame | None:
-        f = self.data_dir / f'{code}.csv'
+        f = self.data_dir / f"{code}.csv"
         if not f.exists():
             return None
         try:
             df = pd.read_csv(f)
             # 标准列处理
             col_map = {
-                '日期': 'date', '收盘': 'close', '开盘': 'open', '最高': 'high', '最低': 'low',
-                '成交量': 'volume', '成交额': 'amount', '换手率': 'turnover', '股票代码': 'code'
+                "日期": "date",
+                "收盘": "close",
+                "开盘": "open",
+                "最高": "high",
+                "最低": "low",
+                "成交量": "volume",
+                "成交额": "amount",
+                "换手率": "turnover",
+                "股票代码": "code",
             }
             for k, v in col_map.items():
                 if k in df.columns:
                     df = df.rename(columns={k: v})
             # 类型
-            df['date'] = pd.to_datetime(df['date'])
-            for c in ['open', 'close', 'high', 'low', 'volume', 'amount']:
+            df["date"] = pd.to_datetime(df["date"])
+            for c in ["open", "close", "high", "low", "volume", "amount"]:
                 if c in df.columns:
-                    df[c] = pd.to_numeric(df[c], errors='coerce')
+                    df[c] = pd.to_numeric(df[c], errors="coerce")
             # 股票代码列
-            if 'code' in df.columns:
-                df['stock_code'] = df['code'].astype(str).str.zfill(6)
+            if "code" in df.columns:
+                df["stock_code"] = df["code"].astype(str).str.zfill(6)
             else:
-                df['stock_code'] = code
-            df = df.sort_values('date').reset_index(drop=True)
+                df["stock_code"] = code
+            df = df.sort_values("date").reset_index(drop=True)
             return df
         except Exception:
             return None
@@ -298,33 +389,33 @@ class SimpleFactorCalculator:
     def compute(self) -> pd.DataFrame | None:
         codes = self._load_codes()
         if not codes:
-            print('❌ 未找到股票数据/股票池')
+            print("❌ 未找到股票数据/股票池")
             return None
-        print(f'📋 计算因子：股票数={len(codes)}')
+        print(f"📋 计算因子：股票数={len(codes)}")
 
         all_list = []
         for i, code in enumerate(codes, 1):
             if i % 25 == 0:
-                print(f'   进度 {i}/{len(codes)}')
+                print(f"   进度 {i}/{len(codes)}")
             df = self._load_stock_df(code)
             if df is None or len(df) < 40:
                 continue
             # 必要列校验
-            if not set(['date', 'close']).issubset(df.columns):
+            if not set(["date", "close"]).issubset(df.columns):
                 continue
             # 因子
             df = self._compute_daily_return(df)
-            df = self._compute_momentum(df, 5, 'momentum_5d')
-            df = self._compute_momentum(df, 21, 'momentum_21d')
-            df = self._compute_momentum(df, 60, 'momentum_60d')
-            df = self._compute_momentum(df, 250, 'momentum_250d')
+            df = self._compute_momentum(df, 5, "momentum_5d")
+            df = self._compute_momentum(df, 21, "momentum_21d")
+            df = self._compute_momentum(df, 60, "momentum_60d")
+            df = self._compute_momentum(df, 250, "momentum_250d")
             df = self._compute_volatility_21d(df)
             df = self._compute_vol_ratio(df)
-            if 'volume' in df.columns:
+            if "volume" in df.columns:
                 df = self._compute_volume_ratio(df)
                 df = self._compute_volume_trend(df)
             df = self._compute_turnover_rate(df)
-            if 'amount' in df.columns:
+            if "amount" in df.columns:
                 df = self._compute_illiq(df)
             df = self._compute_atr14(df)
             df = self._compute_gk_vol(df)
@@ -338,86 +429,135 @@ class SimpleFactorCalculator:
 
             # 行业：先映射，映射缺失/未分类时用名称兜底推断
             ind = self.industry_map.get(code)
-            if not ind or ind in ['未分类', 'None', 'nan', '']:
+            if not ind or ind in ["未分类", "None", "nan", ""]:
                 name = self.name_map.get(code)
                 ind = self._infer_industry_from_name(name)
-            df['industry'] = ind if ind else '未分类'
+            df["industry"] = ind if ind else "未分类"
 
-            keep = ['date', 'stock_code', 'industry', 'close', 'daily_return', 'forward_return_1d',
-                    'forward_return_5d', 'forward_return_10d',
-                    'momentum_5d', 'momentum_21d', 'momentum_60d', 'momentum_250d',
-                    'volatility_21d', 'vol_ratio_21_63', 'volume_ratio', 'volume_trend_20_60',
-                    'turnover_rate', 'illiq', 'atr14', 'gk_vol_21d', 'amplitude_hl',
-                    'breakout_high_63', 'breakout_low_63', 'dist_to_high_252', 'dist_to_low_252',
-                    'obv', 'zero_ret_ratio_21', 'roll_spread_21']
+            keep = [
+                "date",
+                "stock_code",
+                "industry",
+                "close",
+                "daily_return",
+                "forward_return_1d",
+                "forward_return_5d",
+                "forward_return_10d",
+                "momentum_5d",
+                "momentum_21d",
+                "momentum_60d",
+                "momentum_250d",
+                "volatility_21d",
+                "vol_ratio_21_63",
+                "volume_ratio",
+                "volume_trend_20_60",
+                "turnover_rate",
+                "illiq",
+                "atr14",
+                "gk_vol_21d",
+                "amplitude_hl",
+                "breakout_high_63",
+                "breakout_low_63",
+                "dist_to_high_252",
+                "dist_to_low_252",
+                "obv",
+                "zero_ret_ratio_21",
+                "roll_spread_21",
+            ]
             for k in keep:
                 if k not in df.columns:
                     df[k] = np.nan
             all_list.append(df[keep])
 
         if not all_list:
-            print('❌ 没有可用数据')
+            print("❌ 没有可用数据")
             return None
 
         data = pd.concat(all_list, ignore_index=True)
-        data = data.sort_values(['date', 'stock_code']).reset_index(drop=True)
+        data = data.sort_values(["date", "stock_code"]).reset_index(drop=True)
 
         # 横截面标准化（对因子列）
-        factor_cols = ['momentum_5d', 'momentum_21d', 'momentum_60d', 'momentum_250d',
-                       'volatility_21d', 'vol_ratio_21_63', 'volume_ratio', 'volume_trend_20_60',
-                       'turnover_rate', 'illiq', 'atr14', 'gk_vol_21d', 'amplitude_hl',
-                       'breakout_high_63', 'breakout_low_63', 'dist_to_high_252', 'dist_to_low_252',
-                       'obv', 'zero_ret_ratio_21', 'roll_spread_21']
+        factor_cols = [
+            "momentum_5d",
+            "momentum_21d",
+            "momentum_60d",
+            "momentum_250d",
+            "volatility_21d",
+            "vol_ratio_21_63",
+            "volume_ratio",
+            "volume_trend_20_60",
+            "turnover_rate",
+            "illiq",
+            "atr14",
+            "gk_vol_21d",
+            "amplitude_hl",
+            "breakout_high_63",
+            "breakout_low_63",
+            "dist_to_high_252",
+            "dist_to_low_252",
+            "obv",
+            "zero_ret_ratio_21",
+            "roll_spread_21",
+        ]
+
         def standardize_day(group: pd.DataFrame) -> pd.DataFrame:
             for col in factor_cols:
                 if col not in group.columns:
                     continue
                 vals = group[col].astype(float)
-                if self.standardization_method == 'rank':
-                    ranks = vals.rank(method='average', na_option='keep')
+                if self.standardization_method == "rank":
+                    ranks = vals.rank(method="average", na_option="keep")
                     n = ranks.count()
                     if n >= 5:
                         scaled = (ranks - 0.5) / n
-                        scaled = scaled.clip(1e-6, 1-1e-6)
-                        group[f'{col}_std'] = norm.ppf(scaled)
+                        scaled = scaled.clip(1e-6, 1 - 1e-6)
+                        group[f"{col}_std"] = norm.ppf(scaled)
                     else:
-                        group[f'{col}_std'] = np.nan
+                        group[f"{col}_std"] = np.nan
                 else:  # zscore
                     mean_val = vals.mean(skipna=True)
                     std_val = vals.std(skipna=True)
                     if std_val and std_val > 1e-12:
-                        group[f'{col}_std'] = (vals - mean_val) / std_val
+                        group[f"{col}_std"] = (vals - mean_val) / std_val
                     else:
-                        group[f'{col}_std'] = np.nan
+                        group[f"{col}_std"] = np.nan
             return group
 
-        data = data.groupby('date', group_keys=False).apply(standardize_day)
+        data = data.groupby("date", group_keys=False).apply(standardize_day)
 
         # 丢弃因滞后导致的前期行（最长窗口252，保守丢前260行）
-        data = data.groupby('stock_code', as_index=False, group_keys=False).apply(lambda d: d.iloc[260:])
+        data = data.groupby("stock_code", as_index=False, group_keys=False).apply(
+            lambda d: d.iloc[260:]
+        )
 
         out = Path(self.output_filename)
         if not out.is_absolute():
             out = self.data_dir / out
-        data.to_csv(out, index=False, encoding='utf-8-sig')
-        print(f'💾 已保存: {out}，记录数={len(data):,}')
+        data.to_csv(out, index=False, encoding="utf-8-sig")
+        print(f"💾 已保存: {out}，记录数={len(data):,}")
         return data
 
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description='简单因子计算器')
-    parser.add_argument('--data-dir', type=str, default='data')
-    parser.add_argument('--universe', type=str, default='stock_universe_selected.csv')
-    parser.add_argument('--standardization', type=str, default='zscore', choices=['zscore', 'rank'])
-    parser.add_argument('--output', type=str, default='simple_factor_data.csv')
+
+    parser = argparse.ArgumentParser(description="简单因子计算器")
+    parser.add_argument("--data-dir", type=str, default="data")
+    parser.add_argument("--universe", type=str, default="stock_universe_selected.csv")
+    parser.add_argument(
+        "--standardization", type=str, default="zscore", choices=["zscore", "rank"]
+    )
+    parser.add_argument("--output", type=str, default="simple_factor_data.csv")
     args = parser.parse_args()
 
-    calc = SimpleFactorCalculator(data_dir=args.data_dir, universe_file=args.universe,
-                                 standardization=args.standardization,
-                                 output_filename=args.output)
+    calc = SimpleFactorCalculator(
+        data_dir=args.data_dir,
+        universe_file=args.universe,
+        standardization=args.standardization,
+        output_filename=args.output,
+    )
     calc.compute()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
