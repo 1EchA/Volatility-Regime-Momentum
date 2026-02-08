@@ -890,236 +890,228 @@ def _current_config() -> dict:
 
 
 with tab_pack:
-        st.subheader("⚡ 快捷操作")
-        c1, c2, c3 = st.columns(3)
-        with c1:
-            if st.button("加载默认策略快照"):
-                try:
-                    from json import load
+    st.subheader("⚡ 快捷操作")
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        if st.button("加载默认策略快照"):
+            try:
+                from json import load
 
-                    p = (
-                        DATA_DIR
-                        / "config_snapshots"
-                        / "default_hysteresis_top40_5bp.json"
-                    )
-                    if p.exists():
-                        with open(p, "r", encoding="utf-8") as f:
-                            cfg = load(f)
-                        for k, v in {
-                            "cfg_standardisation": cfg.get("standardisation"),
-                            "cfg_start_oos": cfg.get("start_oos"),
-                            "cfg_train_window": cfg.get("train_window"),
-                            "cfg_alpha": cfg.get("alpha"),
-                            "cfg_top_n": cfg.get("top_n"),
-                            "cfg_bottom_n": cfg.get("bottom_n"),
-                            "cfg_cost_bps_ui": cfg.get("cost_bps_ui"),
-                            "cfg_neutral_shrink": cfg.get("neutral_shrink"),
-                            "cfg_neutral_industries": cfg.get("neutral_industries"),
-                            "cfg_exec_strategy": cfg.get("exec_strategy"),
-                            "cfg_delta": cfg.get("delta"),
-                            "cfg_ema_span": cfg.get("ema_span"),
-                            "cfg_k": cfg.get("k"),
-                            "cfg_swap_cap": cfg.get("swap_cap"),
-                        }.items():
-                            if v is not None:
-                                st.session_state[k] = v
-                        st.success("已加载默认快照，请在侧边栏查看参数。")
-                    else:
-                        st.warning("未找到默认快照文件。")
-                except Exception as e:
-                    st.error(f"加载失败: {e}")
-        with c2:
-            if st.button("用侧边栏参数运行流水线"):
-                cfg = _current_config()
-                cmd = [
-                    "python3",
-                    "run_full_pipeline.py",
-                    "--standardisation",
-                    cfg["standardisation"],
-                    "--start-oos",
-                    cfg["start_oos"],
-                    "--train-window",
-                    str(int(cfg["train_window"])),
-                    "--alpha",
-                    str(float(cfg["alpha"])),
-                    "--top-n",
-                    str(int(cfg["top_n"])),
-                    "--bottom-n",
-                    str(int(cfg["bottom_n"])),
-                    "--cost-bps",
-                    str(float(cfg["cost_bps_ui"]) / 10000.0),
-                ]
-                if cfg["recompute_factors"]:
-                    cmd.append("--recompute-factors")
-                if cfg["recompute_regime"]:
-                    cmd.append("--recompute-regime")
-                if float(cfg["neutral_shrink"]) > 0:
-                    cmd.extend(["--neutral-shrink", str(cfg["neutral_shrink"])])
-                    if cfg["neutral_industries"]:
-                        cmd.extend(["--neutral-industries", cfg["neutral_industries"]])
-                if cfg["run_cost_grid"]:
-                    cmd.append("--run-cost-grid")
-                if cfg["exec_strategy"] and cfg["exec_strategy"] != "none":
-                    cmd.extend(
-                        [
-                            "--execution-strategy",
-                            cfg["exec_strategy"],
-                            "--delta",
-                            str(int(cfg["delta"])),
-                            "--ema-span",
-                            str(int(cfg["ema_span"])),
-                            "--k",
-                            str(int(cfg["k"])),
-                            "--swap-cap",
-                            str(float(cfg["swap_cap"])),
-                        ]
-                    )
-                if cfg["run_turnover_grid"]:
-                    cmd.append("--run-turnover-grid")
-                try:
-                    logger.info(f"Starting pipeline with command: {' '.join(cmd)}")
-                    proc = subprocess.run(
-                        cmd, capture_output=True, text=True, check=True
-                    )
-                    logger.info("Pipeline completed successfully")
-                    st.success("流水线完成")
-                    st.text_area("运行日志", proc.stdout[-6000:], height=220)
-                except subprocess.CalledProcessError as e:
-                    logger.error(
-                        f"Pipeline failed with return code {e.returncode}: {e.stderr}",
-                        exc_info=True,
-                    )
-                    st.error("流水线失败")
-                    st.text_area(
-                        "错误日志", (e.stdout or "") + "\n" + (e.stderr or ""), height=280
-                    )
-        with c3:
-            if st.button("生成报告包(快速)"):
-                # 自动抓取最新产物
-                latest_pred = sorted(
-                    DATA_DIR.glob("predictions_*.csv"), key=lambda p: p.stat().st_mtime
+                p = DATA_DIR / "config_snapshots" / "default_hysteresis_top40_5bp.json"
+                if p.exists():
+                    with open(p, "r", encoding="utf-8") as f:
+                        cfg = load(f)
+                    for k, v in {
+                        "cfg_standardisation": cfg.get("standardisation"),
+                        "cfg_start_oos": cfg.get("start_oos"),
+                        "cfg_train_window": cfg.get("train_window"),
+                        "cfg_alpha": cfg.get("alpha"),
+                        "cfg_top_n": cfg.get("top_n"),
+                        "cfg_bottom_n": cfg.get("bottom_n"),
+                        "cfg_cost_bps_ui": cfg.get("cost_bps_ui"),
+                        "cfg_neutral_shrink": cfg.get("neutral_shrink"),
+                        "cfg_neutral_industries": cfg.get("neutral_industries"),
+                        "cfg_exec_strategy": cfg.get("exec_strategy"),
+                        "cfg_delta": cfg.get("delta"),
+                        "cfg_ema_span": cfg.get("ema_span"),
+                        "cfg_k": cfg.get("k"),
+                        "cfg_swap_cap": cfg.get("swap_cap"),
+                    }.items():
+                        if v is not None:
+                            st.session_state[k] = v
+                    st.success("已加载默认快照，请在侧边栏查看参数。")
+                else:
+                    st.warning("未找到默认快照文件。")
+            except Exception as e:
+                st.error(f"加载失败: {e}")
+    with c2:
+        if st.button("用侧边栏参数运行流水线"):
+            cfg = _current_config()
+            cmd = [
+                "python3",
+                "run_full_pipeline.py",
+                "--standardisation",
+                cfg["standardisation"],
+                "--start-oos",
+                cfg["start_oos"],
+                "--train-window",
+                str(int(cfg["train_window"])),
+                "--alpha",
+                str(float(cfg["alpha"])),
+                "--top-n",
+                str(int(cfg["top_n"])),
+                "--bottom-n",
+                str(int(cfg["bottom_n"])),
+                "--cost-bps",
+                str(float(cfg["cost_bps_ui"]) / 10000.0),
+            ]
+            if cfg["recompute_factors"]:
+                cmd.append("--recompute-factors")
+            if cfg["recompute_regime"]:
+                cmd.append("--recompute-regime")
+            if float(cfg["neutral_shrink"]) > 0:
+                cmd.extend(["--neutral-shrink", str(cfg["neutral_shrink"])])
+                if cfg["neutral_industries"]:
+                    cmd.extend(["--neutral-industries", cfg["neutral_industries"]])
+            if cfg["run_cost_grid"]:
+                cmd.append("--run-cost-grid")
+            if cfg["exec_strategy"] and cfg["exec_strategy"] != "none":
+                cmd.extend(
+                    [
+                        "--execution-strategy",
+                        cfg["exec_strategy"],
+                        "--delta",
+                        str(int(cfg["delta"])),
+                        "--ema-span",
+                        str(int(cfg["ema_span"])),
+                        "--k",
+                        str(int(cfg["k"])),
+                        "--swap-cap",
+                        str(float(cfg["swap_cap"])),
+                    ]
                 )
-                latest_exec_ts = sorted(
-                    DATA_DIR.glob("pipeline_execution_*_timeseries.csv"),
-                    key=lambda p: p.stat().st_mtime,
+            if cfg["run_turnover_grid"]:
+                cmd.append("--run-turnover-grid")
+            try:
+                logger.info(f"Starting pipeline with command: {' '.join(cmd)}")
+                proc = subprocess.run(cmd, capture_output=True, text=True, check=True)
+                logger.info("Pipeline completed successfully")
+                st.success("流水线完成")
+                st.text_area("运行日志", proc.stdout[-6000:], height=220)
+            except subprocess.CalledProcessError as e:
+                logger.error(
+                    f"Pipeline failed with return code {e.returncode}: {e.stderr}",
+                    exc_info=True,
                 )
-                latest_exec_m = sorted(
-                    DATA_DIR.glob("pipeline_execution_*_metrics.json"),
-                    key=lambda p: p.stat().st_mtime,
+                st.error("流水线失败")
+                st.text_area(
+                    "错误日志", (e.stdout or "") + "\n" + (e.stderr or ""), height=280
                 )
-                latest_grid = sorted(
-                    DATA_DIR.glob("turnover_strategy_grid_*.csv"),
-                    key=lambda p: p.stat().st_mtime,
-                )
-                latest_rb = sorted(
-                    DATA_DIR.glob("robustness_summary_*.csv"),
-                    key=lambda p: p.stat().st_mtime,
-                )
-                cmd = ["python3", "analysis/report_packager.py"]
-                if latest_pred:
-                    cmd.extend(["--predictions", str(latest_pred[-1])])
-                if latest_exec_ts:
-                    cmd.extend(["--execution-timeseries", str(latest_exec_ts[-1])])
-                if latest_exec_m:
-                    cmd.extend(["--execution-metrics", str(latest_exec_m[-1])])
-                if latest_grid:
-                    cmd.extend(["--turnover-grid", str(latest_grid[-1])])
-                if latest_rb:
-                    cmd.extend(["--robustness", str(latest_rb[-1])])
-                try:
-                    proc = subprocess.run(
-                        cmd, capture_output=True, text=True, check=True
-                    )
-                    st.success("报告包已生成（见打包Tab下载）")
-                    st.text(proc.stdout)
-                except subprocess.CalledProcessError as e:
-                    st.error("打包失败")
-                    st.text_area(
-                        "错误日志", (e.stdout or "") + "\n" + (e.stderr or ""), height=200
-                    )
-
-        st.markdown("---")
-        st.subheader("🗂️ 最近产物快照")
-        # 搜索最新产物并展示简要指标
-        latest_pred = sorted(
-            DATA_DIR.glob("predictions_*.csv"), key=lambda p: p.stat().st_mtime
-        )
-        latest_exec_ts = sorted(
-            DATA_DIR.glob("pipeline_execution_*_timeseries.csv"),
-            key=lambda p: p.stat().st_mtime,
-        )
-        latest_exec_m = sorted(
-            DATA_DIR.glob("pipeline_execution_*_metrics.json"),
-            key=lambda p: p.stat().st_mtime,
-        )
-        latest_grid = sorted(
-            DATA_DIR.glob("turnover_strategy_grid_*.csv"),
-            key=lambda p: p.stat().st_mtime,
-        )
-        latest_rb = sorted(
-            DATA_DIR.glob("robustness_summary_*.csv"), key=lambda p: p.stat().st_mtime
-        )
-
-        c1, c2, c3 = st.columns(3)
-        with c1:
-            st.markdown("**Predictions**")
+    with c3:
+        if st.button("生成报告包(快速)"):
+            # 自动抓取最新产物
+            latest_pred = sorted(
+                DATA_DIR.glob("predictions_*.csv"), key=lambda p: p.stat().st_mtime
+            )
+            latest_exec_ts = sorted(
+                DATA_DIR.glob("pipeline_execution_*_timeseries.csv"),
+                key=lambda p: p.stat().st_mtime,
+            )
+            latest_exec_m = sorted(
+                DATA_DIR.glob("pipeline_execution_*_metrics.json"),
+                key=lambda p: p.stat().st_mtime,
+            )
+            latest_grid = sorted(
+                DATA_DIR.glob("turnover_strategy_grid_*.csv"),
+                key=lambda p: p.stat().st_mtime,
+            )
+            latest_rb = sorted(
+                DATA_DIR.glob("robustness_summary_*.csv"),
+                key=lambda p: p.stat().st_mtime,
+            )
+            cmd = ["python3", "analysis/report_packager.py"]
             if latest_pred:
-                p = latest_pred[-1]
-                st.write(p.name)
-                st.caption(
-                    f'更新时间: {pd.to_datetime(p.stat().st_mtime, unit="s").strftime("%F %T")}'
-                )
-                st.download_button("下载", data=p.read_bytes(), file_name=p.name)
-            else:
-                st.info("暂无")
-        with c2:
-            st.markdown("**Execution (metrics)**")
+                cmd.extend(["--predictions", str(latest_pred[-1])])
+            if latest_exec_ts:
+                cmd.extend(["--execution-timeseries", str(latest_exec_ts[-1])])
             if latest_exec_m:
-                import json as _json
-
-                pm = latest_exec_m[-1]
-                meta = _json.loads(pm.read_text(encoding="utf-8"))
-                m = meta.get("metrics", {})
-                colsM = st.columns(2)
-                colsM[0].metric("年化", f"{m.get('ls_ann', 0):.2%}")
-                colsM[1].metric("IR", f"{m.get('ls_ir', 0):.3f}")
-                colsM2 = st.columns(2)
-                colsM2[0].metric("换手", f"{m.get('avg_turnover', 0):.2%}")
-                colsM2[1].metric("回撤", f"{m.get('max_drawdown', 0):.2%}")
-                st.caption(pm.name)
-            else:
-                st.info("暂无")
-        with c3:
-            st.markdown("**Turnover Grid**")
+                cmd.extend(["--execution-metrics", str(latest_exec_m[-1])])
             if latest_grid:
-                import pandas as _pd
-
-                g = _pd.read_csv(latest_grid[-1])
-                best_ir = g.sort_values("ls_ir", ascending=False).head(1)
-                best_ann = g.sort_values("ls_ann", ascending=False).head(1)
-                if not best_ir.empty:
-                    st.write(
-                        f"Top IR: IR={best_ir['ls_ir'].iloc[0]:.3f}, ann={best_ir['ls_ann'].iloc[0]:.2%}"
-                    )
-                if not best_ann.empty:
-                    st.write(
-                        f"Top Ann: ann={best_ann['ls_ann'].iloc[0]:.2%}, IR={best_ann['ls_ir'].iloc[0]:.3f}"
-                    )
-                st.caption(latest_grid[-1].name)
-            else:
-                st.info("暂无")
-        c4, c5 = st.columns(2)
-        with c4:
-            st.markdown("**稳健性分析 (Robustness)**")
+                cmd.extend(["--turnover-grid", str(latest_grid[-1])])
             if latest_rb:
-                import pandas as _pd
+                cmd.extend(["--robustness", str(latest_rb[-1])])
+            try:
+                proc = subprocess.run(cmd, capture_output=True, text=True, check=True)
+                st.success("报告包已生成（见打包Tab下载）")
+                st.text(proc.stdout)
+            except subprocess.CalledProcessError as e:
+                st.error("打包失败")
+                st.text_area(
+                    "错误日志", (e.stdout or "") + "\n" + (e.stderr or ""), height=200
+                )
 
-                rb = _pd.read_csv(latest_rb[-1])
-                st.write(f"组合数：{len(rb)}")
-                st.write(f"IR均值：{rb['ls_ir'].mean():.3f}")
-                st.caption(latest_rb[-1].name)
-            else:
-                st.info("暂无")
+    st.markdown("---")
+    st.subheader("🗂️ 最近产物快照")
+    # 搜索最新产物并展示简要指标
+    latest_pred = sorted(
+        DATA_DIR.glob("predictions_*.csv"), key=lambda p: p.stat().st_mtime
+    )
+    latest_exec_ts = sorted(
+        DATA_DIR.glob("pipeline_execution_*_timeseries.csv"),
+        key=lambda p: p.stat().st_mtime,
+    )
+    latest_exec_m = sorted(
+        DATA_DIR.glob("pipeline_execution_*_metrics.json"),
+        key=lambda p: p.stat().st_mtime,
+    )
+    latest_grid = sorted(
+        DATA_DIR.glob("turnover_strategy_grid_*.csv"),
+        key=lambda p: p.stat().st_mtime,
+    )
+    latest_rb = sorted(
+        DATA_DIR.glob("robustness_summary_*.csv"), key=lambda p: p.stat().st_mtime
+    )
+
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.markdown("**Predictions**")
+        if latest_pred:
+            p = latest_pred[-1]
+            st.write(p.name)
+            st.caption(
+                f'更新时间: {pd.to_datetime(p.stat().st_mtime, unit="s").strftime("%F %T")}'
+            )
+            st.download_button("下载", data=p.read_bytes(), file_name=p.name)
+        else:
+            st.info("暂无")
+    with c2:
+        st.markdown("**Execution (metrics)**")
+        if latest_exec_m:
+            import json as _json
+
+            pm = latest_exec_m[-1]
+            meta = _json.loads(pm.read_text(encoding="utf-8"))
+            m = meta.get("metrics", {})
+            colsM = st.columns(2)
+            colsM[0].metric("年化", f"{m.get('ls_ann', 0):.2%}")
+            colsM[1].metric("IR", f"{m.get('ls_ir', 0):.3f}")
+            colsM2 = st.columns(2)
+            colsM2[0].metric("换手", f"{m.get('avg_turnover', 0):.2%}")
+            colsM2[1].metric("回撤", f"{m.get('max_drawdown', 0):.2%}")
+            st.caption(pm.name)
+        else:
+            st.info("暂无")
+    with c3:
+        st.markdown("**Turnover Grid**")
+        if latest_grid:
+            import pandas as _pd
+
+            g = _pd.read_csv(latest_grid[-1])
+            best_ir = g.sort_values("ls_ir", ascending=False).head(1)
+            best_ann = g.sort_values("ls_ann", ascending=False).head(1)
+            if not best_ir.empty:
+                st.write(
+                    f"Top IR: IR={best_ir['ls_ir'].iloc[0]:.3f}, ann={best_ir['ls_ann'].iloc[0]:.2%}"
+                )
+            if not best_ann.empty:
+                st.write(
+                    f"Top Ann: ann={best_ann['ls_ann'].iloc[0]:.2%}, IR={best_ann['ls_ir'].iloc[0]:.3f}"
+                )
+            st.caption(latest_grid[-1].name)
+        else:
+            st.info("暂无")
+    c4, c5 = st.columns(2)
+    with c4:
+        st.markdown("**稳健性分析 (Robustness)**")
+        if latest_rb:
+            import pandas as _pd
+
+            rb = _pd.read_csv(latest_rb[-1])
+            st.write(f"组合数：{len(rb)}")
+            st.write(f"IR均值：{rb['ls_ir'].mean():.3f}")
+            st.caption(latest_rb[-1].name)
+        else:
+            st.info("暂无")
 
 # 添加全局数据刷新功能
 st.sidebar.markdown("**🔄 数据管理**")
